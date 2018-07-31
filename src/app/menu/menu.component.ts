@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 
 // import { AuthenticationService } from '../../_services/index';
-// import { ModalService } from '../../_services/index';
+import { ModalService } from '../services/index';
 
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ import { Status } from '../globals';
 })
 export class MenuComponent implements OnInit {
 
-  constructor( private router: Router, private status: Status  ) { }
+  constructor( private router: Router, private status: Status , private modalService: ModalService ) { }
 
   ngOnInit() {
   }
@@ -34,24 +34,17 @@ export class MenuComponent implements OnInit {
     this.status.menuState = 'out';
   }
 
-  /*
+
   openmodal(id: string ) {
-    if ( id === 'modalscheda') {
-      this.status.schedaon = true ;
+    if ( id === 'modalregolamento') {
+      this.status.regolamentoon = true ;
     }
-    if ( id === 'modalpx') {
-      this.status.pxon = true ;
-    }
-    if ( id === 'modalbio') {
-      this.status.bioon = true ;
-    }
-    if ( id === 'modalanagrafe') {
-      this.status.anagon = true ;
-    }
+
     this.status.menuState = 'out';
     this.modalService.show(id) ;
   }
 
+/*
   gotomodule(where: string) {
     this.status.menuState = 'out';
     this.status.Alive = false ;

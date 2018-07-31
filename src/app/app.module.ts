@@ -8,19 +8,28 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routing' ;
 
 import { Status } from './globals';
+import { ModalService } from './services/index';
 
 import { AppComponent } from './app.component';
-import { PersonaggioComponent } from './personaggio/personaggio.component';
-import { MainComponent } from './main/main.component';
+import { IntroComponent } from './intro/intro.component';
 import { MenuComponent } from './menu/menu.component';
+import { ModalComponent } from './modal/modal.component';
+import { PersonaggioComponent } from './personaggio/personaggio.component';
+import { RegisterComponent } from './register/register.component';
+import { RegolamentoComponent } from './regolamento/regolamento.component';
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    IntroComponent,
+    MenuComponent,
+    ModalComponent,
     PersonaggioComponent,
-    MainComponent,
-    MenuComponent
+    RegisterComponent,
+    RegolamentoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +39,8 @@ import { MenuComponent } from './menu/menu.component';
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [
-    Status
+    Status,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })

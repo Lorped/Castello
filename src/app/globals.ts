@@ -7,5 +7,6 @@ import { Injectable } from '@angular/core';
 export class Status {
 
   menuState = 'out';
+  regolamentoon = false;
 
 }

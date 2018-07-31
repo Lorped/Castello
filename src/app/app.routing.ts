@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { MainComponent } from './main/main.component';
+import { IntroComponent } from './intro/intro.component';
 // import { LoginComponent } from './_components/login/login.component';
 // import { RegisterComponent } from './_components/register/register.component';
 
@@ -10,7 +10,7 @@ import { MainComponent } from './main/main.component';
 export const APP_ROUTES: Routes = [
 
 
-    { path: '', component: MainComponent },
+    { path: '', component: IntroComponent },
 
 
     // otherwise redirect to home

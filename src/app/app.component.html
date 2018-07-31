@@ -1,1 +1,25 @@
-<router-outlet></router-outlet>
+<button (click)="toggleMenu()" class="menubutton">
+  <span>toggle menu</span>
+</button>
+
+<div div class="mx-auto" style=" margin-top: 50px;">
+
+
+      <router-outlet></router-outlet>
+
+
+</div>
+
+<app-menu [@slideInOut]="status.menuState"></app-menu>
+
+<app-modal #modalregolamento modalId="modalregolamento" >
+  <div class="app-modal-header">
+    <i>Regolamento</i><button type="button" class="btn close" style="color: red !important;" (click)="this.status.regolamentoon=false; modalregolamento.hide()">&times;</button>
+  </div>
+  <div class="app-modal-body">
+    <app-regolamento *ngIf="this.status.regolamentoon"></app-regolamento>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger btn-sm" (click)="this.status.regolamentoon=false; modalregolamento.hide()">Chiudi</button>
+  </div>
+</app-modal>
