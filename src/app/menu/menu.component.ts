@@ -1,6 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
 
-// import { AuthenticationService } from '../../_services/index';
 import { ModalService } from '../services/index';
 
 import { Router } from '@angular/router';
@@ -19,6 +18,9 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
+
 
 /*
   dologout() {

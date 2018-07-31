@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -9,6 +9,7 @@ import { APP_ROUTES } from './app.routing' ;
 
 import { Status } from './globals';
 import { ModalService } from './services/index';
+import { SignupService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
@@ -35,12 +36,14 @@ import { RegolamentoComponent } from './regolamento/regolamento.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [
     Status,
-    ModalService
+    ModalService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })
