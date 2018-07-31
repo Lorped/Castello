@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import '~font-awesome/css/font-awesome.css';  */
+
+.red {
+  color: #ff0000;
+}
+.blue {
+  color: #1874cd;
+}
+.pink {
+  color: #ff69b4;
+}
+.green {
+  color: #008b00;
+}
+.white {
+  color: #ffffff;
+}
+
+.dred {
+  color: #b00000;
+}
+
+html, body {
+	background-color: #000000;
+	color: #ffffff;
+	background-image: url('assets/wallpapereldersign2.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+  background-size: cover;
+}
+
+
+.alr {
+  text-align: right;
+}
+
+.alc {
+  text-align: center;
+}
+
+.full {
+  width: 100%;
+}
+
+
+.tre {
+  width: 32.5%;
+}
