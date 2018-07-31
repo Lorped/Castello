@@ -14,3 +14,13 @@ npm install --save bootstrap@next
 		"../node_modules/popper.js/dist/umd/popper.min.js",
     	"../node_modules/bootstrap/dist/js/bootstrap.min.js"
 	  ],
+
+
+
+
+npm install font-awesome --save
+
+Insert into your style.css
+
+@import '~font-awesome/css/font-awesome.css';
+
