@@ -1,4 +1,4 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
+<div class="mx-auto" style=" margin-top: 50px; color: white;">
   <form [formGroup]="personaggioForm" #formDir="ngForm" (ngSubmit)="doScheda()"  class="form-signin" >
   <div class="container">
     <div class="row justify-content-md-center">
@@ -15,14 +15,7 @@
       </div>
 
       <div class="col-9">
-        <div class="form-group">
-          <input id="nomeplayer" name="nomeplayer" type="text" class="form-control" formControlName="NomeGiocatore" placeholder="Nome del Giocatore" [pattern]="unamePattern" required autofocus>
-          <div *ngIf="NomeGiocatore.invalid && (NomeGiocatore.dirty || NomeGiocatore.touched)" class="alert alert-danger" color="red">
-            <div *ngIf="NomeGiocatore.errors.required">Inserire il proprio nome</div>
-            <div *ngIf="NomeGiocatore.errors.pattern">Carattere non ammesso</div>
-          </div>
-        </div>
-        <div class="form-row" >
+        <div class="form-group row" >
           <div class="col">
             <input id="nomepg" name="nomepg" type="text" class="form-control" formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
             <div *ngIf="NomePG.invalid && (NomePG.dirty || NomePG.touched)" class="alert alert-danger" color="red">
@@ -38,7 +31,31 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-lg btn-danger btn-block" [disabled]="!formDir.form.valid" >Login</button>
+
+        <div class="form-group row" *ngIf="professioni.length>0">
+          <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
+          <div class="col">
+            <select id="profpg" name="profpg" class="form-control" required formControlName="profPG">
+            <option *ngFor="let i of professioni" [ngValue]="i">{{i.nomeprofessione}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row" *ngIf="professioni.length>0" >
+          <label for="desc" class="col-3 col-form-label" >Professione {{profPG.IDprofessione}}</label>
+          <div class="col">
+            <input id="desc" name="desc" type="text" class="form-control" formControlName="DescProfessione" placeholder="{{profPG.value.desc}}" [pattern]="unamePattern" required >
+          </div>
+        </div>
+
+
+
+
+        <div class="form-group row" >
+          <div class="col">
+            <p></p>
+          <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!formDir.form.valid" (click)="updatepg()">Aggiorna</button>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -22,6 +22,11 @@ export class RegisterComponent implements OnInit {
 
 
     this.registrationForm = new FormGroup ({
+      regname: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[A-Za-zàèìòù \']+$')
+      ]),
+
       regemail: new FormControl('', [
         Validators.required,
         Validators.email
@@ -45,6 +50,9 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  get regname() {
+      return this.registrationForm.get('regname');
+  }
   get regemail() {
       return this.registrationForm.get('regemail');
   }
@@ -67,10 +75,11 @@ export class RegisterComponent implements OnInit {
 
   doRegister() {
     const myobj = {
+      'regname': this.regname.value,
       'regemail': this.regemail.value,
       'passwd': this.password.value
     };
-    sessionStorage.setItem('RBN3registration0', JSON.stringify(myobj) );
+
     this.signupService.sendregistra(myobj)
     .subscribe( res => {
       this.router.navigate(['']);

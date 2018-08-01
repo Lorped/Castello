@@ -19,28 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 include ('db.inc.php');
 
 
-$postdata = file_get_contents("php://input");
-$request = json_decode($postdata)->myobj;
 
+$MySql="SELECT * FROM professioni  ";
+$Result=mysql_query($MySql);
+while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+	$out [] = $res;
+}
 
-$email = $request->regemail;
-$passwd = $request->passwd;
-$nomeutente = mysql_real_escape_string($request->regname);
-
-
-
-$MySql="INSERT INTO utenti ( email, password, nomeutente )
-VALUES (
-	'$email' , '$passwd' , '$nomeutente')";
-
-mysql_query($MySql);
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
-
-
-
-$out = [];
 
 header("HTTP/1.1 200 OK");
-
 echo json_encode ($out, JSON_UNESCAPED_UNICODE);
+
+
 ?>

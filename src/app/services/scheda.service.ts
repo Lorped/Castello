@@ -12,8 +12,12 @@ export class SchedaService {
 
   getpg (id: number) {
     //const user = sessionStorage.getItem('CastelloUser') ;
-    console.log("here");
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpg.php?id=' + id );
+  }
+
+  getprofessioni () {
+
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getprofessioni.php' );
   }
 
 /*
@@ -33,7 +37,7 @@ export class SchedaService {
     const user = sessionStorage.getItem('CastelloUser') ;
     formData.append('token', user);
     formData.append('fileKey', fileToUpload, fileToUpload.name);
-    return this.http.post('https://www.roma-by-night.it/RBN3/wsPHP/putavatar.php', formData )
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/putavatar.php', formData )
       .map(() => { return  true;} )
 
   }
