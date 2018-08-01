@@ -1,0 +1,47 @@
+<div div class="mx-auto" style=" margin-top: 50px;">
+  <form [formGroup]="personaggioForm" #formDir="ngForm" (ngSubmit)="doScheda()"  class="form-signin" >
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-2">
+        <div class="img-overlay">
+          <label for="avatar">
+          <img src="assets/{{URLimg}}" height="150" width="150" class="avatar">
+          <div class="overlay">
+            <span class="text-overlay fa fa-upload" ></span>
+          </div>
+          </label>
+        </div>
+        <input id="avatar" name="avatar" type="file" accept="image/*" style="display:none;" (change)="fileChange($event.target.files)" >
+      </div>
+
+      <div class="col-9">
+        <div class="form-group">
+          <input id="nomeplayer" name="nomeplayer" type="text" class="form-control" formControlName="NomeGiocatore" placeholder="Nome del Giocatore" [pattern]="unamePattern" required autofocus>
+          <div *ngIf="NomeGiocatore.invalid && (NomeGiocatore.dirty || NomeGiocatore.touched)" class="alert alert-danger" color="red">
+            <div *ngIf="NomeGiocatore.errors.required">Inserire il proprio nome</div>
+            <div *ngIf="NomeGiocatore.errors.pattern">Carattere non ammesso</div>
+          </div>
+        </div>
+        <div class="form-row" >
+          <div class="col">
+            <input id="nomepg" name="nomepg" type="text" class="form-control" formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
+            <div *ngIf="NomePG.invalid && (NomePG.dirty || NomePG.touched)" class="alert alert-danger" color="red">
+              <div *ngIf="NomePG.errors.required">Inserire il nome del Personaggio</div>
+              <div *ngIf="NomePG.errors.pattern">Carattere non ammesso</div>
+            </div>
+          </div>
+          <div class="col">
+            <input id="cognomepg" name="cognomepg" type="text" class="form-control" formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
+            <div *ngIf="CognomePG.invalid && (CognomePG.dirty || CognomePG.touched)" class="alert alert-danger" color="red">
+              <div *ngIf="CognomePG.errors.required">Inserire il cognome del Personaggio</div>
+              <div *ngIf="CognomePG.errors.pattern">Carattere non ammesso</div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-lg btn-danger btn-block" [disabled]="!formDir.form.valid" >Login</button>
+      </div>
+    </div>
+
+  </div>
+  </form>
+</div>

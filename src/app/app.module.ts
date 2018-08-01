@@ -7,9 +7,11 @@ import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routing' ;
 
-import { Status } from './globals';
+import { Status, Personaggio } from './globals';
 import { ModalService } from './services/index';
 import { SignupService } from './services/index';
+import { AuthenticationService } from './services/index';
+import { SchedaService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
@@ -18,6 +20,8 @@ import { ModalComponent } from './modal/modal.component';
 import { PersonaggioComponent } from './personaggio/personaggio.component';
 import { RegisterComponent } from './register/register.component';
 import { RegolamentoComponent } from './regolamento/regolamento.component';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -30,7 +34,9 @@ import { RegolamentoComponent } from './regolamento/regolamento.component';
     ModalComponent,
     PersonaggioComponent,
     RegisterComponent,
-    RegolamentoComponent
+    RegolamentoComponent,
+    LoginComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +48,11 @@ import { RegolamentoComponent } from './regolamento/regolamento.component';
   ],
   providers: [
     Status,
+    Personaggio,
     ModalService,
-    SignupService
+    SignupService,
+    AuthenticationService,
+    SchedaService
   ],
   bootstrap: [AppComponent]
 })

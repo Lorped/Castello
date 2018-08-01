@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 
 import { ModalService } from '../services/index';
+import { AuthenticationService } from '../services/index';
 
 import { Router } from '@angular/router';
 
@@ -14,7 +15,7 @@ import { Status } from '../globals';
 })
 export class MenuComponent implements OnInit {
 
-  constructor( private router: Router, private status: Status , private modalService: ModalService ) { }
+  constructor( private authenticationService: AuthenticationService, private router: Router, private status: Status , private modalService: ModalService ) { }
 
   ngOnInit() {
   }
@@ -22,15 +23,15 @@ export class MenuComponent implements OnInit {
 
 
 
-/*
+
   dologout() {
     this.status.menuState = 'out';
-    this.status.Alive = false ;
+    this.status.IDutente = 0;
     this.authenticationService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
 
   }
-  */
+
 
   closemenu() {
     this.status.menuState = 'out';
