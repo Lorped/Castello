@@ -11,7 +11,7 @@ export class SchedaService {
 
 
   getpg (id: number) {
-    //const user = sessionStorage.getItem('CastelloUser') ;
+    // const user = sessionStorage.getItem('CastelloUser') ;
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpg.php?id=' + id );
   }
 
@@ -20,17 +20,19 @@ export class SchedaService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getprofessioni.php' );
   }
 
-/*
-  addpg (bio: string, descrizione: string) {
+
+  updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aDescProfessione: string) {
     const user = sessionStorage.getItem('CastelloUser') ;
 
-    return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/addbio.php', {
+    return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/addpg.php', {
       token: user,
-      bio: bio,
-      descr: descrizione
+      NomePG: aNomePG,
+      CognomePG: aCognomePG,
+      IDprofessione: aIDprofessione,
+      DescProfessione: aDescProfessione
     });
   }
-*/
+
 
   putavatar(fileToUpload: File) {
     const formData: FormData = new FormData();
@@ -38,7 +40,7 @@ export class SchedaService {
     formData.append('token', user);
     formData.append('fileKey', fileToUpload, fileToUpload.name);
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/putavatar.php', formData )
-      .map(() => { return  true;} )
+      .map(() => { return  true; } );
 
   }
 

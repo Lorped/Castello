@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   personaggioForm: FormGroup;
 
   professioni = [];
-  /*profPG = { IDprofessione: 0 , nomeprofessione : '', desc: '0' }; */
+
 
 
   constructor( private schedaService: SchedaService, private status: Status, private pg: Personaggio ) { }
@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
 
     this.schedaService.getprofessioni()
     .subscribe( (data: any) => {
-      this.professioni=data;
+      this.professioni = data;
     });
 
 
@@ -58,10 +58,10 @@ export class MainComponent implements OnInit {
 
 
       this.personaggioForm.patchValue({
-        nomePG: data.NomePG,
-        cognomePG: data.CognomePG,
-        /*profPG: data.profPG,*/
-        DescrProfessione: data.DescrProfessione
+        NomePG: data.NomePG,
+        CognomePG: data.CognomePG,
+        profPG: data.IDprofessione,
+        DescProfessione: data.DescProfessione
       });
 
       this.URLimg = data.URLimg;
@@ -99,8 +99,11 @@ export class MainComponent implements OnInit {
     }
   }
 
-  updatepg(){
-    console.log (this.profPG);
+  updatepg() {
+    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.DescProfessione.value)
+    .subscribe( (data: any) => {
+      this.personaggioForm.markAsPristine();
+    });
   }
 
 

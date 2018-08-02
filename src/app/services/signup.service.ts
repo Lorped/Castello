@@ -18,7 +18,6 @@ export class SignupService {
 
 
   sendregistra (myobj: any) {
-    console.log(myobj);
       return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/sendregistra.php', {
         myobj: myobj
       });

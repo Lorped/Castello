@@ -15,7 +15,8 @@ import { Status } from '../globals';
 })
 export class MenuComponent implements OnInit {
 
-  constructor( private authenticationService: AuthenticationService, private router: Router, private status: Status , private modalService: ModalService ) { }
+  constructor( private authenticationService: AuthenticationService, private router: Router,
+    private status: Status , private modalService: ModalService ) { }
 
   ngOnInit() {
   }

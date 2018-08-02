@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.status.IDutente = data.IDutente;
-          console.log("herex");
           this.router.navigate(['main']);
         },
         error => {
