@@ -89,7 +89,7 @@ export class MainComponent implements OnInit {
 
       this.schedaService.putavatar(fileToUpload)
       .subscribe(res => {
-          this.schedaService.getpg(this.status.IDutente)
+          this.schedaService.getpg()
           .subscribe( (data: any) => {
             this.URLimg = data.URLimg;
           });
