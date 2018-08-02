@@ -10,9 +10,9 @@ export class SchedaService {
 
 
 
-  getpg (id: number) {
-    // const user = sessionStorage.getItem('CastelloUser') ;
-    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpg.php?id=' + id );
+  getpg () {
+    const user = sessionStorage.getItem('CastelloUser') ;
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpg.php?id=' + user );
   }
 
   getprofessioni () {

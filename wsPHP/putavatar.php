@@ -38,7 +38,8 @@ $filename=urlencode ( basename( $_FILES['fileKey']['name']) );
 
 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-$newfile=$target_path.$IDutente.'.'.$ext;
+$newfilebase=$IDutente.uniqid('Cas', true).'.'.$ext;
+$newfile=$target_path.$newfilebase;
 
 /*
 header("HTTP/1.1 200 OK");
@@ -51,7 +52,7 @@ die();
 $rc=move_uploaded_file($_FILES['fileKey']['tmp_name'], $newfile);
 
 $target_path = "imgs/";
-$newfile=$target_path.$IDutente.'.'.$ext;
+$newfile=$target_path.$newfilebase;
 
 $MySql="SELECT * FROM personaggi WHERE IDutente = '$IDutente' ";
 $Result=mysql_query($MySql);

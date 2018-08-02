@@ -16,7 +16,7 @@ import { Status } from '../globals';
 export class MenuComponent implements OnInit {
 
   constructor( private authenticationService: AuthenticationService, private router: Router,
-    private status: Status , private modalService: ModalService ) { }
+    public status: Status , private modalService: ModalService ) { }
 
   ngOnInit() {
   }
@@ -42,6 +42,9 @@ export class MenuComponent implements OnInit {
   openmodal(id: string ) {
     if ( id === 'modalregolamento') {
       this.status.regolamentoon = true ;
+    }
+    if ( id === 'modalnews') {
+      this.status.newson = true ;
     }
 
     this.status.menuState = 'out';

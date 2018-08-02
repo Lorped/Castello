@@ -17,11 +17,11 @@ import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
 import { MenuComponent } from './menu/menu.component';
 import { ModalComponent } from './modal/modal.component';
-import { PersonaggioComponent } from './personaggio/personaggio.component';
 import { RegisterComponent } from './register/register.component';
 import { RegolamentoComponent } from './regolamento/regolamento.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
+import { NewsComponent } from './news/news.component';
 
 
 
@@ -32,11 +32,11 @@ import { MainComponent } from './main/main.component';
     IntroComponent,
     MenuComponent,
     ModalComponent,
-    PersonaggioComponent,
     RegisterComponent,
     RegolamentoComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

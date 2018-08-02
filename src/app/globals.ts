@@ -8,6 +8,7 @@ export class Status {
 
   menuState = 'out';
   regolamentoon = false;
+  newson = false;
   IDutente = 0 ;
 
 }

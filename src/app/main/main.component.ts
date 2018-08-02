@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
 
 
 
-  constructor( private schedaService: SchedaService, private status: Status, private pg: Personaggio ) { }
+  constructor( private schedaService: SchedaService, public status: Status, private pg: Personaggio ) { }
 
   ngOnInit() {
 
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
     });
 
 
-    this.schedaService.getpg(this.status.IDutente)
+    this.schedaService.getpg()
     .subscribe( (data: any) => {
 
 

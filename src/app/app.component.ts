@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   title = 'Il Castello della Follia';
 
 
-  constructor( private status: Status ) { }
+  constructor( public status: Status ) { }
 
   ngOnInit() {}
 
