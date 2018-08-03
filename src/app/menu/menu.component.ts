@@ -51,12 +51,10 @@ export class MenuComponent implements OnInit {
     this.modalService.show(id) ;
   }
 
-/*
+
   gotomodule(where: string) {
     this.status.menuState = 'out';
-    this.status.Alive = false ;
-    this.status.Last = 0 ;
     this.router.navigate([where]);
   }
-  */
+
 }

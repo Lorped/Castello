@@ -22,6 +22,8 @@ import { RegolamentoComponent } from './regolamento/regolamento.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
+import { LoginmasterComponent } from './loginmaster/loginmaster.component';
+import { MasterComponent } from './master/master.component';
 
 
 
@@ -36,7 +38,9 @@ import { NewsComponent } from './news/news.component';
     RegolamentoComponent,
     LoginComponent,
     MainComponent,
-    NewsComponent
+    NewsComponent,
+    LoginmasterComponent,
+    MasterComponent
   ],
   imports: [
     BrowserModule,

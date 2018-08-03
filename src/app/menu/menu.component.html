@@ -5,7 +5,7 @@
 <ul>
   <li><button type="button" class="btn btn-md btn-std btn-block" (click)="openmodal('modalregolamento')">Regolamento</button></li>
   <li><button type="button" class="btn btn-md btn-std btn-block" (click)="openmodal('modalnews')">News</button></li>
-  <li><button type="button" class="btn btn-md btn-std btn-block" >Accesso Narrazione</button></li>
+  <li><button type="button" class="btn btn-md btn-std btn-block" (click)="gotomodule('loginmaster')" >Accesso Narrazione</button></li>
 
   <li *ngIf="status.IDutente!=0"><button type="button" class="btn btn-md btn-primary btn-block" (click)="dologout()">Logout</button></li>
 </ul>

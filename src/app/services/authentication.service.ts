@@ -22,9 +22,26 @@ export class AuthenticationService {
       return user[0];
     });
   }
+  loginmaster(email: string, password: string) {
+    return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/loginmaster.php', {
+      email: email,
+      password: password
+    })
+    .map(user => {
+      // login successful if there's a jwt token in the response
+      if (user && user[0].IDutente) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        sessionStorage.setItem('CastelloMaster', user[0].IDutente );
+      }
+
+      return user[0];
+    });
+  }
+
 
   logout() {
     // remove user from local storage to log user out
     sessionStorage.removeItem('CastelloUser');
+    sessionStorage.removeItem('CastelloMaster');
   }
 }
