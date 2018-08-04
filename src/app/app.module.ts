@@ -24,6 +24,7 @@ import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
 import { LoginmasterComponent } from './loginmaster/loginmaster.component';
 import { MasterComponent } from './master/master.component';
+import { StatComponent } from './stat/stat.component';
 
 
 
@@ -40,7 +41,8 @@ import { MasterComponent } from './master/master.component';
     MainComponent,
     NewsComponent,
     LoginmasterComponent,
-    MasterComponent
+    MasterComponent,
+    StatComponent
   ],
   imports: [
     BrowserModule,

@@ -19,8 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 include ('db.inc.php');
 
 
+$MySql="SELECT count(*) as s from utenti";
+$Result=mysql_query($MySql);
+$res=mysql_fetch_array($Result);
+$registrati=$res['s'];
 
-
+$MySql="SELECT count(*) as s from personaggi";
+$Result=mysql_query($MySql);
+$res=mysql_fetch_array($Result);
+$iscritti=$res['s'];
 
 
 $MySql="SELECT P.nomeprofessione as n,
@@ -35,12 +42,18 @@ while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
 	$out[] = $res;
 }
 
+$out1 = [
+	"registrati" => $registrati ,
+	"iscritti" => $iscritti ,
+	"stat" => $out
+] ;
+
 
 
 
 
 header("HTTP/1.1 200 OK");
-echo json_encode ($out, JSON_UNESCAPED_UNICODE);
+echo json_encode ($out1, JSON_UNESCAPED_UNICODE);
 
 
 ?>

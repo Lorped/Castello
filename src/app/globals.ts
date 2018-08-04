@@ -25,3 +25,12 @@ export class Personaggio {
   Sanita = 10;
 
 }
+
+
+export class Statistica {
+
+  n = '';
+  c = 0;
+  perc = 0;
+
+}
