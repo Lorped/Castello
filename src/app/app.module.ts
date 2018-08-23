@@ -61,7 +61,8 @@ import { OggettilistComponent } from './oggettilist/oggettilist.component';
     ModalService,
     SignupService,
     AuthenticationService,
-    SchedaService
+    SchedaService,
+    OggettiService
   ],
   bootstrap: [AppComponent]
 })
