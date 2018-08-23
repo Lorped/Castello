@@ -16,4 +16,7 @@ export class MasterComponent implements OnInit {
   gotostat() {
     this.router.navigate(['stat']);
   }
+  gotooggetti() {
+    this.router.navigate(['oggettilist']);
+  }
 }

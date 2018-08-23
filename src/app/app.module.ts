@@ -12,6 +12,7 @@ import { ModalService } from './services/index';
 import { SignupService } from './services/index';
 import { AuthenticationService } from './services/index';
 import { SchedaService } from './services/index';
+import { OggettiService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
@@ -25,6 +26,7 @@ import { NewsComponent } from './news/news.component';
 import { LoginmasterComponent } from './loginmaster/loginmaster.component';
 import { MasterComponent } from './master/master.component';
 import { StatComponent } from './stat/stat.component';
+import { OggettilistComponent } from './oggettilist/oggettilist.component';
 
 
 
@@ -42,7 +44,8 @@ import { StatComponent } from './stat/stat.component';
     NewsComponent,
     LoginmasterComponent,
     MasterComponent,
-    StatComponent
+    StatComponent,
+    OggettilistComponent
   ],
   imports: [
     BrowserModule,
