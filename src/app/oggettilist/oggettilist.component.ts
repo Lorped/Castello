@@ -22,8 +22,9 @@ export class OggettilistComponent implements OnInit {
   ngOnInit() {
 
     this.oggetti.listoggetti()
-      .subscribe( res => {
+      .subscribe( (res: any) => {
         console.log(res);
+        this.listaoggetti = res;
       });
 
   }

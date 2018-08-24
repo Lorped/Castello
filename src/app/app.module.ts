@@ -27,6 +27,7 @@ import { LoginmasterComponent } from './loginmaster/loginmaster.component';
 import { MasterComponent } from './master/master.component';
 import { StatComponent } from './stat/stat.component';
 import { OggettilistComponent } from './oggettilist/oggettilist.component';
+import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 
 
 
@@ -45,7 +46,8 @@ import { OggettilistComponent } from './oggettilist/oggettilist.component';
     LoginmasterComponent,
     MasterComponent,
     StatComponent,
-    OggettilistComponent
+    OggettilistComponent,
+    OggettochangeComponent
   ],
   imports: [
     BrowserModule,

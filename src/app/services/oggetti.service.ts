@@ -11,7 +11,10 @@ export class Paired  {
 
 export class Effetti {
  IDeffetto: 0 ;
+ IDoggetto: 0 ;
+ IDprofessione: 0;
  nomeprofessione: '' ;
+ desc: '' ; //da LEFT JOIN
  descrizione: '' ;
  effettomiti: 0 ;
  effettosan: 0 ;
@@ -20,6 +23,7 @@ export class Effetti {
 
 export class Oggetto {
  IDoggetto: 0 ;
+ scan: 0;
  nome: '' ;
  descrizione: '' ;
  basemiti: 0 ;

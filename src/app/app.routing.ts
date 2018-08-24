@@ -8,6 +8,7 @@ import { LoginmasterComponent } from './loginmaster/loginmaster.component';
 import { MasterComponent } from './master/master.component';
 import { StatComponent } from './stat/stat.component';
 import { OggettilistComponent } from './oggettilist/oggettilist.component';
+import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 
 // import { AuthGuard } from './_guards/auth.guard';
 
@@ -23,6 +24,7 @@ export const APP_ROUTES: Routes = [
     { path: 'master', component: MasterComponent },
     { path: 'stat', component: StatComponent },
     { path: 'oggettilist', component: OggettilistComponent },
+    { path: 'oggetto/:id', component: OggettochangeComponent },
 
 
 

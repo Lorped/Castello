@@ -42,7 +42,9 @@ while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
 		$eff[] = $res2;
 	}
 	$pair = [];
-	$Mysql3 = "SELECT * from paired WHERE IDoggetto1 = '$id'";
+	$Mysql3 = "SELECT *  from paired
+		LEFT JOIN oggetti ON paired.IDoggetto2 = oggetti.IDoggetto
+		WHERE IDoggetto1 = '$id'";
 	$Result3=mysql_query($Mysql3);
 	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC)) {
 		$pair[] = $res3;
