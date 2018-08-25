@@ -7,7 +7,7 @@
     </div>
 
     <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-11 alc" >
+      <div class="col-sm-12 alc" >
 
       <!-- tabella -->
         <div class="table">
@@ -28,18 +28,22 @@
             <div class="col-1">Canc.</div>
           </div>
           <!--- -->
+      <form name="oggettoform" (ngSubmit)="doSave()" #oggettoForm="ngForm" class="form-cambia" >
+          <!--- -->
           <div class="row" *ngIf="oggetto">
             <div class="col-1">{{oggetto.ogg.IDoggetto}}</div>
-            <div class="col-2 all">{{oggetto.ogg.nome}}</div>
-            <div class="col-6 all">{{oggetto.ogg.descrizione}}</div>
+            <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="oggetto.ogg.nome" required></div>
+            <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="oggetto.ogg.descrizione" required></div>
             <div class="col-2 alc">
               <div class="table mystyle">
                 <div class="row">
-                  <div class="col">{{oggetto.ogg.basesan}}</div><div class="col">{{oggetto.ogg.basemiti}}</div><div class="col">{{oggetto.ogg.basepf}}</div>
+                  <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basesan"></div>
+                  <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basemiti"></div>
+                  <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basepf"></div>
                 </div>
               </div>
             </div>
-            <div class="col-1">X</div>
+            <div class="col-1">&nbsp;</div>
             <div class="col-12" *ngFor="let i of oggetto.eff">
               <div class="row">
                   <div class="col-1">&nbsp;</div>
@@ -55,6 +59,33 @@
                   <div class="col-1">X</div>
               </div>
             </div>
+
+            <div class="col-12">
+              <div class="row">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <select id="prof" name="prof" class="form-control" >
+                      <option *ngFor="let i of professioni" [ngValue]="i.IDprofessione">{{i.nomeprofessione}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 all"><input name="newdsc" type="text" class="form-control" [(ngModel)]="neweffdescrizione" required></div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="neweffsan"></div>
+                        <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="neweffmiti"></div>
+                        <div class="col"><input name="nepf" type="number" class="form-control" [(ngModel)]="neweffpf"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">A</div>
+              </div>
+            </div>
+
+
+
+
+
             <div class="col-12" *ngFor="let i of oggetto.pair">
               <div class="row">
                   <div class="col-1">&nbsp;</div>
@@ -70,8 +101,16 @@
                   <div class="col-1">X</div>
               </div>
             </div>
+            <div class="col-12" >
+              <div class="row">
+                <div class="col-3">&nbsp;</div>
+                <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger btn-block" [disabled]="! (oggettoForm.form.valid && oggettoForm.form.touched)" >Salva</button></div>
+                <div class="col-4">&nbsp;</div>
+              </div>
+            </div>
           </div>
-
+          <!-- -->
+        </form>
           <!-- -->
         </div>
 

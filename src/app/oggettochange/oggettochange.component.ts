@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Oggetto, OggettiService } from '../services/index';
+import { SchedaService } from '../services/index';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,10 +11,20 @@ import { ActivatedRoute } from '@angular/router';
 export class OggettochangeComponent implements OnInit {
 
   oggetto: Oggetto ;
+  professioni = [];
 
-  constructor( private oggetti: OggettiService, private route: ActivatedRoute ) { }
+  neweffsan = 0 ;
+  neweffmiti = 0 ;
+  neweffpf = 0 ;
+  neweffdescrizione = '';
+
+  constructor( private oggetti: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
 
   ngOnInit() {
+    this.scheda.getprofessioni()
+    .subscribe( (data: any) => {
+      this.professioni = data;
+    });
     this.getOggetto();
   }
 
