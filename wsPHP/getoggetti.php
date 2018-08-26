@@ -42,9 +42,16 @@ while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
 		$eff[] = $res2;
 	}
 	$pair = [];
-	$Mysql3 = "SELECT *  from paired
+	$Mysql3 = "SELECT IDoggetto2 as IDX , nome, paired.desc, effettosan, effettomiti, effettopf from paired
 		LEFT JOIN oggetti ON paired.IDoggetto2 = oggetti.IDoggetto
-		WHERE IDoggetto1 = '$id'";
+		WHERE IDoggetto1 = '$id' ";
+	$Result3=mysql_query($Mysql3);
+	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC)) {
+		$pair[] = $res3;
+	}
+	$Mysql3 = "SELECT IDoggetto1 as IDX , nome, paired.desc, effettosan, effettomiti, effettopf from paired
+		LEFT JOIN oggetti ON paired.IDoggetto1 = oggetti.IDoggetto
+		WHERE IDoggetto2 = '$id' ";
 	$Result3=mysql_query($Mysql3);
 	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC)) {
 		$pair[] = $res3;

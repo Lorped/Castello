@@ -79,13 +79,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-1">A</div>
+                  <div class="col-1">&nbsp;</div>
               </div>
             </div>
-
-
-
-
 
             <div class="col-12" *ngFor="let i of oggetto.pair">
               <div class="row">
@@ -99,9 +95,33 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="delPair(i.IDoggetto2)" >X</button></div>
+                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="delPair(i.IDX)" >X</button></div>
               </div>
             </div>
+
+            <div class="col-12">
+              <div class="row">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <select id="prof" [(ngModel)]="newpairselect" name="prof" class="form-control" >
+                      <option value=0>- Oggetto -</option>
+                      <option *ngFor="let i of oggettipair" [ngValue]="i.IDoggetto">{{i.nome}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 all"><input name="newdsc" type="text" class="form-control" [(ngModel)]="newpairdescrizione" [required]="neweffselect!=0"></div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="newpairsan"></div>
+                        <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="newpairmiti"></div>
+                        <div class="col"><input name="nepf" type="number" class="form-control" [(ngModel)]="newpairpf"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
             <div class="col-12" >
               <div class="row">
                 <div class="col-3">&nbsp;</div>

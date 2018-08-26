@@ -51,4 +51,31 @@ export class OggettiService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getoggetti.php?id=' + id );
   }
 
+  canceffetto (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/canceffetto.php?id=' + id );
+  }
+
+  cancpair (id1: number, id2: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cancpair.php?id1=' + id1 + '&id2=' + id2 );
+  }
+
+  addeffetto (IDoggetto: number, IDprofessione:number, descrizione:string, effettomiti:number, effettosan:number, effettopf:number) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addeffetto.php' , {
+      IDoggetto: IDoggetto,
+      IDprofessione: IDprofessione,
+      descrizione: descrizione,
+      effettomiti: effettomiti,
+      effettosan: effettosan,
+      effettopf: effettopf
+    });
+  }
+
+  getprofessionieff (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getprofessionieff.php?id=' + id );
+  }
+
+  getoggettipair (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getoggettipair.php?id=' + id );
+  }
+
 }
