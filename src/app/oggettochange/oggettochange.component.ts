@@ -17,8 +17,9 @@ export class OggettochangeComponent implements OnInit {
   neweffmiti = 0 ;
   neweffpf = 0 ;
   neweffdescrizione = '';
+  neweffselect = 0;
 
-  constructor( private oggetti: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
+  constructor( private oggettiService: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
 
   ngOnInit() {
     this.scheda.getprofessioni()
@@ -33,11 +34,26 @@ export class OggettochangeComponent implements OnInit {
 
     //console.log(id);
 
-    this.oggetti.getoggetto(id)
+    this.oggettiService.getoggetto(id)
       .subscribe( (res:any) => {
         this.oggetto = res[0];
         //console.log(res);
       });
+  }
+
+  doSave() {
+    console.log (this.oggetto.ogg.nome);
+    console.log (this.neweffselect);
+    console.log (this.neweffdescrizione);
+  }
+
+  delEff(id: number) {
+    console.log ( "canc "+id);
+  }
+
+  delPair(id: number) {
+    console.log(this.oggetto);
+    console.log ( "canc oggetto1 =" + this.oggetto.ogg.IDoggetto + "oggetto2 = " + id);
   }
 
 

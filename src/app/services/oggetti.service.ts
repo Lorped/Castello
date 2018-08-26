@@ -22,13 +22,15 @@ export class Effetti {
 };
 
 export class Oggetto {
- IDoggetto: 0 ;
- scan: 0;
- nome: '' ;
- descrizione: '' ;
- basemiti: 0 ;
- basesan: 0 ;
- basepf: 0 ;
+  ogg: {
+    IDoggetto: 0 ;
+    scan: 0;
+    nome: '' ;
+    descrizione: '' ;
+    basemiti: 0 ;
+    basesan: 0 ;
+    basepf: 0 ;
+  } ;
  eff: Array <Effetti> = [];
  pair: Array<Paired> = [];
 };
