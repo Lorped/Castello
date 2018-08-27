@@ -14,8 +14,8 @@ export class Effetti {
  IDoggetto: 0 ;
  IDprofessione: 0;
  nomeprofessione: '' ;
- desc: '' ; //da LEFT JOIN
- descrizione: '' ;
+ descrizione: '' ; //da LEFT JOIN
+ pdescrizione: '' ;
  effettomiti: 0 ;
  effettosan: 0 ;
  effettopf: 0 ;
@@ -59,13 +59,36 @@ export class OggettiService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cancpair.php?id1=' + id1 + '&id2=' + id2 );
   }
 
-  addeffetto (IDoggetto: number, IDprofessione:number, descrizione:string, effettomiti:number, effettosan:number, effettopf:number) {
+  addeffetto (IDoggetto: number, IDprofessione:number, descrizione:string, effettosan:number, effettomiti:number, effettopf:number) {
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addeffetto.php' , {
       IDoggetto: IDoggetto,
       IDprofessione: IDprofessione,
       descrizione: descrizione,
-      effettomiti: effettomiti,
       effettosan: effettosan,
+      effettomiti: effettomiti,
+      effettopf: effettopf
+    });
+  }
+
+  changebase (IDoggetto: number, nome:string, descrizione:string, basesan:number, basemiti:number,  basepf:number) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/changebase.php' , {
+      IDoggetto: IDoggetto,
+      nome: nome,
+      descrizione: descrizione,
+      basesan: basesan,
+      basemiti: basemiti,
+      basepf: basepf
+    });
+  }
+
+
+  addpair (IDoggetto1: number, IDoggetto2:number, descrizione:string, effettosan:number, effettomiti:number, effettopf:number) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addpair.php' , {
+      IDoggetto1: IDoggetto1,
+      IDoggetto2: IDoggetto2,
+      descrizione: descrizione,
+      effettosan: effettosan,
+      effettomiti: effettomiti,
       effettopf: effettopf
     });
   }

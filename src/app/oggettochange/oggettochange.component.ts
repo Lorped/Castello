@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Oggetto, OggettiService } from '../services/index';
 import { SchedaService } from '../services/index';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-oggettochange',
@@ -9,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./oggettochange.component.css']
 })
 export class OggettochangeComponent implements OnInit {
+@ViewChild('oggettoForm') oggettoForm: NgForm;
 
   oggetto: Oggetto ;
   professioni = [];
@@ -66,7 +68,6 @@ export class OggettochangeComponent implements OnInit {
   }
 
   doSave() {
-    console.log (this.newpairselect);
 
     if (this.neweffselect != 0 ) {
       this.oggettiService.addeffetto(this.oggetto.ogg.IDoggetto, this.neweffselect, this.neweffdescrizione, this.neweffsan, this.neweffmiti, this.neweffpf )
@@ -78,8 +79,36 @@ export class OggettochangeComponent implements OnInit {
         this.neweffselect = 0;
         this.getOggetto();
         this.getProfessioni();
+        this.oggettoForm.form.markAsPristine();
+        this.oggettoForm.form.markAsUntouched();
       });
     }
+
+    if (this.newpairselect != 0 ) {
+      this.oggettiService.addpair(this.oggetto.ogg.IDoggetto, this.newpairselect, this.newpairdescrizione, this.newpairsan, this.newpairmiti, this.newpairpf )
+      .subscribe( res => {
+        this.newpairsan = 0 ;
+        this.newpairmiti = 0 ;
+        this.neweffpf = 0 ;
+        this.newpairdescrizione = '';
+        this.newpairselect = 0;
+        this.getOggetto();
+        this.getOggetti();
+        this.oggettoForm.form.markAsPristine();
+        this.oggettoForm.form.markAsUntouched();
+      });
+    }
+
+    this.oggettiService.changebase(this.oggetto.ogg.IDoggetto,
+      this.oggetto.ogg.nome, this.oggetto.ogg.descrizione,
+      this.oggetto.ogg.basesan, this.oggetto.ogg.basemiti, this.oggetto.ogg.basepf )
+    .subscribe( (res) => {
+      this.oggettoForm.form.markAsPristine();
+      this.oggettoForm.form.markAsUntouched();
+    });
+
+    //this.oggettoForm.reset();
+    //this.oggettoForm.form.markAsPristine();
 
   }
 

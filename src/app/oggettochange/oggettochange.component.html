@@ -87,7 +87,7 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all green">({{i.nome}})</div>
-                  <div class="col-6 all">{{i.desc}}</div>
+                  <div class="col-6 all">{{i.pdescrizione}}</div>
                   <div class="col-2 alc">
                     <div class="table mystyle">
                       <div class="row">
@@ -103,12 +103,12 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
-                    <select id="prof" [(ngModel)]="newpairselect" name="prof" class="form-control" >
+                    <select id="ogg" [(ngModel)]="newpairselect" name="ogg" class="form-control" >
                       <option value=0>- Oggetto -</option>
                       <option *ngFor="let i of oggettipair" [ngValue]="i.IDoggetto">{{i.nome}}</option>
                     </select>
                   </div>
-                  <div class="col-6 all"><input name="newdsc" type="text" class="form-control" [(ngModel)]="newpairdescrizione" [required]="neweffselect!=0"></div>
+                  <div class="col-6 all"><input name="newpairdsc" type="text" class="form-control" [(ngModel)]="newpairdescrizione" [required]="newpairselect!=0"></div>
                   <div class="col-2 alc">
                     <div class="table mystyle">
                       <div class="row">
