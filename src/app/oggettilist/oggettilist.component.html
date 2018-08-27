@@ -7,7 +7,7 @@
     </div>
 
     <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-11 alc" >
+      <div class="col-sm-12 alc" >
 
       <!-- tabella -->
         <div class="table">
@@ -39,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-1">X</div>
+            <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
             <div class="col-12" *ngFor="let i of item.eff">
               <div class="row">
                   <div class="col-1">&nbsp;</div>
@@ -72,6 +72,29 @@
             </div>
           </div>
 
+          <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
+          <div class="row">
+
+            <div class="col-1">&nbsp;</div>
+            <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
+            <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
+            <div class="col-2 alc">
+              <div class="table mystyle">
+                <div class="row">
+                  <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
+                  <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
+                  <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-1">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-3">&nbsp;</div>
+            <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger btn-block" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+            <div class="col-4">&nbsp;</div>
+          </div>
+          </form>
           <!-- -->
         </div>
 
