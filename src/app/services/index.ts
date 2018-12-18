@@ -4,3 +4,4 @@ export * from './signup.service';
 export * from './authentication.service';
 export * from './scheda.service';
 export * from './oggetti.service';
+export * from './personaggio.service';

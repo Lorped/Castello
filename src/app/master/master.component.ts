@@ -19,4 +19,7 @@ export class MasterComponent implements OnInit {
   gotooggetti() {
     this.router.navigate(['oggettilist']);
   }
+  gotopg() {
+    this.router.navigate(['personaggilist']);
+  }
 }

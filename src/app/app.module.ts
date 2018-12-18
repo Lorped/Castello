@@ -13,6 +13,7 @@ import { SignupService } from './services/index';
 import { AuthenticationService } from './services/index';
 import { SchedaService } from './services/index';
 import { OggettiService } from './services/index';
+import { PersonaggioService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
@@ -28,6 +29,7 @@ import { MasterComponent } from './master/master.component';
 import { StatComponent } from './stat/stat.component';
 import { OggettilistComponent } from './oggettilist/oggettilist.component';
 import { OggettochangeComponent } from './oggettochange/oggettochange.component';
+import { PersonaggilistComponent } from './personaggilist/personaggilist.component';
 
 
 
@@ -47,7 +49,8 @@ import { OggettochangeComponent } from './oggettochange/oggettochange.component'
     MasterComponent,
     StatComponent,
     OggettilistComponent,
-    OggettochangeComponent
+    OggettochangeComponent,
+    PersonaggilistComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,8 @@ import { OggettochangeComponent } from './oggettochange/oggettochange.component'
     SignupService,
     AuthenticationService,
     SchedaService,
-    OggettiService
+    OggettiService,
+    PersonaggioService
   ],
   bootstrap: [AppComponent]
 })
