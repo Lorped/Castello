@@ -10,6 +10,8 @@ import { Personaggio, PersonaggioService } from '../services/index';
 export class PersonaggilistComponent implements OnInit {
 
   listapg: Array<Personaggio> = [];
+  order = 1;
+  propertyName = '';
 
   constructor( private personaggi: PersonaggioService ) { }
 
@@ -20,5 +22,13 @@ export class PersonaggilistComponent implements OnInit {
         this.listapg = res;
       });
   }
+  sortBy ( prop: string) {
+    this.propertyName = prop;
+    this.listapg.sort ( (a, b) => {
+      return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
+    });
+    this.order = -1 * this.order;
 
+    // console.log(this.order);
+  }
 }

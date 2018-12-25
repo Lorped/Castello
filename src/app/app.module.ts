@@ -30,6 +30,7 @@ import { StatComponent } from './stat/stat.component';
 import { OggettilistComponent } from './oggettilist/oggettilist.component';
 import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 import { PersonaggilistComponent } from './personaggilist/personaggilist.component';
+import { ListscanComponent } from './listscan/listscan.component';
 
 
 
@@ -50,7 +51,8 @@ import { PersonaggilistComponent } from './personaggilist/personaggilist.compone
     StatComponent,
     OggettilistComponent,
     OggettochangeComponent,
-    PersonaggilistComponent
+    PersonaggilistComponent,
+    ListscanComponent
   ],
   imports: [
     BrowserModule,

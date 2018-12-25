@@ -22,4 +22,7 @@ export class MasterComponent implements OnInit {
   gotopg() {
     this.router.navigate(['personaggilist']);
   }
+  gotolistscan() {
+    this.router.navigate(['listscan']);
+  }
 }
