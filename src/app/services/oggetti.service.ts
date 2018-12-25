@@ -35,7 +35,25 @@ export class Oggetto {
  pair: Array<Paired> = [];
 };
 
+export class Listscan  {
+  IDutente: 0;
+  IDoggetto: 0;
+  data: '';
+  NomePG: '';
+  CognomePG: '';
+  Miti: 0;
+  Sanita: 0;
+  nome: '';  //nome Oggetto
+  nomeprofessione: ''; //classe prof
+};
 
+export class Listpaired  {
+  nome1: '';
+  nome2: '';
+  data: '';
+  NomePG: '';
+  CognomePG: '';
+};
 
 @Injectable()
 export class OggettiService {

@@ -24,3 +24,5 @@ Insert into your style.css
 
 @import '~font-awesome/css/font-awesome.css';
 
+
+ng build --base-href=/Castello/ --prod

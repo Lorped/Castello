@@ -20,7 +20,7 @@ include ('db.inc.php');
 
 
 $MySql="SELECT logscan.IDutente, logscan.IDoggetto, data,
-			NomePG, CognomePG, Miti, nome, nomeprofessione
+			NomePG, CognomePG, Miti, Sanita, nome, nomeprofessione
 			from logscan
 		LEFT JOIN personaggi on personaggi.IDutente = logscan.IDutente
 		LEFT JOIN oggetti on oggetti.IDoggetto = logscan.IDoggetto
@@ -32,11 +32,27 @@ $res=mysql_fetch_array($Result);
 
 $Result=mysql_query($MySql);
 while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
-	$out[] = $res;
+	$out1[] = $res;
 }
 
+$MySql="SELECT T1.nome as nome1, T2.nome as nome2, data, NomePG, CognomePG
+	FROM logpaired
+	LEFT JOIN oggetti AS T1 ON T1.IDoggetto = logpaired.IDoggetto1
+	LEFT JOIN oggetti AS T2 ON T2.IDoggetto = logpaired.IDoggetto2
+	LEFT JOIN personaggi ON personaggi.IDutente = logpaired.IDutente";
+$Result=mysql_query($MySql);
+$res=mysql_fetch_array($Result);
 
 
+$Result=mysql_query($MySql);
+while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+	$out2[] = $res;
+}
+
+$out = [
+	'scan' => $out1,
+	'paired' => $out2
+];
 
 header("HTTP/1.1 200 OK");
 echo json_encode ($out, JSON_UNESCAPED_UNICODE);

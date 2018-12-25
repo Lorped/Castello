@@ -8,12 +8,17 @@
 
 
     <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-10 alc" >
+      <div class="col-sm-11 alc" >
 
       <!-- tabella -->
         <div class="table">
           <div class="row red">
-            <div class="col-4 all">
+            <div class="col-3 all">
+              <button class="btn btn-sm btn-block btn-std" (click)="sortBy('nome')">Oggetto
+              <span class="sortorder" *ngIf="propertyName === 'nome'" [ngClass]="{reverse: order == 1}"></span>
+              </button>
+            </div>
+            <div class="col-3 all">
               <button class="btn btn-sm btn-block btn-std" (click)="sortBy('NomePG')">Nome
               <span class="sortorder" *ngIf="propertyName === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
               </button>
@@ -23,24 +28,65 @@
               <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-3 all">
-              <button class="btn btn-sm btn-block btn-std" (click)="sortBy('DescProfessione')">Descrizione
-              <span class="sortorder" *ngIf="propertyName === 'DescProfessione'" [ngClass]="{reverse: order == 1}"></span>
+            <div class="col-1">
+              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('Sanita')">SAN
+              <span class="sortorder" *ngIf="propertyName === 'Sanita'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-1 smaller" style="margin-top: 4px;">
-              SAN
+            <div class="col-1">
+              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('Miti')">Miti
+              <span class="sortorder" *ngIf="propertyName === 'Miti'" [ngClass]="{reverse: order == 1}"></span>
+              </button>
             </div>
-            <div class="col-1 smaller" style="margin-top: 4px;">
-              Miti
+
+            <div class="col-2 ">
+              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('data')">Data
+              <span class="sortorder" *ngIf="propertyName === 'data'" [ngClass]="{reverse: order == 1}"></span>
+              </button>
             </div>
+
           </div>
-          <div class="row" *ngFor="let item of listapg">
-            <div class="col-4 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+          <div class="row" *ngFor="let item of listascan">
+            <div class="col-3 all smaller">{{item.nome}}</div>
+            <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
             <div class="col-2 all smaller">{{item.nomeprofessione}}</div>
-            <div class="col-3 all smaller">{{item.DescProfessione}}</div>
             <div class="col-1 smaller">{{item.Sanita}}</div>
             <div class="col-1 smaller">{{item.Miti}}</div>
+            <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<div class="row justify-content-md-center mypad" >
+  <div class="col-3"><hr></div>
+  <div class="col-3">Scansioni Accoppiate</div>
+  <div class="col-3"><hr></div>
+</div>
+
+
+    <div class="row justify-content-md-center mypad" >
+      <div class="col-sm-11 alc" >
+
+      <!-- tabella -->
+        <div class="table">
+          <div class="row red">
+            <div class="col-6 all">
+              Oggetti
+            </div>
+            <div class="col-4 all">
+              Personaggio
+            </div>
+            <div class="col-2 ">
+              Data
+            </div>
+
+          </div>
+          <div class="row" *ngFor="let item of listapaired">
+            <div class="col-6 all smaller">{{item.nome1}} + {{item.nome2}}</div>
+            <div class="col-4 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+            <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
           </div>
         </div>
 

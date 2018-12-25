@@ -10,6 +10,7 @@ import { StatComponent } from './stat/stat.component';
 import { OggettilistComponent } from './oggettilist/oggettilist.component';
 import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 import { PersonaggilistComponent } from './personaggilist/personaggilist.component';
+import { ListscanComponent } from './listscan/listscan.component';
 
 
 // import { AuthGuard } from './_guards/auth.guard';
@@ -28,6 +29,7 @@ export const APP_ROUTES: Routes = [
     { path: 'oggettilist', component: OggettilistComponent },
     { path: 'oggetto/:id', component: OggettochangeComponent },
     { path: 'personaggilist', component: PersonaggilistComponent },
+    { path: 'listscan', component: ListscanComponent },
 
 
 

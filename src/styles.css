@@ -40,7 +40,7 @@ html, body {
 }
 
 .alc {
-  text-align: center;
+  text-align: center !important;
 }
 
 .full {
