@@ -15,10 +15,21 @@ export class SchedaService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpg.php?id=' + user );
   }
 
+  getpgbyID (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getpgbyid.php?id=' + id );
+  }
+
   getprofessioni () {
 
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getprofessioni.php' );
   }
+
+
+  changesm (id: number, cosa: string, delta: string ) {
+
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/changesm.php?id=' + id + '&sm=' + cosa + '&delta=' + delta);
+  }
+
 
 
   updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aDescProfessione: string) {

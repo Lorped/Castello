@@ -6,15 +6,15 @@ import 'rxjs/add/operator/map';
 
 
 export class Personaggio {
- IDutente: 0 ;
- NomePG: '' ;
- CognomePG: '';
- IDprofessione: 0 ;
- nomeprofessione: ''; //da LEFT JOIN
- DescProfessione: '' ;
- Miti: 0 ;
- Sanita: 0 ;
- URLimg: '' ;
+ IDutente = 0 ;
+ NomePG = '' ;
+ CognomePG = '';
+ IDprofessione = 0 ;
+ nomeprofessione = ''; //da LEFT JOIN
+ DescProfessione = '' ;
+ Miti = 0 ;
+ Sanita = 0 ;
+ URLimg = '' ;
 
 };
 

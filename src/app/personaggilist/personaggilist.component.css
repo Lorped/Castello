@@ -23,3 +23,15 @@
   font-size: .875rem;
   vertical-align: middle;
 }
+
+.mya:link {
+    color: white;
+}
+
+.mya:visited {
+    color: white;
+}
+
+.mya:active {
+    color: white;
+}

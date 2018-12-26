@@ -11,6 +11,7 @@ import { OggettilistComponent } from './oggettilist/oggettilist.component';
 import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 import { PersonaggilistComponent } from './personaggilist/personaggilist.component';
 import { ListscanComponent } from './listscan/listscan.component';
+import { PersonaggioComponent } from './personaggio/personaggio.component';
 
 
 // import { AuthGuard } from './_guards/auth.guard';
@@ -30,7 +31,7 @@ export const APP_ROUTES: Routes = [
     { path: 'oggetto/:id', component: OggettochangeComponent },
     { path: 'personaggilist', component: PersonaggilistComponent },
     { path: 'listscan', component: ListscanComponent },
-
+    { path: 'personaggio/:id', component: PersonaggioComponent },
 
 
     // otherwise redirect to home

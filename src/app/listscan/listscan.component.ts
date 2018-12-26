@@ -18,7 +18,7 @@ export class ListscanComponent implements OnInit {
   ngOnInit() {
     this.oggetti.listscan()
       .subscribe( (res: any) => {
-        //console.log(res);
+        // console.log(res);
         this.listascan = res.scan;
         this.listapaired = res.paired;
       });

@@ -31,6 +31,7 @@ import { OggettilistComponent } from './oggettilist/oggettilist.component';
 import { OggettochangeComponent } from './oggettochange/oggettochange.component';
 import { PersonaggilistComponent } from './personaggilist/personaggilist.component';
 import { ListscanComponent } from './listscan/listscan.component';
+import { PersonaggioComponent } from './personaggio/personaggio.component';
 
 
 
@@ -52,7 +53,8 @@ import { ListscanComponent } from './listscan/listscan.component';
     OggettilistComponent,
     OggettochangeComponent,
     PersonaggilistComponent,
-    ListscanComponent
+    ListscanComponent,
+    PersonaggioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+.btn-xs {
+    padding: 0px 2px;
+    /*font-size: 20px; */
+    border-radius: 3px;
+    font-size: 0.7em;
+}
+
+.btn.btn-primary:disabled{
+    background-color: #a0a0a0;
+}

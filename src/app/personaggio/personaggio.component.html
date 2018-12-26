@@ -1,0 +1,74 @@
+<div class="mx-auto" style=" margin-top: 50px; color: white;">
+  <div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
+    <div class="row justify-content-md-center">
+      <div class="col-sm-8 alc">
+        <h1><span class="dred">Accesso Custode - Dettaglio PG</span></h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center">
+      <div class="col-2">
+        <img src="assets/{{pgcorrente.URLimg}}" height="100"  class="avatar">
+      </div>
+
+      <div class="col-9">
+        <div class="row" >
+          <div class="col">{{pgcorrente.NomePG}} {{pgcorrente.CognomePG}}</div>
+        </div>
+        <div class="row" >
+          <div class="col">[{{pgcorrente.nomeprofessione}}] {{pgcorrente.DescProfessione}}  </div>
+        </div>
+        <div class="row" >
+          <div class="col">&nbsp;</div>
+        </div>
+
+        <div class="row" >
+          <div class="col-1">Sanità:</div>
+          <div class="col-2">
+            <button class="btn btn-primary btn-xs" (click)="menosan()" [disabled]="pgcorrente.Sanita==0"><i class="fa fa-minus"></i></button>
+            {{pgcorrente.Sanita}}
+            <button class="btn btn-primary btn-xs" (click)="piusan()" [disabled]="pgcorrente.Sanita+pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+          </div>
+          <div class="col-1">Miti:</div>
+          <div class="col-2">
+            <button class="btn btn-primary btn-xs" (click)="menomiti()" [disabled]="pgcorrente.Miti==0"><i class="fa fa-minus"></i></button>
+            {{pgcorrente.Miti}}
+            <button class="btn btn-primary btn-xs" (click)="piumiti()" [disabled]="pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="table">
+
+      <div class="col">
+        <span class="dred">Scan Effettuati</span>
+      </div>
+      <div class="row" *ngFor="let item of scancorrenti">
+        <div class="col-4 all smaller">{{item.nome}}</div>
+        <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+      </div>
+      <div class="row" *ngIf="scancorrenti.length == 0">
+        <div class="col-4 all smaller"> -- Nessuno -- </div>
+      </div>
+      <div class="col">
+        <span class="dred">Pair Effettuati</span>
+      </div>
+      <div class="row" *ngFor="let item of paircorrenti">
+        <div class="col-4 all smaller">{{item.nome1}} + {{item.nome2}}</div>
+        <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+      </div>
+      <div class="row" *ngIf="paircorrenti.length == 0 ">
+        <div class="col-4 all smaller"> -- Nessuno -- </div>
+      </div>
+
+    </div>
+    <div class="row justify-content-md-center mypad">
+      <div style="text-align:center">
+        <a [routerLink]="['/personaggilist']" class="btn btn-link">Ritorna alla pagina Personaggi</a>
+      </div>
+    </div>
+
+  </div>
+</div>
