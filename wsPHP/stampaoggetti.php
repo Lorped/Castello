@@ -1,0 +1,180 @@
+<?php
+
+	include ('db.inc.php');
+
+
+include('../../notturna/phpqrcode/qrlib.php');
+
+
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Il Castello della Follia</title>
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+	<!-- <link href="w3.css" rel="stylesheet" >  -->
+	<style>
+		/*	table td {
+			border: 1px solid red;
+		} */
+		body {
+			font-family: arial, sans-serif;
+		}
+		hr {
+			border-top: 1px solid #000000;
+			margin-top: 0.2em;
+    		margin-bottom: 0.2em;
+		}
+		.ald {
+			text-align:right;
+		}
+		.alc {
+			text-align:center;
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+			margin: 0 auto;
+		}
+
+		/* valign */
+		.val { vertical-align: top; }
+		.valm { vertical-align: middle; }
+
+
+		img {
+			border: 0px;
+			margin: 0px;
+		}
+		input[type=number] {
+   			width:  80px;
+   			-moz-appearance: textfield;
+		}
+		input[type=submit] {
+    		width: 80px;
+			padding: 0;
+			line-height: 39px;
+		}
+
+
+		select {
+    		width: 230px;
+		}
+		.title {
+			font-family: 'Libre Baskerville';
+			font-size: 110%;
+			font-weight: bold;
+		}
+		.title2 {
+			font-size: 105%;
+			font-weight: bold;
+		}
+
+		.list-align {
+			text-align: justify;
+			width: 100%;
+			display: none;
+			position: relative;
+			margin: 0;
+		}
+		.list {
+    		width: 198px;
+    		/* height: 1061px; */
+    		display: inline-block;
+    		line-height: 1;
+    		position: relative;
+		}
+		.listesterno {
+    		width: 595px;
+    		/* height: 1061px; */
+    		display: inline-block;
+    		line-height: 1;
+    		position: relative;
+		}
+		.bg-image {
+    		width: 100%;
+    		height: 100%;
+		}
+		.list-inner {
+			padding-left: 20px; /*for background */
+			padding-top: 20px; /*for background */
+			padding-bottom: 65px; /*for background */
+			font-size: 10;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			/* display: inline-block; */
+		}
+		.list-inneresterno {
+			padding-left: 40px; /*for background */
+			padding-top: 40px; /*for background */
+			padding-bottom: 65px; /*for background */
+			font-size: 10;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			margin-top: 105px;
+			/* display: inline-block; */
+		}
+	</style>
+
+</head>
+<body>
+	<div class="list-align" style="display: block;" >
+
+<?
+			$Mysql="SELECT * FROM oggetti";
+			$Result=mysql_query($Mysql);
+			while ($res=mysql_fetch_array($Result)) {
+
+				$colore='rosso';
+
+				$text=(string)$res['scan'];
+				$tt=$text;
+
+
+
+				$id=$res['IDoggetto'];
+
+
+
+
+				//QRcode::png($text);
+				$tempDir =  "/web/htdocs/www.roma-by-night.it/home/notturna/tmp/";
+				$filename=$tempDir."QR".$tt.".png";
+
+
+					// QRcode::png($text, $filename, QR_ECLEVEL_H);
+
+					QRcode::png($text, $filename, QR_ECLEVEL_Q);
+
+
+?>
+
+			<div class="list">
+				<img src='../../notturna/img/cart_<?=$colore?>.png' class="bg-image" id="pg1">
+
+				<div class="list-inner">
+				<span style="font-size: 6pt; ">CARTELLINO OGGETTO NUMERO <?=$id?> </span><br> <img src='../../notturna/tmp/QR<?=$tt?>.png' >
+
+
+
+
+
+				</div>
+			</div>
+<?
+			}
+?>
+
+
+
+	</div>
+</body>
