@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "^7.1.4",
     "@angular/router": "^7.1.4",
     "adm-zip": "^0.4.13",
+    "angular": "^1.7.5",
     "bootstrap": "^4.2.1",
     "cached-path-relative": "^1.0.2",
     "core-js": "^2.6.1",
@@ -36,10 +37,11 @@
     "rxjs-compat": "^6.0.0-rc.0",
     "rxjs-tslint": "^0.1.6",
     "socks": "^2.2.2",
+    "webpack-dev-server": "^3.1.14",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.10.0",
+    "@angular-devkit/build-angular": "^0.11.4",
     "@angular/cli": "^7.1.4",
     "@angular/compiler-cli": "^7.1.4",
     "@angular/language-service": "^7.1.4",

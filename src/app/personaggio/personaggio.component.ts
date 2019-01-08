@@ -31,6 +31,7 @@ export class PersonaggioComponent implements OnInit {
 
       this.pgcorrente.Sanita = Number(data.pg.Sanita);
       this.pgcorrente.Miti = Number(data.pg.Miti);
+      this.pgcorrente.PF = Number(data.pg.PF);
       //console.log(this.pgcorrente);
       //console.log(this.scancorrenti);
       //console.log(this.paircorrenti);
@@ -62,6 +63,18 @@ export class PersonaggioComponent implements OnInit {
     .subscribe( (data: any) => {
       this.pgcorrente.Miti = this.pgcorrente.Miti + 1;
       if (this.pgcorrente.Miti + this.pgcorrente.Sanita > 10 ) { this.pgcorrente.Sanita-- ; }
+    });
+  }
+  menoPF() {
+    this.schedaService.changesm( this.pgcorrente.IDutente , 'P', '-1')
+    .subscribe( (data: any) => {
+      this.pgcorrente.PF = this.pgcorrente.PF - 1;
+    });
+  }
+  piuPF() {
+    this.schedaService.changesm( this.pgcorrente.IDutente , 'P', '1')
+    .subscribe( (data: any) => {
+      this.pgcorrente.PF = this.pgcorrente.PF + 1;
     });
   }
 

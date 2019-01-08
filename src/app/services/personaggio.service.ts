@@ -14,6 +14,7 @@ export class Personaggio {
  DescProfessione = '' ;
  Miti = 0 ;
  Sanita = 0 ;
+ PF = 0 ;
  URLimg = '' ;
 
 };

@@ -35,6 +35,12 @@
             {{pgcorrente.Miti}}
             <button class="btn btn-primary btn-xs" (click)="piumiti()" [disabled]="pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
           </div>
+          <div class="col-1">Salute:</div>
+          <div class="col-2">
+            <button class="btn btn-primary btn-xs" (click)="menoPF()" [disabled]="pgcorrente.PF==0"><i class="fa fa-minus"></i></button>
+            {{pgcorrente.PF}}
+            <button class="btn btn-primary btn-xs" (click)="piuPF()" [disabled]="pgcorrente.PF>=10"><i class="fa fa-plus"></i></button>
+          </div>
         </div>
 
       </div>

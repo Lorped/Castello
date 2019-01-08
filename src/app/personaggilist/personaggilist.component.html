@@ -34,6 +34,9 @@
             <div class="col-1 smaller" style="margin-top: 4px;">
               Miti
             </div>
+            <div class="col-1 smaller" style="margin-top: 4px;">
+              Salute
+            </div>
           </div>
           <div class="row" *ngFor="let item of listapg">
             <div class="col-4 all smaller"><a class="mya" routerLink="/personaggio/{{item.IDutente}}">{{item.NomePG}} {{item.CognomePG}}</a></div>
@@ -41,6 +44,7 @@
             <div class="col-3 all smaller">{{item.DescProfessione}}</div>
             <div class="col-1 smaller">{{item.Sanita}}</div>
             <div class="col-1 smaller">{{item.Miti}}</div>
+            <div class="col-1 smaller">{{item.PF}}</div>
           </div>
         </div>
 

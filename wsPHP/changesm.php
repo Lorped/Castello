@@ -1,4 +1,5 @@
 <?php
+	include ('messaggi.php');
 
 //http://stackoverflow.com/questions/18382740/cors-not-working-php
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -24,28 +25,65 @@ $cosa=$_GET['sm'];
 $delta=$_GET['delta'];
 
 
-$MySql ="SELECT Sanita, Miti FROM personaggi WHERE IDutente = $IDutente";
+$MySql ="SELECT Sanita, Miti, PF FROM personaggi WHERE IDutente = $IDutente";
 $Result = mysql_query($MySql);
 $res=mysql_fetch_array($Result);
 
 $oldmiti=$res['Miti'];
 $oldsanita=$res['Sanita'];
+$oldPF=$res['PF'];
 
 $MySql="UPDATE personaggio SET ";
 
 if ($cosa=='S') {
-	if ( $delta=='1' && $oldsanita < 10 && $oldsanita < 10-$oldmiti ) { $MySql = "UPDATE personaggi SET Sanita = Sanita +1 WHERE IDutente=$IDutente" ; }
-	if ( $delta=='-1' && $oldsanita > 0 ) { $MySql = "UPDATE personaggi SET Sanita = Sanita -1 WHERE IDutente=$IDutente" ; }
+	if ( $delta=='1' && $oldsanita < 10 && $oldsanita < 10-$oldmiti ) {
+		$MySql = "UPDATE personaggi SET Sanita = Sanita +1 WHERE IDutente=$IDutente" ;
+		$msg="Hai guadagnato un punto di Sanità Mentale";
+	}
+	if ( $delta=='-1' && $oldsanita > 0 ) {
+		$MySql = "UPDATE personaggi SET Sanita = Sanita -1 WHERE IDutente=$IDutente" ;
+		$msg="Hai perso un punto di Sanità Mentale";
+	}
 }
 
 if ($cosa=='M') {
-	if ( $delta=='1' && $oldmiti < 10 && $oldsanita < 10-$oldmiti ) { $MySql = "UPDATE personaggi SET Miti = Miti +1 WHERE IDutente=$IDutente" ; }
-	if ( $delta=='1' && $oldmiti < 10 && $oldsanita >= 10-$oldmiti ) { $MySql = "UPDATE personaggi SET Miti = Miti +1 , Sanita=Sanita-1 WHERE IDutente=$IDutente" ; }
+	if ( $delta=='1' && $oldmiti < 10 && $oldsanita < 10-$oldmiti ) {
+		$MySql = "UPDATE personaggi SET Miti = Miti +1 WHERE IDutente=$IDutente" ;
+		$msg="Hai guadagnato un punto di Conoscenza dei Miti";
+	}
+	if ( $delta=='1' && $oldmiti < 10 && $oldsanita >= 10-$oldmiti ) {
+		$MySql = "UPDATE personaggi SET Miti = Miti +1 , Sanita=Sanita-1 WHERE IDutente=$IDutente" ;
+		$msg="Hai guadagnato un punto di Conoscenza dei Miti ma hai perso un punto di Sanità Mentale";
+	}
 
-	if ( $delta=='-1' && $oldmiti > 0 ) { $MySql = "UPDATE personaggi SET Miti = Miti -1 WHERE IDutente=$IDutente" ; }
+	if ( $delta=='-1' && $oldmiti > 0 ) {
+		$MySql = "UPDATE personaggi SET Miti = Miti -1 WHERE IDutente=$IDutente" ;
+		$msg="Hai perso un punto di Conoscenza dei Miti";
+	}
+}
+
+if ($cosa=='P') {
+	if ( $delta=='1' && $oldPF < 10  ) {
+		$MySql = "UPDATE personaggi SET PF = PF +1 WHERE IDutente=$IDutente" ;
+		$msg="Hai guadagnato un punto Salute";
+	}
+
+
+	if ( $delta=='-1' && $oldPF > 0 ) {
+		$MySql = "UPDATE personaggi SET PF = PF -1 WHERE IDutente=$IDutente" ;
+		$msg="Hai perso un punto Salute";
+	}
+
+	if ( $delta=='-1' && $oldPF == 1 ) {
+		$MySql = "UPDATE personaggi SET PF = PF -1 WHERE IDutente=$IDutente" ;
+		$msg="Hai perso un punto Salute e quindi sei morto!";
+	}
+
 }
 
 $Result = mysql_query($MySql);
+
+master2user($IDutente,$msg );
 
 
 header("HTTP/1.1 200 OK");

@@ -23,6 +23,7 @@ export class Personaggio {
   DescrProfessione = '';
   Miti = 0;
   Sanita = 10;
+  PF = 10;
 
 }
 

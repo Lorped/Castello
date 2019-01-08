@@ -1,17 +1,14 @@
 <div class="mx-auto" style=" margin-top: 50px; color: white;">
   <div class="container">
     <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
-        <h1><span class="dred">Il Castello della Follia</span></h1>
-        <h3><span>Scheda Personaggio</span></h3>
-      </div>
+        <span class="mytitle">Il Castello della Follia</span>
     </div>
     <form [formGroup]="personaggioForm" #formDir="ngForm" class="form-signin" >
       <div class="row justify-content-md-center">
-        <div class="col-2">
+        <div class="col-2" style="background-image: url('assets/cornice2.png');  background-size: contain; background-repeat: no-repeat; padding-top: 43px;">
           <div class="img-overlay">
             <label for="avatar">
-              <img src="assets/{{URLimg}}" height="150" width="150" class="avatar">
+              <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar">
               <div class="overlay">
                 <span class="text-overlay fa fa-upload" ></span>
               </div>
@@ -20,8 +17,15 @@
           <input id="avatar" name="avatar" type="file" accept="image/*" style="display:none;" (change)="fileChange($event.target.files)" >
         </div>
 
-        <div class="col-9">
-          <div class="form-group row" >
+        <div class="col-10">
+          <!-- inizio col9 -->
+          <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:110px; padding-bottom: 130px;">
+
+
+
+          <div class="form-group row">
+
+
             <div class="col">
               <input id="nomepg" name="nomepg" type="text" class="form-control" formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
               <div *ngIf="NomePG.invalid && (NomePG.dirty || NomePG.touched)" class="alert alert-danger" color="red">
@@ -68,6 +72,9 @@
               <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!formDir.form.valid" (click)="updatepg()">Aggiorna</button>
             </div>
           </div>
+
+          </div>
+          <!-- fine col9 -->
         </div>
       </div>
     </form>

@@ -40,7 +40,7 @@
 .avatar {
   opacity: 1;
   display: block;
-  width: 100%;
+  width: 88%;
   height: auto;
   transition: .5s ease;
   backface-visibility: hidden;
@@ -70,4 +70,11 @@
   color: white;
   font-size: 40px;
   padding: 16px 32px;
+}
+
+
+
+.mysubtitle {
+  font-size: 65px;
+  font-family: Kunstler;
 }
