@@ -63,7 +63,7 @@ if ($cosa=='M') {
 }
 
 if ($cosa=='P') {
-	if ( $delta=='1' && $oldPF < 10  ) {
+	if ( $delta=='1' && $oldPF < 5  ) {
 		$MySql = "UPDATE personaggi SET PF = PF +1 WHERE IDutente=$IDutente" ;
 		$msg="Hai guadagnato un punto Salute";
 	}

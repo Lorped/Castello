@@ -74,7 +74,9 @@
 
 
 
-.mysubtitle {
-  font-size: 65px;
-  font-family: Kunstler;
+
+.divrotate {
+  -ms-transform: rotate(1deg); /* IE 9 */
+  -webkit-transform: rotate(1deg); /* Safari */
+  transform: rotate(1deg);
 }

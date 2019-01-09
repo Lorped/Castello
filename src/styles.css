@@ -62,3 +62,9 @@ src: url('assets/KUNSTLER.TTF');
   font-size: 85px;
   font-family: Kunstler;
 }
+
+
+.mysubtitle {
+  font-size: 65px;
+  font-family: Kunstler;
+}
