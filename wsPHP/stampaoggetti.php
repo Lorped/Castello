@@ -3,7 +3,7 @@
 	include ('db.inc.php');
 
 
-include('../../notturna/phpqrcode/qrlib.php');
+include('../phpqrcode2/lib/full/qrlib.php');
 
 
 ?>
@@ -130,51 +130,48 @@ include('../../notturna/phpqrcode/qrlib.php');
 	<div class="list-align" style="display: block;" >
 
 <?
-			$Mysql="SELECT * FROM oggetti";
-			$Result=mysql_query($Mysql);
-			while ($res=mysql_fetch_array($Result)) {
-
-				$colore='rosso';
-
-				$text=(string)$res['scan'];
-				$tt=$text;
+		$Mysql="SELECT * FROM oggetti";
+		$Result=mysql_query($Mysql);
+		while ($res=mysql_fetch_array($Result)) {
 
 
+			$text=(string)$res['scan'];
+			$tt=$text;
 
-				$id=$res['IDoggetto'];
-
-
-
-
-				//QRcode::png($text);
-				$tempDir =  "/web/htdocs/www.roma-by-night.it/home/notturna/tmp/";
-				$filename=$tempDir."QR".$tt.".png";
+			$id=$res['IDoggetto'];
 
 
-					// QRcode::png($text, $filename, QR_ECLEVEL_H);
+			//QRcode::png($text);
+			$tempDir =  "/web/htdocs/www.roma-by-night.it/home/Castello/tmp/";
+			$filename=$tempDir."QR".$tt.".png";
 
-					QRcode::png($text, $filename, QR_ECLEVEL_Q);
+			// QRcode::png($text, $filename, QR_ECLEVEL_H);
+
+			//QRcode::png($text, $filename, QR_ECLEVEL_Q);
+
+			$saveToFile = false;
+			$saveToFile=$tempDir."QR".$tt.".svg";
+    	$imageWidth = 80; // px
+			//$width      = false; // auto calculated
+    	$size       = false;
+    	$margin     = 1; 
+			QRcode::svg($text, 'id-of-svg', $saveToFile, QR_ECLEVEL_Q, $imageWidth, $size, $margin  );
 
 
 ?>
 
 			<div class="list">
-				<img src='../../notturna/img/cart_<?=$colore?>.png' class="bg-image" id="pg1">
+				<img src='../assets/cart_f.png' class="bg-image" id="pg1">
 
-				<div class="list-inner">
-				<span style="font-size: 6pt; ">CARTELLINO OGGETTO NUMERO <?=$id?> </span><br> <img src='../../notturna/tmp/QR<?=$tt?>.png' >
-
-
-
-
+				<div class="list-inner" style="padding-top: 25px;">
+				<!--  <span style="font-size: 6pt; margin-left: 120px;"> <?=$id?> </span><br> <img src='../tmp/QR<?=$tt?>.png' style="width: 80px;height: 80px;margin-left: 34px;padding-top: 2px;"> -->
+				<span style="font-size: 6pt; margin-left: 120px;"> <?=$id?> </span><br> <img src='../tmp/QR<?=$tt?>.svg' style="margin-left: 34px;padding-top: 2px;">
 
 				</div>
 			</div>
 <?
 			}
 ?>
-
-
 
 	</div>
 </body>
