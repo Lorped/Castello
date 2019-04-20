@@ -46,14 +46,31 @@
             <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
             <div class="col">
               <select id="profpg" name="profpg" class="form-control" required formControlName="profPG">
-                <option *ngFor="let i of professioni" [ngValue]="i.IDprofessione">{{i.nomeprofessione}}</option>
+                <option *ngFor="let i of professioni" [ngValue]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</option>
               </select>
-              <div *ngIf="profPG.value>0"><span style="font-size:0.8em">( Es: {{professioni[profPG.value-1].desc}} )</span></div>
+              <div *ngIf="profPG.value>0"><span style="font-size:0.8em">( Es: {{professioni[profPG.value-1].prof.desc}} )</span></div>
               <div *ngIf="profPG.invalid && (profPG.dirty || profPG.touched)" class="alert alert-danger" color="red">
                 <div *ngIf="profPG.errors.required">Scegliere la tipologia di professione</div>
               </div>
             </div>
           </div>
+
+          <div class="form-group row divrotate" *ngIf="professioni.length>0 && profPG.value>0">
+            <label for="specialita" class="col-3 col-form-label" >Specialità</label>
+            <div class="col">
+              <select id="specpg" name="specpg" class="form-control" required formControlName="specPG">
+                <option *ngFor="let i of professioni[profPG.value-1].spec" [ngValue]="i.IDspecial">{{i.nomespecial}}</option>
+              </select>
+              <div *ngIf="profPG.value>0 && specPG.value>0">BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
+              <div *ngIf="specPG.invalid && (specPG.dirty || specPG.touched)" class="alert alert-danger" color="red">
+                <div *ngIf="specPG.errors.required">Scegliere la specializzazione</div>
+              </div>
+            </div>
+          </div>
+
+
+
+
           <div class="form-group row divrotate" *ngIf="professioni.length>0" >
             <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
             <label for="desc" class="col-3 col-form-label" >Professione</label>

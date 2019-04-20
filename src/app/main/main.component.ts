@@ -40,6 +40,9 @@ export class MainComponent implements OnInit {
       profPG: new FormControl('', [
         Validators.required,
       ]),
+      specPG: new FormControl('', [
+        Validators.required,
+      ]),
       DescProfessione: new FormControl('', [
         Validators.required,
         Validators.pattern(this.unamePattern)
@@ -50,6 +53,7 @@ export class MainComponent implements OnInit {
     this.schedaService.getprofessioni()
     .subscribe( (data: any) => {
       this.professioni = data;
+      console.log (this.professioni);
     });
 
 
@@ -61,6 +65,7 @@ export class MainComponent implements OnInit {
         NomePG: data.NomePG,
         CognomePG: data.CognomePG,
         profPG: data.IDprofessione,
+        specPG: data.IDspecial,
         DescProfessione: data.DescProfessione
       });
 
@@ -77,6 +82,10 @@ export class MainComponent implements OnInit {
   }
   get profPG() {
     return this.personaggioForm.get('profPG');
+  }
+  get specPG() {
+    console.log ( "Specpg-value= " + this.personaggioForm.get('specPG').value );
+    return this.personaggioForm.get('specPG');
   }
   get DescProfessione() {
     return this.personaggioForm.get('DescProfessione');
@@ -104,6 +113,17 @@ export class MainComponent implements OnInit {
     .subscribe( (data: any) => {
       this.personaggioForm.markAsPristine();
     });
+  }
+
+  getbonus (p,s) {
+    console.log ("p="+p+" s ="+s);
+    for ( let i = 0; i < this.professioni[p].spec.length ; i++ ) {
+      console.log(this.professioni[p].spec[i].IDspec);
+      if ( this.professioni[p].spec[i].IDspecial==s) {
+        return this.professioni[p].spec[i].bonus;
+      }
+    }
+    return this.professioni[p].spec[0].bonus;
   }
 
 

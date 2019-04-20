@@ -20,6 +20,8 @@ export class Personaggio {
   NomePg = '';
   CognomePG = '';
   IDprofessione = 0;
+  IDspec = 0;
+  IDbp = 0;
   DescrProfessione = '';
   Miti = 0;
   Sanita = 10;

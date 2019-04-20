@@ -23,7 +23,29 @@ include ('db.inc.php');
 $MySql="SELECT * FROM professioni  ";
 $Result=mysql_query($MySql);
 while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
-	$out [] = $res;
+	$idx=$res['IDprofessione'];
+
+	$out2 = [];
+	$Mysql2="SELECT * FROM bonusprof WHERE IDprofessione = $idx";
+	$Result2=mysql_query($Mysql2);
+	while ( $res2=mysql_fetch_array($Result2,MYSQL_ASSOC) ) {
+		$out2 [] = $res2;
+	}
+
+	$out3 = [];
+	$Mysql3="SELECT * FROM specializzazione WHERE IDprofessione = $idx";
+	$Result3=mysql_query($Mysql3);
+	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC) ) {
+		$out3 [] = $res3;
+	}
+
+	$outx = [
+		'prof' => $res,
+		'bonus' => $out2,
+		'spec' => $out3
+	];
+
+	$out [] = $outx;
 }
 
 
