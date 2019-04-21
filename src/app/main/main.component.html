@@ -46,7 +46,7 @@
             <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
             <div class="col">
               <select id="profpg" name="profpg" class="form-control" required formControlName="profPG">
-                <option *ngFor="let i of professioni" [ngValue]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</option>
+                <option *ngFor="let i of professioni" [ngValue]="i.prof.IDprofessione" >{{i.prof.nomeprofessione}}</option>
               </select>
               <div *ngIf="profPG.value>0"><span style="font-size:0.8em">( Es: {{professioni[profPG.value-1].prof.desc}} )</span></div>
               <div *ngIf="profPG.invalid && (profPG.dirty || profPG.touched)" class="alert alert-danger" color="red">
@@ -54,6 +54,29 @@
               </div>
             </div>
           </div>
+
+          <div class="form-group row divrotate" *ngIf="professioni.length>0 && profPG.value>0">
+            <label for="bonus" class="col-3 col-form-label" >Abilità di Professione</label>
+            <div class="col">
+
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[0]==0 , 'btn-success': checkbonus[0]==1} " (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].desc}}</button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[1]==0 , 'btn-success': checkbonus[1]==1}" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].desc}}</button>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[2]==0 , 'btn-success': checkbonus[2]==1}" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].desc}}</button>
+                </div>
+              </div>
+
+              <div *ngIf="profPG.invalid && (profPG.dirty || profPG.touched)" class="alert alert-danger" color="red">
+                <div *ngIf="profPG.errors.required">Scegliere la tipologia di professione</div>
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group row divrotate" *ngIf="professioni.length>0 && profPG.value>0">
             <label for="specialita" class="col-3 col-form-label" >Specialità</label>
@@ -73,11 +96,11 @@
 
           <div class="form-group row divrotate" *ngIf="professioni.length>0" >
             <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
-            <label for="desc" class="col-3 col-form-label" >Professione</label>
+            <label for="desc" class="col-3 col-form-label" >Descrizione</label>
             <div class="col">
-              <input id="desc" name="desc" type="text" class="form-control" formControlName="DescProfessione" placeholder="Professione del Personaggio" [pattern]="unamePattern" required >
+              <input id="desc" name="desc" type="text" class="form-control" formControlName="DescProfessione" placeholder="Descrizione libera" [pattern]="unamePattern" required >
               <div *ngIf="DescProfessione.invalid && (DescProfessione.dirty || DescProfessione.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="DescProfessione.errors.required">Inserire la professione</div>
+                <div *ngIf="DescProfessione.errors.required">Inserire la descrizione</div>
                 <div *ngIf="DescProfessione.errors.pattern">Carattere non ammesso</div>
               </div>
             </div>
@@ -86,7 +109,7 @@
           <div class="form-group row justify-content-md-center divrotate" >
             <div class="col-8">
               <p></p>
-              <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!formDir.form.valid" (click)="updatepg()">Aggiorna</button>
+              <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!(formDir.form.valid && checked)" (click)="updatepg()">Aggiorna</button>
             </div>
           </div>
 

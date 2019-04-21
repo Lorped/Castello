@@ -25,6 +25,8 @@ $IDutente=$request->token;
 $NomePG=mysql_real_escape_string( $request->NomePG );
 $CognomePG=mysql_real_escape_string( $request->CognomePG );
 $IDprofessione=mysql_real_escape_string( $request->IDprofessione );
+$IDspecial=mysql_real_escape_string( $request->IDspecial );
+$IDbp=mysql_real_escape_string( $request->IDbp );
 $DescProfessione=mysql_real_escape_string( $request->DescProfessione );
 
 /*
@@ -41,13 +43,13 @@ $Result=mysql_query($MySql);
 if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 if ($res=mysql_fetch_array($Result)) {
 
-	$MySql="UPDATE personaggi SET NomePG = '$NomePG' , CognomePG = '$CognomePG' , IDprofessione = $IDprofessione, DescProfessione = '$DescProfessione'
+	$MySql="UPDATE personaggi SET NomePG = '$NomePG' , CognomePG = '$CognomePG' , IDprofessione = $IDprofessione, IDspecial= $IDspecial, IDbp = $IDbp, DescProfessione = '$DescProfessione'
 	WHERE IDutente = '$IDutente' ";
 	$Result=mysql_query($MySql);
 	if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 } else {
-	$MySql="INSERT INTO personaggi (IDutente , NomePG, CognomePG, IDprofessione, DescProfessione )
-	VALUES ( '$IDutente' , '$NomePG' , '$CognomePG' , $IDprofessione, '$DescProfessione' ) ";
+	$MySql="INSERT INTO personaggi (IDutente , NomePG, CognomePG, IDprofessione, IDspecial, IDbp, DescProfessione )
+	VALUES ( '$IDutente' , '$NomePG' , '$CognomePG' , $IDprofessione, $IDspecial, $IDbp, '$DescProfessione' ) ";
 	$Result=mysql_query($MySql);
 	if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 }
