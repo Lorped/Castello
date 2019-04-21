@@ -74,10 +74,13 @@ export class MainComponent implements OnInit {
 
       this.URLimg = data.URLimg;
       this.checkvalue=data.IDbp;
-      let xx = (data.IDbp-1)-3*Math.floor((data.IDbp-1)/3);
-      this.checkbonus[xx]=1;
-      this.checked=1;
-      this.checkvalue=data.IDbp;
+      if (this.checkvalue != 0 ) {
+        let xx = (data.IDbp-1)-3*Math.floor((data.IDbp-1)/3);
+        this.checkbonus[xx]=1;
+        this.checked=1;
+        this.checkvalue=data.IDbp;
+      }
+
     });
 
     this.onChanges();

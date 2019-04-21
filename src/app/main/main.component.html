@@ -19,7 +19,7 @@
 
         <div class="col-10">
           <!-- inizio col9 -->
-          <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:110px; padding-bottom: 130px;">
+          <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:75px; padding-bottom: 80px;">
 
 
 
@@ -55,11 +55,11 @@
             </div>
           </div>
 
-          <div class="form-group row divrotate" *ngIf="professioni.length>0 && profPG.value>0">
+          <div class="form-group row divrotate" >
             <label for="bonus" class="col-3 col-form-label" >Abilità di Professione</label>
             <div class="col">
 
-              <div class="row">
+              <div class="row" *ngIf="professioni.length>0 && profPG.value>0">
                 <div class="col">
                   <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[0]==0 , 'btn-success': checkbonus[0]==1} " (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].desc}}</button>
                 </div>
@@ -78,13 +78,14 @@
           </div>
 
 
-          <div class="form-group row divrotate" *ngIf="professioni.length>0 && profPG.value>0">
+          <div class="form-group row divrotate" >
             <label for="specialita" class="col-3 col-form-label" >Specialità</label>
-            <div class="col">
+            <div class="col" *ngIf="professioni.length>0 && profPG.value>0">
               <select id="specpg" name="specpg" class="form-control" required formControlName="specPG">
                 <option *ngFor="let i of professioni[profPG.value-1].spec" [ngValue]="i.IDspecial">{{i.nomespecial}}</option>
               </select>
-              <div *ngIf="profPG.value>0 && specPG.value>0">BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
+              <div *ngIf="specPG.value>0">BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
+              <div *ngIf="specPG.value==0">&nbsp;</div>
               <div *ngIf="specPG.invalid && (specPG.dirty || specPG.touched)" class="alert alert-danger" color="red">
                 <div *ngIf="specPG.errors.required">Scegliere la specializzazione</div>
               </div>
@@ -108,7 +109,6 @@
 
           <div class="form-group row justify-content-md-center divrotate" >
             <div class="col-8">
-              <p></p>
               <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!(formDir.form.valid && checked)" (click)="updatepg()">Aggiorna</button>
             </div>
           </div>
