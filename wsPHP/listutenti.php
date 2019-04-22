@@ -20,7 +20,9 @@ include ('db.inc.php');
 
 
 $MySql="SELECT * from personaggi
-		LEFT JOIN professioni on personaggi.IDprofessione=professioni.IDprofessione";
+		LEFT JOIN professioni on personaggi.IDprofessione=professioni.IDprofessione
+		LEFT JOIN specializzazione on personaggi.IDspecial=specializzazione.IDspecial
+		LEFT JOIN bonusprof on personaggi.IDbp=bonusprof.IDbp";
 $Result=mysql_query($MySql);
 $res=mysql_fetch_array($Result);
 

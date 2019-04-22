@@ -23,6 +23,10 @@ export class Personaggio {
   IDspec = 0;
   IDbp = 0;
   DescrProfessione = '';
+  IDspecial = 0;
+  nomeprofessione = '';
+  nomespecial = '';
+  descbp = '';
   Miti = 0;
   Sanita = 10;
   PF = 10;

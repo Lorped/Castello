@@ -61,13 +61,13 @@
 
               <div class="row" *ngIf="professioni.length>0 && profPG.value>0">
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[0]==0 , 'btn-success': checkbonus[0]==1} " (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].desc}}</button>
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[0]==0 , 'btn-success': checkbonus[0]==1} " (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].descbp}}</button>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[1]==0 , 'btn-success': checkbonus[1]==1}" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].desc}}</button>
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[1]==0 , 'btn-success': checkbonus[1]==1}" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].descbp}}</button>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[2]==0 , 'btn-success': checkbonus[2]==1}" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].desc}}</button>
+                  <button type="button" class="btn btn-sm  btn-secondary btn-block" [ngClass]="{'btn-secondary': checkbonus[2]==0 , 'btn-success': checkbonus[2]==1}" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].descbp}}</button>
                 </div>
               </div>
 
