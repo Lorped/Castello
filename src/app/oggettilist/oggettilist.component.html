@@ -41,9 +41,24 @@
             </div>
             <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row">
+              <div class="row" *ngIf="!(i.nomeprofessione===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
+                  <div class="col-6 all">{{i.descrizione}}</div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+            <div class="col-12" *ngFor="let i of item.eff">
+              <div class="row" *ngIf="i.nomeprofessione===null">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all gold">({{i.nomespecial}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
                     <div class="table mystyle">

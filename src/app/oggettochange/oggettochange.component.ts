@@ -14,12 +14,19 @@ export class OggettochangeComponent implements OnInit {
 
   oggetto: Oggetto ;
   professioni = [];
+  special = [];
 
   neweffsan = 0 ;
   neweffmiti = 0 ;
   neweffpf = 0 ;
   neweffdescrizione = '';
   neweffselect = 0;
+
+  neweffsanspec = 0 ;
+  neweffmitispec = 0 ;
+  neweffpfspec = 0 ;
+  neweffdescrizionespec = '';
+  neweffselectspec = 0;
 
 
   oggettipair = [];
@@ -36,6 +43,7 @@ export class OggettochangeComponent implements OnInit {
 
     this.getOggetto();
     this.getProfessioni();
+    this.getSpecial();
     this.getOggetti();
   }
 
@@ -45,6 +53,15 @@ export class OggettochangeComponent implements OnInit {
       this.oggettiService.getprofessionieff( id)
       .subscribe( (data: any) => {
         this.professioni = data;
+      });
+  }
+
+  getSpecial(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+      this.oggettiService.getspecialeff( id)
+      .subscribe( (data: any) => {
+        this.special = data;
       });
   }
 
@@ -63,7 +80,7 @@ export class OggettochangeComponent implements OnInit {
     this.oggettiService.getoggetto(id)
       .subscribe( (res:any) => {
         this.oggetto = res[0];
-        //console.log(res);
+        console.log(res);
       });
   }
 
@@ -79,6 +96,22 @@ export class OggettochangeComponent implements OnInit {
         this.neweffselect = 0;
         this.getOggetto();
         this.getProfessioni();
+        this.oggettoForm.form.markAsPristine();
+        this.oggettoForm.form.markAsUntouched();
+      });
+    }
+
+    if (this.neweffselectspec != 0 ) {
+      this.oggettiService.addeffettospec(this.oggetto.ogg.IDoggetto, this.neweffselectspec, this.neweffdescrizionespec, this.neweffsanspec, this.neweffmitispec, this.neweffpfspec )
+      .subscribe( res => {
+        this.neweffsanspec = 0 ;
+        this.neweffmitispec = 0 ;
+        this.neweffpfspec = 0 ;
+        this.neweffdescrizionespec = '';
+        this.neweffselectspec = 0;
+        this.getOggetto();
+        this.getProfessioni();
+        this.getSpecial();
         this.oggettoForm.form.markAsPristine();
         this.oggettoForm.form.markAsUntouched();
       });

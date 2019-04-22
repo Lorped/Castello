@@ -36,6 +36,7 @@ while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
 	$eff = [];
 	$Mysql2 = "SELECT * from effetti
 		LEFT JOIN professioni ON effetti.IDprofessione = professioni.IDprofessione
+		LEFT JOIN specializzazione ON effetti.IDspecial = specializzazione.IDspecial
 		WHERE IDoggetto = '$id'";
 	$Result2=mysql_query($Mysql2);
 	while ( $res2=mysql_fetch_array($Result2,MYSQL_ASSOC)) {

@@ -45,7 +45,7 @@
             </div>
             <div class="col-1">&nbsp;</div>
             <div class="col-12" *ngFor="let i of oggetto.eff">
-              <div class="row">
+              <div class="row" *ngIf="!(i.nomeprofessione===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
@@ -76,6 +76,46 @@
                         <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="neweffsan"></div>
                         <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="neweffmiti"></div>
                         <div class="col"><input name="nepf" type="number" class="form-control" [(ngModel)]="neweffpf"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
+            <div class="col-12" *ngFor="let i of oggetto.eff">
+              <div class="row" *ngIf="(i.nomeprofessione===null)">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all gold">({{i.nomespecial}})</div>
+                  <div class="col-6 all">{{i.descrizione}}</div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="delEff(i.IDeffetto)" >X</button></div>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <div class="row">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <select id="spec" [(ngModel)]="neweffselectspec" name="spec" class="form-control" >
+                      <option value=0>- Specializzazione -</option>
+                      <option *ngFor="let i of special" [ngValue]="i.IDspecial">{{i.nomespecial}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 all"><input name="newdscspec" type="text" class="form-control" [(ngModel)]="neweffdescrizionespec" [required]="neweffselectspec!=0"></div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col"><input name="nesspec" type="number" class="form-control" [(ngModel)]="neweffsanspec"></div>
+                        <div class="col"><input name="nemspec" type="number" class="form-control" [(ngModel)]="neweffmitispec"></div>
+                        <div class="col"><input name="nepfspec" type="number" class="form-control" [(ngModel)]="neweffpfspec"></div>
                       </div>
                     </div>
                   </div>
