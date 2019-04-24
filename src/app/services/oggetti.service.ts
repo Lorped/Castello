@@ -37,6 +37,17 @@ export class Oggetto {
  pair: Array<Paired> = [];
 };
 
+export class Magia {
+  IDoggetto: 0 ;
+  scan: 0;
+  nome: '' ;
+  minmiti: 0 ;
+  descrizione: '' ;
+  basemiti: 0 ;
+  basesan: 0 ;
+  basepf: 0 ;
+};
+
 export class Listscan  {
   IDutente: 0;
   IDoggetto: 0;
@@ -65,6 +76,10 @@ export class OggettiService {
 
   listoggetti () {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getoggetti.php' );
+  }
+
+  listmagie () {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getmagie.php' );
   }
 
   getoggetto (id: number) {
@@ -108,6 +123,17 @@ export class OggettiService {
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addbase.php' , {
       nome: nome,
       descrizione: descrizione,
+      basesan: basesan,
+      basemiti: basemiti,
+      basepf: basepf
+    });
+  }
+
+  addbasemagie (nome:string, descrizione:string, minmiti:number, basesan:number, basemiti:number, basepf:number) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addbasemagie.php' , {
+      nome: nome,
+      descrizione: descrizione,
+      minmiti: minmiti,
       basesan: basesan,
       basemiti: basemiti,
       basepf: basepf
