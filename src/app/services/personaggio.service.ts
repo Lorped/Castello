@@ -16,6 +16,8 @@ export class Personaggio {
  Sanita = 0 ;
  PF = 0 ;
  URLimg = '' ;
+ descbp = '' ;
+ nomespecial = '';
 
 };
 
