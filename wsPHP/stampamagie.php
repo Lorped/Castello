@@ -130,7 +130,7 @@ include('../phpqrcode2/lib/full/qrlib.php');
 	<div class="list-align" style="display: block;" >
 
 <?
-		$Mysql="SELECT * FROM oggetti";
+		$Mysql="SELECT * FROM magie";
 		$Result=mysql_query($Mysql);
 		while ($res=mysql_fetch_array($Result)) {
 
