@@ -93,6 +93,9 @@ export class OggettiService {
   cancbase (id: number) {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cancbase.php?id=' + id );
   }
+  cancbasemagie (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cancbasemagie.php?id=' + id );
+  }
 
   cancpair (id1: number, id2: number) {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cancpair.php?id1=' + id1 + '&id2=' + id2 );
