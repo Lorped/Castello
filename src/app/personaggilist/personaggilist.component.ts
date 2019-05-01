@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Personaggio, PersonaggioService } from '../services/index';
+import {  PersonaggioService } from '../services/index';
+import { Personaggio } from '../globals';
 
 @Component({
   selector: 'app-personaggilist',

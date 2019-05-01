@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Personaggio } from '../globals';
 import 'rxjs/add/operator/map';
 
 
 
-
+/*
 export class Personaggio {
  IDutente = 0 ;
  NomePG = '' ;
@@ -20,7 +21,7 @@ export class Personaggio {
  nomespecial = '';
 
 };
-
+*/
 
 
 

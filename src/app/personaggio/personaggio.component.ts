@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchedaService } from '../services/scheda.service';
-import { Personaggio } from '../services/personaggio.service';
+import { Personaggio } from '../globals';
 import { Listscan, Listpaired } from '../services/oggetti.service';
 
 @Component({
@@ -35,8 +35,8 @@ export class PersonaggioComponent implements OnInit {
       //console.log(this.pgcorrente);
       //console.log(this.scancorrenti);
       //console.log(this.paircorrenti);
-      if (this.pgcorrente.gg < 10) { this.pgcorrente.gg = '0'+this.pgcorrente.gg; }
-      if (this.pgcorrente.mm < 10) { this.pgcorrente.mm = '0'+this.pgcorrente.mm; }
+      if (Number(this.pgcorrente.gg) < 10) { this.pgcorrente.gg = '0'+this.pgcorrente.gg; }
+      if (Number(this.pgcorrente.mm) < 10) { this.pgcorrente.mm = '0'+this.pgcorrente.mm; }
 
     });
 
