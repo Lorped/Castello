@@ -35,6 +35,8 @@ export class PersonaggioComponent implements OnInit {
       //console.log(this.pgcorrente);
       //console.log(this.scancorrenti);
       //console.log(this.paircorrenti);
+      if (this.pgcorrente.gg < 10) { this.pgcorrente.gg = '0'+this.pgcorrente.gg; }
+      if (this.pgcorrente.mm < 10) { this.pgcorrente.mm = '0'+this.pgcorrente.mm; }
 
     });
 
