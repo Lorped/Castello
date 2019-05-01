@@ -17,12 +17,12 @@ export class Personaggio {
 
   IDutente = 0;
   NomeGiocatore = '';
-  NomePg = '';
+  NomePG = '';
   CognomePG = '';
   IDprofessione = 0;
   IDspec = 0;
   IDbp = 0;
-  DescrProfessione = '';
+  //DescrProfessione = '';
   IDspecial = 0;
   nomeprofessione = '';
   nomespecial = '';
@@ -33,6 +33,7 @@ export class Personaggio {
   gg = '1';
   mm = '1';
   aaaa = 1970;
+  URLimg = '' ;
 
 }
 
