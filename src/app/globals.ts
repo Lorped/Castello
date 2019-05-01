@@ -30,6 +30,9 @@ export class Personaggio {
   Miti = 0;
   Sanita = 10;
   PF = 10;
+  gg = 1;
+  mm = 1;
+  aaaa = 1970;
 
 }
 

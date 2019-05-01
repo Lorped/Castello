@@ -42,6 +42,32 @@
             </div>
           </div>
 
+          <div class="form-group row divrotate"  >
+            <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
+            <label for="desc" class="col-3 col-form-label" >Data di nascita</label>
+            <div class="col-2">
+              <input id="gg" name="gg" type="number" class="form-control" formControlName="ggPG" placeholder=25 min=1 max=31  required  >
+              <div *ngIf="ggPG.invalid && (ggPG.dirty || ggPG.touched)" class="alert alert-danger" color="red">
+                <div *ngIf="ggPG.errors.required">Inserire il giorno</div>
+                <div *ngIf="ggPG.errors.max || ggPG.errors.min">Errore di data</div>
+              </div>
+            </div>
+            <div class="col-2">
+              <input id="mm" name="mm" type="number" class="form-control" formControlName="mmPG" placeholder=12 min=1 max=12  required >
+              <div *ngIf="mmPG.invalid && (mmPG.dirty || mmPG.touched)" class="alert alert-danger" color="red">
+                <div *ngIf="mmPG.errors.required">Inserire il mese</div>
+                <div *ngIf="mmPG.errors.max || mmPG.errors.min">Errore di data</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <input id="aaaa" name="aaaa" type="number" class="form-control" formControlName="aaaaPG" placeholder=1970 min=1900 max=2018  required >
+              <div *ngIf="aaaaPG.invalid && (aaaaPG.dirty || aaaaPG.touched)" class="alert alert-danger" color="red">
+                <div *ngIf="aaaaPG.errors.required">Inserire l'anno</div>
+                <div *ngIf="aaaaPG.errors.max || aaaaPG.errors.min">Errore di data</div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group row divrotate" *ngIf="professioni.length>0">
             <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
             <div class="col">
@@ -95,17 +121,7 @@
 
 
 
-          <div class="form-group row divrotate" *ngIf="professioni.length>0" >
-            <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
-            <label for="desc" class="col-3 col-form-label" >Descrizione</label>
-            <div class="col">
-              <input id="desc" name="desc" type="text" class="form-control" formControlName="DescProfessione" placeholder="Descrizione libera" [pattern]="unamePattern" required >
-              <div *ngIf="DescProfessione.invalid && (DescProfessione.dirty || DescProfessione.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="DescProfessione.errors.required">Inserire la descrizione</div>
-                <div *ngIf="DescProfessione.errors.pattern">Carattere non ammesso</div>
-              </div>
-            </div>
-          </div>
+
 
           <div class="form-group row justify-content-md-center divrotate" >
             <div class="col-8">

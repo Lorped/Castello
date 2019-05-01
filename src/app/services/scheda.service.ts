@@ -32,7 +32,7 @@ export class SchedaService {
 
 
 
-  updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aIDspecial: number, aIDbp:number, aDescProfessione: string) {
+  updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aIDspecial: number, aIDbp:number, aaa: number, amm:number, agg: number) {
     const user = sessionStorage.getItem('CastelloUser') ;
 
     return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/addpg.php', {
@@ -42,7 +42,9 @@ export class SchedaService {
       IDprofessione: aIDprofessione,
       IDspecial: aIDspecial,
       IDbp: aIDbp,
-      DescProfessione: aDescProfessione
+      aaaa: aaa,
+      mm: amm,
+      gg: agg
     });
   }
 

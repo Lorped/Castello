@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
   URLimg: string = 'nopicture.gif';
 
   unamePattern = '^[A-Za-zàèìòù \']+$';
+  today: number = (new Date()).getFullYear();
 
   fileToUpload: File = null;
 
@@ -46,9 +47,20 @@ export class MainComponent implements OnInit {
       specPG: new FormControl('', [
         Validators.required,
       ]),
-      DescProfessione: new FormControl('', [
+      ggPG: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.unamePattern)
+        Validators.min(1),
+        Validators.max(31)
+      ]),
+      mmPG: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(12)
+      ]),
+      aaaaPG: new FormControl('', [
+        Validators.required,
+        Validators.min(1900),
+        Validators.max(this.today - 16)
       ])
 
     });
@@ -69,7 +81,9 @@ export class MainComponent implements OnInit {
         CognomePG: data.CognomePG,
         profPG: data.IDprofessione,
         specPG: data.IDspecial,
-        DescProfessione: data.DescProfessione
+        aaaaPG: data.aaaa,
+        mmPG: data.mm,
+        ggPG: data.gg
       });
 
       this.URLimg = data.URLimg;
@@ -108,9 +122,16 @@ export class MainComponent implements OnInit {
   get specPG() {
     return this.personaggioForm.get('specPG');
   }
-  get DescProfessione() {
-    return this.personaggioForm.get('DescProfessione');
+  get aaaaPG() {
+    return this.personaggioForm.get('aaaaPG');
   }
+  get mmPG() {
+    return this.personaggioForm.get('mmPG');
+  }
+  get ggPG() {
+    return this.personaggioForm.get('ggPG');
+  }
+
 
 
   fileChange(files: FileList) {
@@ -130,7 +151,7 @@ export class MainComponent implements OnInit {
   }
 
   updatepg() {
-    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.DescProfessione.value)
+    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.aaaaPG.value, this.mmPG.value, this.ggPG.value)
     .subscribe( (data: any) => {
       this.personaggioForm.markAsPristine();
     });
