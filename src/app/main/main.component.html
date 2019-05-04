@@ -122,7 +122,7 @@
             <label for="specialita" class="col-3 col-form-label" >Bonus a scelta</label>
             <div class="col" >
               <select id="xspecpg" name="xspecpg" class="form-control" required formControlName="xspecPG">
-                <option *ngFor="let i of xspecial" [ngValue]="i.IDspecial">{{i.bonus}}</option>
+                <option *ngFor="let i of xspecial" [ngValue]="i.IDspecial">{{i.xbonus}}</option>
               </select>
               <div *ngIf="xspecPG.invalid && (xspecPG.dirty || xspecPG.touched) && specPG.value==17" class="alert alert-danger" color="red">
                 <div *ngIf="xspecPG.errors.required">Scegliere il bonus speciale</div>

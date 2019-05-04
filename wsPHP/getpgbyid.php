@@ -27,6 +27,7 @@ $MySql="SELECT * FROM personaggi
 	LEFT JOIN professioni ON professioni.IDprofessione = personaggi.IDprofessione
 	LEFT JOIN specializzazione on personaggi.IDspecial=specializzazione.IDspecial
 	LEFT JOIN bonusprof on personaggi.IDbp=bonusprof.IDbp
+	LEFT JOIN xspec on personaggi.xspecpg=xspec.IDspecial
 	WHERE IDutente='$IDutente' ";
 $Result=mysql_query($MySql);
 $res=mysql_fetch_array($Result,MYSQL_ASSOC);

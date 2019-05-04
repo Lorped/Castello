@@ -22,7 +22,13 @@
           <div class="col">{{pgcorrente.nomeprofessione}} - {{pgcorrente.nomespecial}} </div>
         </div>
         <div class="row" >
-          <div class="col">Bonus professione: {{pgcorrente.descbp}}</div>
+          <div class="col">Conoscenze: {{pgcorrente.descbp}}</div>
+        </div>
+        <div class="row" *ngIf="pgcorrente.xbonus=== null ">
+          <div class="col">{{pgcorrente.bonus}}</div>
+        </div>
+        <div class="row" *ngIf="!(pgcorrente.xbonus===null) ">
+          <div class="col">{{pgcorrente.xbonus}}</div>
         </div>
 
         <div class="row" >
