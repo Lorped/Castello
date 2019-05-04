@@ -56,6 +56,21 @@ if ($res=mysql_fetch_array($Result)) {
 	if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 }
 
+
+/*************** Teologo o Ricercatore ******/
+if ($IDspecial == 2  || $IDspecial == 18 ) {
+	$MySql="UPDATE personaggi SET Miti = 1 , Sanita = 9
+	WHERE IDutente = '$IDutente' ";
+	mysql_query($MySql);
+}
+/*************** Forze speciali  ******/
+if ($IDspecial == 9 ) {
+	$MySql="UPDATE personaggi SET PF = 5 
+	WHERE IDutente = '$IDutente' ";
+	mysql_query($MySql);
+}
+
+
 header("HTTP/1.1 200 OK");
 $out=[];
 

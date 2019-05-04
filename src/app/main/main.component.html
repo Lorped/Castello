@@ -125,7 +125,7 @@
 
           <div class="form-group row justify-content-md-center divrotate" >
             <div class="col-8">
-              <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!(formDir.form.valid && checked)" (click)="updatepg()">Aggiorna</button>
+              <button type="button" class="btn btn-sm btn-danger btn-block" [disabled]="!(formDir.form.valid && checked && !formDir.form.pristine)  " (click)="updatepg()">Aggiorna</button>
             </div>
           </div>
 
