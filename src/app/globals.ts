@@ -34,6 +34,8 @@ export class Personaggio {
   mm = '1';
   aaaa = 1970;
   URLimg = '' ;
+  xbonus = '';
+  xspecpg = 0;
 
 }
 
