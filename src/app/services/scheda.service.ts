@@ -24,6 +24,10 @@ export class SchedaService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getprofessioni.php' );
   }
 
+  getxspecial () {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getxspecial.php' );
+  }
+
 
   changesm (id: number, cosa: string, delta: string ) {
 
@@ -32,7 +36,7 @@ export class SchedaService {
 
 
 
-  updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aIDspecial: number, aIDbp:number, aaa: number, amm:number, agg: number) {
+  updatepg (aNomePG: string, aCognomePG: string, aIDprofessione: number, aIDspecial: number, aIDbp:number, aaa: number, amm:number, agg: number, xpg: number) {
     const user = sessionStorage.getItem('CastelloUser') ;
 
     return this.http.post<any>('https://www.roma-by-night.it/Castello/wsPHP/addpg.php', {
@@ -44,7 +48,8 @@ export class SchedaService {
       IDbp: aIDbp,
       aaaa: aaa,
       mm: amm,
-      gg: agg
+      gg: agg,
+      xpg: xpg
     });
   }
 

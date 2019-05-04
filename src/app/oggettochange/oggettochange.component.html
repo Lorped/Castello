@@ -84,7 +84,7 @@
             </div>
 
             <div class="col-12" *ngFor="let i of oggetto.eff">
-              <div class="row" *ngIf="(i.nomeprofessione===null)">
+              <div class="row" *ngIf="(i.nomeprofessione===null)&&(i.descbp===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all gold">({{i.nomespecial}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
@@ -122,6 +122,50 @@
                   <div class="col-1">&nbsp;</div>
               </div>
             </div>
+
+            <div class="col-12" *ngFor="let i of oggetto.eff">
+              <div class="row" *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all pink">({{i.descbp}})</div>
+                  <div class="col-6 all">{{i.descrizione}}</div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="delEff(i.IDeffetto)" >X</button></div>
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <div class="row">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <select id="bp" [(ngModel)]="neweffselectbp" name="bp" class="form-control" >
+                      <option value=0>- Attitudine -</option>
+                      <option *ngFor="let i of bp" [ngValue]="i.IDbp">{{i.descbp}}</option>
+                    </select>
+                  </div>
+                  <div class="col-6 all"><input name="newdscsbp" type="text" class="form-control" [(ngModel)]="neweffdescrizionebp" [required]="neweffselectbp!=0"></div>
+                  <div class="col-2 alc">
+                    <div class="table mystyle">
+                      <div class="row">
+                        <div class="col"><input name="nesbp" type="number" class="form-control" [(ngModel)]="neweffsanbp"></div>
+                        <div class="col"><input name="nembp" type="number" class="form-control" [(ngModel)]="neweffmitibp"></div>
+                        <div class="col"><input name="nepfbp" type="number" class="form-control" [(ngModel)]="neweffpfbp"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
+
+
+
 
             <div class="col-12" *ngFor="let i of oggetto.pair">
               <div class="row">

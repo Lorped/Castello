@@ -30,6 +30,7 @@ $IDbp=mysql_real_escape_string( $request->IDbp );
 $aaaa=mysql_real_escape_string( $request->aaaa );
 $mm=mysql_real_escape_string( $request->mm );
 $gg=mysql_real_escape_string( $request->gg );
+$xpg=mysql_real_escape_string( $request->xpg );
 
 /*
 $id=$_GET['id'];
@@ -45,27 +46,27 @@ $Result=mysql_query($MySql);
 if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 if ($res=mysql_fetch_array($Result)) {
 
-	$MySql="UPDATE personaggi SET NomePG = '$NomePG' , CognomePG = '$CognomePG' , IDprofessione = $IDprofessione, IDspecial= $IDspecial, IDbp = $IDbp, aaaa = $aaaa, mm=$mm, gg=$gg
+	$MySql="UPDATE personaggi SET NomePG = '$NomePG' , CognomePG = '$CognomePG' , IDprofessione = $IDprofessione, IDspecial= $IDspecial, IDbp = $IDbp, aaaa = $aaaa, mm=$mm, gg=$gg, xspecpg=$xpg, Sanita=10, Miti=0, PF=3
 	WHERE IDutente = '$IDutente' ";
 	$Result=mysql_query($MySql);
 	if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 } else {
-	$MySql="INSERT INTO personaggi (IDutente , NomePG, CognomePG, IDprofessione, IDspecial, IDbp, aaaa, mm, gg )
-	VALUES ( '$IDutente' , '$NomePG' , '$CognomePG' , $IDprofessione, $IDspecial, $IDbp, $aaaa, $mm, $gg ) ";
+	$MySql="INSERT INTO personaggi (IDutente , NomePG, CognomePG, IDprofessione, IDspecial, IDbp, aaaa, mm, gg, xspecpg )
+	VALUES ( '$IDutente' , '$NomePG' , '$CognomePG' , $IDprofessione, $IDspecial, $IDbp, $aaaa, $mm, $gg, $xpg ) ";
 	$Result=mysql_query($MySql);
 	if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
 }
 
 
 /*************** Teologo o Ricercatore ******/
-if ($IDspecial == 2  || $IDspecial == 18 ) {
+if ($IDspecial == 2  || $IDspecial == 18 || $xpg == 2 ) {
 	$MySql="UPDATE personaggi SET Miti = 1 , Sanita = 9
 	WHERE IDutente = '$IDutente' ";
 	mysql_query($MySql);
 }
 /*************** Forze speciali  ******/
-if ($IDspecial == 9 ) {
-	$MySql="UPDATE personaggi SET PF = 5 
+if ($IDspecial == 9 || $xpg == 9 ) {
+	$MySql="UPDATE personaggi SET PF = 5
 	WHERE IDutente = '$IDutente' ";
 	mysql_query($MySql);
 }

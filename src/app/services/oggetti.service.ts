@@ -121,6 +121,16 @@ export class OggettiService {
       effettopf: effettopf
     });
   }
+  addeffettobp (IDoggetto: number, IDbp:number, descrizione:string, effettosan:number, effettomiti:number, effettopf:number) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addeffettobp.php' , {
+      IDoggetto: IDoggetto,
+      IDbp: IDbp,
+      descrizione: descrizione,
+      effettosan: effettosan,
+      effettomiti: effettomiti,
+      effettopf: effettopf
+    });
+  }
 
   addbase (nome:string, descrizione:string, basesan:number, basemiti:number, basepf:number) {
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addbase.php' , {
@@ -172,6 +182,9 @@ export class OggettiService {
   }
   getspecialeff (id: number) {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getspecialeff.php?id=' + id );
+  }
+  getbpeff (id: number) {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/getbpeff.php?id=' + id );
   }
 
   getoggettipair (id: number) {

@@ -15,6 +15,7 @@ export class OggettochangeComponent implements OnInit {
   oggetto: Oggetto ;
   professioni = [];
   special = [];
+  bp = [];
 
   neweffsan = 0 ;
   neweffmiti = 0 ;
@@ -22,11 +23,18 @@ export class OggettochangeComponent implements OnInit {
   neweffdescrizione = '';
   neweffselect = 0;
 
+
   neweffsanspec = 0 ;
   neweffmitispec = 0 ;
   neweffpfspec = 0 ;
   neweffdescrizionespec = '';
   neweffselectspec = 0;
+
+  neweffsanbp = 0 ;
+  neweffmitibp = 0 ;
+  neweffpfbp = 0 ;
+  neweffselectbp = 0;
+  neweffdescrizionebp = '';
 
 
   oggettipair = [];
@@ -44,6 +52,7 @@ export class OggettochangeComponent implements OnInit {
     this.getOggetto();
     this.getProfessioni();
     this.getSpecial();
+    this.getBP();
     this.getOggetti();
   }
 
@@ -65,6 +74,15 @@ export class OggettochangeComponent implements OnInit {
       });
   }
 
+  getBP(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+      this.oggettiService.getbpeff( id)
+      .subscribe( (data: any) => {
+        this.bp = data;
+      });
+  }
+
   getOggetti(): void {
     const id = +this.route.snapshot.paramMap.get('id');
 
@@ -80,7 +98,7 @@ export class OggettochangeComponent implements OnInit {
     this.oggettiService.getoggetto(id)
       .subscribe( (res:any) => {
         this.oggetto = res[0];
-        console.log(res);
+        //console.log(res);
       });
   }
 
@@ -116,6 +134,24 @@ export class OggettochangeComponent implements OnInit {
         this.oggettoForm.form.markAsUntouched();
       });
     }
+
+    if (this.neweffselectbp != 0 ) {
+      this.oggettiService.addeffettobp(this.oggetto.ogg.IDoggetto, this.neweffselectbp, this.neweffdescrizionebp, this.neweffsanbp, this.neweffmitibp, this.neweffpfbp )
+      .subscribe( res => {
+        this.neweffsanbp = 0 ;
+        this.neweffmitibp = 0 ;
+        this.neweffpfbp = 0 ;
+        this.neweffdescrizionebp = '';
+        this.neweffselectbp = 0;
+        this.getOggetto();
+        this.getProfessioni();
+        this.getSpecial();
+        this.getBP();
+        this.oggettoForm.form.markAsPristine();
+        this.oggettoForm.form.markAsUntouched();
+      });
+    }
+
 
     if (this.newpairselect != 0 ) {
       this.oggettiService.addpair(this.oggetto.ogg.IDoggetto, this.newpairselect, this.newpairdescrizione, this.newpairsan, this.newpairmiti, this.newpairpf )

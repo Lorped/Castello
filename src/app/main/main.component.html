@@ -82,7 +82,7 @@
           </div>
 
           <div class="form-group row divrotate" >
-            <label for="bonus" class="col-3 col-form-label" >Abilità di Professione</label>
+            <label for="bonus" class="col-3 col-form-label" >Competenze</label>
             <div class="col">
 
               <div class="row" *ngIf="professioni.length>0 && profPG.value>0">
@@ -118,6 +118,17 @@
             </div>
           </div>
 
+          <div class="form-group row divrotate" *ngIf="specPG.value==17">
+            <label for="specialita" class="col-3 col-form-label" >Bonus a scelta</label>
+            <div class="col" >
+              <select id="xspecpg" name="xspecpg" class="form-control" required formControlName="xspecPG">
+                <option *ngFor="let i of xspecial" [ngValue]="i.IDspecial">{{i.bonus}}</option>
+              </select>
+              <div *ngIf="xspecPG.invalid && (xspecPG.dirty || xspecPG.touched) && specPG.value==17" class="alert alert-danger" color="red">
+                <div *ngIf="xspecPG.errors.required">Scegliere il bonus speciale</div>
+              </div>
+            </div>
+          </div>
 
 
 

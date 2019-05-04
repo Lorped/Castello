@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   personaggioForm: FormGroup;
 
   professioni = [];
+  xspecial = [];
 
   checkbonus = [ 0 , 0 , 0 ];
   checked = 0;
@@ -42,10 +43,10 @@ export class MainComponent implements OnInit {
         Validators.pattern(this.unamePattern)
       ]),
       profPG: new FormControl('', [
-        Validators.required,
+        Validators.required
       ]),
       specPG: new FormControl('', [
-        Validators.required,
+        Validators.required
       ]),
       ggPG: new FormControl('', [
         Validators.required,
@@ -61,7 +62,8 @@ export class MainComponent implements OnInit {
         Validators.required,
         Validators.min(1900),
         Validators.max(this.today - 16)
-      ])
+      ]),
+      xspecPG: new FormControl('', []),
 
     });
 
@@ -69,6 +71,11 @@ export class MainComponent implements OnInit {
     .subscribe( (data: any) => {
       this.professioni = data;
 
+    });
+
+    this.schedaService.getxspecial()
+    .subscribe( (data: any) => {
+      this.xspecial = data;
     });
 
 
@@ -83,7 +90,8 @@ export class MainComponent implements OnInit {
         specPG: data.IDspecial,
         aaaaPG: data.aaaa,
         mmPG: data.mm,
-        ggPG: data.gg
+        ggPG: data.gg,
+        xspecPG: data.xspecpg
       });
 
       this.URLimg = data.URLimg;
@@ -131,6 +139,9 @@ export class MainComponent implements OnInit {
   get ggPG() {
     return this.personaggioForm.get('ggPG');
   }
+  get xspecPG() {
+    return this.personaggioForm.get('xspecPG');
+  }
 
 
 
@@ -151,7 +162,11 @@ export class MainComponent implements OnInit {
   }
 
   updatepg() {
-    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.aaaaPG.value, this.mmPG.value, this.ggPG.value)
+    let xpg=0;
+    if (this.specPG.value == 17 ) {  /*** studente ***/
+      xpg = this.xspecPG.value;
+    }
+    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.aaaaPG.value, this.mmPG.value, this.ggPG.value , xpg)
     .subscribe( (data: any) => {
       this.personaggioForm.markAsPristine();
     });
