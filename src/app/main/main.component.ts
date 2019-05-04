@@ -27,6 +27,7 @@ export class MainComponent implements OnInit {
   checked = 0;
   checkvalue = 0;
 
+  changecheck=0;
 
   constructor( private schedaService: SchedaService, public status: Status, private pg: Personaggio ) { }
 
@@ -115,6 +116,11 @@ export class MainComponent implements OnInit {
       this.checkbonus[1] = 0;
       this.checkbonus[2] = 0;
       this.checked = 0;
+      this.changecheck = 0;
+      this.personaggioForm.patchValue({
+        specPG: null,
+        xspecPG: 0
+      });
     });
   }
 
@@ -169,6 +175,7 @@ export class MainComponent implements OnInit {
     this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.aaaaPG.value, this.mmPG.value, this.ggPG.value , xpg)
     .subscribe( (data: any) => {
       this.personaggioForm.markAsPristine();
+      this.changecheck=0;
     });
   }
 
@@ -190,6 +197,7 @@ export class MainComponent implements OnInit {
     this.checked = 1;
     this.checkvalue = this.professioni[this.profPG.value-1].bonus[i].IDbp;
 
+    this.changecheck=1;
   }
 
 
