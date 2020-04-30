@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./oggettochange.component.css']
 })
 export class OggettochangeComponent implements OnInit {
-@ViewChild('oggettoForm') oggettoForm: NgForm;
+@ViewChild('oggettoForm', { static: true }) oggettoForm: NgForm;
 
   oggetto: Oggetto ;
   professioni = [];

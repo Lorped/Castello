@@ -13,6 +13,7 @@ export class Status {
 
 }
 
+@Injectable()
 export class Personaggio {
 
   IDutente = 0;
