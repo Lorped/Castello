@@ -23,8 +23,8 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
 $IDoggetto = $request->IDoggetto;
-$nome = mysql_real_escape_string($request->nome);
-$descrizione = mysql_real_escape_string($request->descrizione);
+$nome = mysqli_real_escape_string($db,$request->nome);
+$descrizione = mysqli_real_escape_string($db,$request->descrizione);
 $basemiti = $request->basemiti;
 $basesan = $request->basesan;
 $basepf= $request->basepf;
@@ -33,7 +33,7 @@ $out = [];
 
 $Mysql="UPDATE oggetti SET nome='$nome', descrizione='$descrizione', basemiti=$basemiti, basesan=$basesan, basepf=$basepf
 	WHERE IDoggetto=$IDoggetto";
-$Result=mysql_query($Mysql);
+$Result=mysqli_query($db,$Mysql);
 
 
 header("HTTP/1.1 200 OK");

@@ -27,8 +27,8 @@ $Mysql="SELECT * FROM oggetti ";
 if ($IDoggetto!="") {
 	$Mysql = $Mysql . "WHERE IDoggetto='$IDoggetto'";
 }
-$Result=mysql_query($Mysql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $Mysql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$ogg = $res;
 
 	$id=$res['IDoggetto'];
@@ -39,23 +39,23 @@ while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
 		LEFT JOIN specializzazione ON effetti.IDspecial = specializzazione.IDspecial
 		LEFT JOIN bonusprof ON effetti.IDbp = bonusprof.IDbp
 		WHERE IDoggetto = '$id'";
-	$Result2=mysql_query($Mysql2);
-	while ( $res2=mysql_fetch_array($Result2,MYSQL_ASSOC)) {
+	$Result2=mysqli_query($db,$Mysql2);
+	while ( $res2=mysqli_fetch_array($Result2,MYSQLI_ASSOC)) {
 		$eff[] = $res2;
 	}
 	$pair = [];
 	$Mysql3 = "SELECT IDoggetto2 as IDX , nome, pdescrizione, effettosan, effettomiti, effettopf from paired
 		LEFT JOIN oggetti ON paired.IDoggetto2 = oggetti.IDoggetto
 		WHERE IDoggetto1 = '$id' ";
-	$Result3=mysql_query($Mysql3);
-	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC)) {
+	$Result3=mysqli_query($db,$Mysql3);
+	while ( $res3=mysqli_fetch_array($Result3,MYSQLI_ASSOC)) {
 		$pair[] = $res3;
 	}
 	$Mysql3 = "SELECT IDoggetto1 as IDX , nome, pdescrizione, effettosan, effettomiti, effettopf from paired
 		LEFT JOIN oggetti ON paired.IDoggetto1 = oggetti.IDoggetto
 		WHERE IDoggetto2 = '$id' ";
-	$Result3=mysql_query($Mysql3);
-	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC)) {
+	$Result3=mysqli_query($db, $Mysql3);
+	while ( $res3=mysqli_fetch_array($Result3,MYSQLI_ASSOC)) {
 		$pair[] = $res3;
 	}
 

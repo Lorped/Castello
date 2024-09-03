@@ -129,10 +129,10 @@ include('../phpqrcode2/lib/full/qrlib.php');
 <body>
 	<div class="list-align" style="display: block;" >
 
-<?
+<?php
 		$Mysql="SELECT * FROM oggetti";
-		$Result=mysql_query($Mysql);
-		while ($res=mysql_fetch_array($Result)) {
+		$Result=mysqli_query($db, $Mysql);
+		while ($res=mysqli_fetch_array($Result)) {
 
 
 			$text=(string)$res['scan'];
@@ -169,7 +169,7 @@ include('../phpqrcode2/lib/full/qrlib.php');
 
 				</div>
 			</div>
-<?
+<?php
 			}
 ?>
 

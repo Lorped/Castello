@@ -25,13 +25,13 @@ $MySql="SELECT logscan.IDutente, logscan.IDoggetto, data,
 		LEFT JOIN personaggi on personaggi.IDutente = logscan.IDutente
 		LEFT JOIN oggetti on oggetti.IDoggetto = logscan.IDoggetto
 		LEFT JOIN professioni on professioni.IDprofessione = personaggi.IDprofessione";
-$Result=mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 
 
 
-$Result=mysql_query($MySql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out1[] = $res;
 }
 
@@ -40,12 +40,12 @@ $MySql="SELECT T1.nome as nome1, T2.nome as nome2, data, NomePG, CognomePG
 	LEFT JOIN oggetti AS T1 ON T1.IDoggetto = logpaired.IDoggetto1
 	LEFT JOIN oggetti AS T2 ON T2.IDoggetto = logpaired.IDoggetto2
 	LEFT JOIN personaggi ON personaggi.IDutente = logpaired.IDutente";
-$Result=mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 
 
-$Result=mysql_query($MySql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out2[] = $res;
 }
 

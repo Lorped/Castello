@@ -20,13 +20,13 @@ include ('db.inc.php');
 
 
 $MySql="SELECT count(*) as s from utenti";
-$Result=mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 $registrati=$res['s'];
 
 $MySql="SELECT count(*) as s from personaggi";
-$Result=mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 $iscritti=$res['s'];
 
 
@@ -37,8 +37,8 @@ FROM professioni P
 LEFT OUTER JOIN personaggi U ON U.`IDprofessione` = P.`IDprofessione`
 GROUP BY P.nomeprofessione";
 
-$Result=mysql_query($MySql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out[] = $res;
 }
 

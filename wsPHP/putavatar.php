@@ -55,15 +55,15 @@ $target_path = "imgs/";
 $newfile=$target_path.$newfilebase;
 
 $MySql="SELECT * FROM personaggi WHERE IDutente = '$IDutente' ";
-$Result=mysql_query($MySql);
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
-if ($res=mysql_fetch_array($Result)) {
+$Result=mysqli_query($db, $MySql);
+if (mysqli_errno($db)) { die ( mysqli_errno($db).": ".mysqli_error($db). "  >>".$MySql ); }
+if ($res=mysqli_fetch_array($Result)) {
 
 	$MySql="UPDATE personaggi SET URLimg = '$newfile' WHERE IDutente = '$IDutente' ";
-	$Result=mysql_query($MySql);
+	$Result=mysqli_query($db, $MySql);
 } else {
 	$MySql="INSERT INTO personaggi (IDutente , URLimg ) VALUES ( '$IDutente' , '$newfile') ";
-	$Result=mysql_query($MySql);
+	$Result=mysqli_query($db, $MySql);
 }
 
 header("HTTP/1.1 200 OK");

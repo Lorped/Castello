@@ -41,13 +41,13 @@
 
 
 
-	$xnomepg=mysql_real_escape_string($nomepg);
-	$xmessaggio=mysql_real_escape_string( $messaggio );
+	$xnomepg=mysqli_real_escape_string($db, $nomepg);
+	$xmessaggio=mysqli_real_escape_string($db,  $messaggio );
 
 $idutente=1 ;
 $messaggio="prova prova hai perso 1 punto sanità";
 
-	master2user($idutente,$messaggio );
+	master2user($db, $idutente,$messaggio );
 
 
 

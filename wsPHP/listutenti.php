@@ -23,13 +23,13 @@ $MySql="SELECT * from personaggi
 		LEFT JOIN professioni on personaggi.IDprofessione=professioni.IDprofessione
 		LEFT JOIN specializzazione on personaggi.IDspecial=specializzazione.IDspecial
 		LEFT JOIN bonusprof on personaggi.IDbp=bonusprof.IDbp";
-$Result=mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 
 
 
-$Result=mysql_query($MySql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out[] = $res;
 }
 

@@ -24,7 +24,7 @@ $request = json_decode($postdata);
 
 $IDoggetto1 = $request->IDoggetto1;
 $IDoggetto2 = $request->IDoggetto2;
-$descrizione = mysql_real_escape_string($request->descrizione);
+$descrizione = mysqli_real_escape_string($db, $request->descrizione);
 $effettomiti = $request->effettomiti;
 $effettosan = $request->effettosan;
 $effettopf= $request->effettopf;
@@ -33,8 +33,8 @@ $out = [];
 
 $Mysql="INSERT INTO paired (IDoggetto1,IDoggetto2, pdescrizione, effettomiti, effettosan, effettopf)
 	VALUES ($IDoggetto1,$IDoggetto2, '$descrizione' ,$effettomiti, $effettosan, $effettopf) ";
-$Result=mysql_query($Mysql);
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$Mysql ); }
+$Result=mysqli_query($db, $Mysql);
+if (mysqli_errno($db)) { die ( mysqli_errno($db).": ".mysqli_error($db). "  >>".$MySql ); }
 
 
 header("HTTP/1.1 200 OK");

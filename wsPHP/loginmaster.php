@@ -26,19 +26,19 @@ $email = $request->email;
 $password = $request->password;
 
 // $email = "julien@home.com";
-// $password = "kli0loth";
 
-$email=mysql_real_escape_string($email);
-$password=mysql_real_escape_string($password);
+
+$email=mysqli_real_escape_string($db, $email);
+$password=mysqli_real_escape_string($db, $password);
 
 
 if (isset($postdata) && $email != "" && $password !="" ) {
 
 	$MySql = "SELECT * FROM master WHERE email='$email' AND password='$password' ";
-	$Result = mysql_query($MySql);
+	$Result = mysqli_query($db, $MySql);
 
 
-	if ( $res = mysql_fetch_array($Result,MYSQL_ASSOC)   ) {
+	if ( $res = mysqli_fetch_array($Result,MYSQLI_ASSOC)   ) {
 		$out [] =$res;
 
 

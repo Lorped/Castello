@@ -29,8 +29,8 @@ $id=$request->id;
 $email=$_GET['email'];
 
 $MySql = "SELECT * FROM utenti WHERE email='$email'";
-$Result=mysql_query($MySql);
-if ( $res = mysql_fetch_array($Result) )  {
+$Result=mysqli_query($db, $MySql);
+if ( $res = mysqli_fetch_array($Result) )  {
 	$out =["res" => 'KO'];
 } else {
 	$out =["res" => 'OK'];

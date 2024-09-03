@@ -32,11 +32,11 @@ function pushmsg ($fields) {
 }
 
 
-function user2master ( $idutente , $testo ) {
+function user2master ( $db, $idutente , $testo ) {
 
 	$Mysql="SELECT nomepg FROM personaggio WHERE idutente=$idutente";
-	$Result=mysql_query($Mysql);
-	$res=mysql_fetch_array($Result) ;
+	$Result=mysqli_query($db, $Mysql);
+	$res=mysqli_fetch_array($db, $Result) ;
 	$nomepg=$res['nomepg'];
 
 	$fields =  array(
@@ -63,11 +63,11 @@ function master2master ( $testo ) {
 	pushmsg ($fields);
 }
 
-function master2user ( $idutente , $testo ) {
+function master2user ( $db, $idutente , $testo ) {
 
 	$Mysql="SELECT registrationID FROM personaggi WHERE IDutente=$idutente";
-	$Result=mysql_query($Mysql);
-	$res=mysql_fetch_array($Result);
+	$Result=mysqli_query($db, $Mysql);
+	$res=mysqli_fetch_array($Result);
 
 	if ($res['registrationID'] != "" ) {
 

@@ -25,9 +25,9 @@ $out = [];
 
 $Mysql="SELECT * FROM magie ";
 
-$Result=mysql_query($Mysql);
+$Result=mysqli_query($db,$Mysql);
 
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out [] = $res ;
 }
 

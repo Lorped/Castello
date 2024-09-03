@@ -24,7 +24,7 @@ $request = json_decode($postdata);
 
 $IDoggetto = $request->IDoggetto;
 $IDspecial = $request->IDspecial;
-$descrizione = mysql_real_escape_string($request->descrizione);
+$descrizione = mysqli_real_escape_string($db, $request->descrizione);
 $effettomiti = $request->effettomiti;
 $effettosan = $request->effettosan;
 $effettopf= $request->effettopf;
@@ -33,9 +33,9 @@ $out = [];
 
 $Mysql="INSERT INTO effetti (IDoggetto,IDspecial, descrizione, effettomiti, effettosan, effettopf)
 	VALUES ($IDoggetto,$IDspecial, '$descrizione' ,$effettomiti, $effettosan, $effettopf) ";
-$Result=mysql_query($Mysql);
+$Result=mysqli_query($db, $Mysql);
 
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
+if (mysqli_errno($db)) { die ( mysqli_errno($db).": ".mysqli_error($db). "  >>".$MySql ); }
 
 header("HTTP/1.1 200 OK");
 echo json_encode ($out, JSON_UNESCAPED_UNICODE);

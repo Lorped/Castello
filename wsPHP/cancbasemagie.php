@@ -24,8 +24,8 @@ $IDmagia=$_GET['id'];
 $out = [];
 
 $Mysql="DELETE FROM magie WHERE IDmagia='$IDmagia' ";
-mysql_query($Mysql);
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$Mysql ); }
+mysqli_query($db, $Mysql);
+if (mysqli_errno($db)) { die ( mysqli_errno($db).": ".mysqli_error($db). "  >>".$MySql ); }
 
 header("HTTP/1.1 200 OK");
 echo json_encode ($out, JSON_UNESCAPED_UNICODE);

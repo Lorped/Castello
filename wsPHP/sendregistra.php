@@ -25,7 +25,7 @@ $request = json_decode($postdata)->myobj;
 
 $email = $request->regemail;
 $passwd = $request->passwd;
-$nomeutente = mysql_real_escape_string($request->regname);
+$nomeutente = mysqli_real_escape_string($db, $request->regname);
 
 
 
@@ -33,8 +33,8 @@ $MySql="INSERT INTO utenti ( email, password, nomeutente )
 VALUES (
 	'$email' , '$passwd' , '$nomeutente')";
 
-mysql_query($MySql);
-if (mysql_errno()) { die ( mysql_errno().": ".mysql_error(). "  >>".$MySql ); }
+mysqli_query($db, $MySql);
+if (mysqli_errno($db)) { die ( mysqli_errno($db).": ".mysqli_error($db). "  >>".$MySql ); }
 
 
 

@@ -26,8 +26,8 @@ $delta=$_GET['delta'];
 
 
 $MySql ="SELECT Sanita, Miti, PF FROM personaggi WHERE IDutente = $IDutente";
-$Result = mysql_query($MySql);
-$res=mysql_fetch_array($Result);
+$Result = mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
 
 $oldmiti=$res['Miti'];
 $oldsanita=$res['Sanita'];
@@ -81,9 +81,9 @@ if ($cosa=='P') {
 
 }
 
-$Result = mysql_query($MySql);
+$Result = mysqli_query($db, $MySql);
 
-master2user($IDutente,$msg );
+master2user($db, $IDutente,$msg );
 
 
 header("HTTP/1.1 200 OK");

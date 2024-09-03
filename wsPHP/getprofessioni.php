@@ -21,21 +21,21 @@ include ('db.inc.php');
 
 
 $MySql="SELECT * FROM professioni  ";
-$Result=mysql_query($MySql);
-while ( $res=mysql_fetch_array($Result,MYSQL_ASSOC) ) {
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$idx=$res['IDprofessione'];
 
 	$out2 = [];
 	$Mysql2="SELECT * FROM bonusprof WHERE IDprofessione = $idx";
-	$Result2=mysql_query($Mysql2);
-	while ( $res2=mysql_fetch_array($Result2,MYSQL_ASSOC) ) {
+	$Result2=mysqli_query($db, $Mysql2);
+	while ( $res2=mysqli_fetch_array($Result2,MYSQLI_ASSOC) ) {
 		$out2 [] = $res2;
 	}
 
 	$out3 = [];
 	$Mysql3="SELECT * FROM specializzazione WHERE IDprofessione = $idx";
-	$Result3=mysql_query($Mysql3);
-	while ( $res3=mysql_fetch_array($Result3,MYSQL_ASSOC) ) {
+	$Result3=mysqli_query($db, $Mysql3);
+	while ( $res3=mysqli_fetch_array($Result3,MYSQLI_ASSOC) ) {
 		$out3 [] = $res3;
 	}
 
