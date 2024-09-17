@@ -17,7 +17,6 @@
     "@angular/compiler": "^8.2.14",
     "@angular/core": "^8.2.14",
     "@angular/forms": "^8.2.14",
-    "@angular/http": "^7.1.4",
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
@@ -37,6 +36,7 @@
     "rxjs-compat": "^6.0.0-rc.0",
     "rxjs-tslint": "^0.1.6",
     "socks": "^2.2.2",
+    "tslib": "^1.10.0",
     "webpack-dev-server": "^3.3.1",
     "zone.js": "^0.9.1"
   },
