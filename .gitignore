@@ -44,3 +44,7 @@ testem.log
 Thumbs.db
 
 db2.inc.php
+.angular/
+/.angular
+/node_modules-zzz
+node_modules-zzz/*
