@@ -49,17 +49,17 @@ export class MainComponent implements OnInit {
       specPG: new FormControl('', [
         Validators.required
       ]),
-      ggPG: new FormControl('', [
+      ggPG: new FormControl(1, [
         Validators.required,
         Validators.min(1),
         Validators.max(31)
       ]),
-      mmPG: new FormControl('', [
+      mmPG: new FormControl(1, [
         Validators.required,
         Validators.min(1),
         Validators.max(12)
       ]),
-      aaaaPG: new FormControl('', [
+      aaaaPG: new FormControl(1970, [
         Validators.required,
         Validators.min(1900),
         Validators.max(this.today - 16)
@@ -106,6 +106,7 @@ export class MainComponent implements OnInit {
 
     });
 
+    //console.log(this.specPG);
     this.onChanges();
   }
 
