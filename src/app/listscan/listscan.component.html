@@ -14,33 +14,33 @@
         <div class="table">
           <div class="row red">
             <div class="col-3 all">
-              <button class="btn btn-sm btn-block btn-std" (click)="sortBy('nome')">Oggetto
+              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('nome')">Oggetto
               <span class="sortorder" *ngIf="propertyName === 'nome'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
             <div class="col-3 all">
-              <button class="btn btn-sm btn-block btn-std" (click)="sortBy('NomePG')">Nome
+              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('NomePG')">Nome
               <span class="sortorder" *ngIf="propertyName === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
             <div class="col-2 all">
-              <button class="btn btn-sm btn-block btn-std" (click)="sortBy('nomeprofessione')">Professione
+              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('nomeprofessione')">Professione
               <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
             <div class="col-1">
-              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('Sanita')">SAN
+              <button class="btn btn-sm w-100 btn-std alc" (click)="sortBy('Sanita')">SAN
               <span class="sortorder" *ngIf="propertyName === 'Sanita'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
             <div class="col-1">
-              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('Miti')">Miti
+              <button class="btn btn-sm w-100 btn-std alc" (click)="sortBy('Miti')">Miti
               <span class="sortorder" *ngIf="propertyName === 'Miti'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
 
             <div class="col-2 ">
-              <button class="btn btn-sm btn-block btn-std alc" (click)="sortBy('data')">Data
+              <button class="btn btn-sm w-100 btn-std alc" (click)="sortBy('data')">Data
               <span class="sortorder" *ngIf="propertyName === 'data'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>

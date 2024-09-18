@@ -39,7 +39,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
+            <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
             <div class="col-12" *ngFor="let i of item.eff">
               <div class="row mystyle" *ngIf="!(i.nomeprofessione===null)">
                   <div class="col-1">&nbsp;</div>
@@ -122,7 +122,7 @@
             </div>
             <div class="row mystyle">
               <div class="col-3">&nbsp;</div>
-              <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger btn-block" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+              <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
               <div class="col-4">&nbsp;</div>
             </div>
           </div>
@@ -135,7 +135,7 @@
 
     <div class="row justify-content-md-center mypad">
       <div style="text-align:center">
-        <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger btn-block" >Stampa oggetti</button>
+        <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger w-100" >Stampa oggetti</button>
       </div>
     </div>
     <div class="row justify-content-md-center mypad">

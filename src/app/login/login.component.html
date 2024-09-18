@@ -11,7 +11,7 @@
           <div class="form-group" >
             <input id="password" name="password" type="password" class="form-control" [(ngModel)]="loginCredentials.password" placeholder="Password" required >
           </div>
-          <button type="submit" class="btn btn-lg btn-danger btn-block" [disabled]="!loginForm.form.valid" >Login</button>
+          <button type="submit" class="btn btn-lg btn-danger w-100" [disabled]="!loginForm.form.valid" >Login</button>
           <div style="text-align:center">
             <a [routerLink]="['/register']" class="btn btn-link">Registrati</a>
             <div class=" alert, alert-danger">{{errmsg}}</div>
