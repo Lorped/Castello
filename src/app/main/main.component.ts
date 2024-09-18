@@ -160,7 +160,8 @@ export class MainComponent implements OnInit {
       .subscribe(res => {
           this.schedaService.getpg()
           .subscribe( (data: any) => {
-            this.URLimg = data.URLimg;
+            const xx = Date.now();
+            this.URLimg = data.URLimg+'?'+xx;
           });
       }, error => {
         console.log(error);

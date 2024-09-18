@@ -1,5 +1,11 @@
 {
   "compileOnSave": false,
+  
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "preserveWhitespaces": true,
+    
+  },
   "compilerOptions": {
     "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
