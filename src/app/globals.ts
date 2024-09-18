@@ -36,6 +36,7 @@ export class Personaggio {
   aaaa = 1970;
   URLimg = '' ;
   xbonus = '';
+  bonus = '';
   xspecpg = 0;
 
 }

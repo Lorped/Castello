@@ -4,23 +4,30 @@ import 'rxjs/add/operator/map';
 
 
 export class Paired  {
- IDoggetto1: 0 ;
- IDoggetto2: 0 ;
- desc: '' ;
+ IDoggetto1 = 0 ;
+ IDoggetto2 = 0 ;
+ desc =  '' ;
+ effettopf = 0 ;
+ effettomiti = 0 ;
+ effettosan = 0 ;
+ pdescrizione = '' ;
+ IDX = 0;
+ nome = '';
 };
 
 export class Effetti {
- IDeffetto: 0 ;
- IDoggetto: 0 ;
- IDprofessione: 0;
- nomeprofessione: '' ;
- IDspecial: 0;
- nomespecial: '';
- descrizione: '' ; //da LEFT JOIN
- pdescrizione: '' ;
- effettomiti: 0 ;
- effettosan: 0 ;
- effettopf: 0 ;
+ IDeffetto = 0 ;
+ IDoggetto = 0 ;
+ IDprofessione = 0;
+ nomeprofessione = '' ;
+ IDspecial = 0;
+ nomespecial = '';
+ descrizione = '' ; //da LEFT JOIN
+ pdescrizione = '' ;
+ effettomiti = 0 ;
+ effettosan = 0 ;
+ effettopf = 0 ;
+ descbp = '' ;
 };
 
 export class Oggetto {
@@ -38,14 +45,15 @@ export class Oggetto {
 };
 
 export class Magia {
-  IDoggetto: 0 ;
-  scan: 0;
-  nome: '' ;
-  minmiti: 0 ;
-  descrizione: '' ;
-  basemiti: 0 ;
-  basesan: 0 ;
-  basepf: 0 ;
+  IDmagia = 0 ;
+  IDoggetto = 0 ;
+  scan = 0;
+  nome = '' ;
+  minmiti = 0 ;
+  descrizione = '' ;
+  basemiti = 0 ;
+  basesan = 0 ;
+  basepf = 0 ;
 };
 
 export class Listscan  {

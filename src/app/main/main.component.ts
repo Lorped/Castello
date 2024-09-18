@@ -152,7 +152,9 @@ export class MainComponent implements OnInit {
 
 
 
-  fileChange(files: FileList) {
+  fileChange(event: any) {
+    const files: FileList = event.target.files;
+
     if (files.length > 0) {
       const fileToUpload = files[0];
 

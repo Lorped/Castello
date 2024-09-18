@@ -29,7 +29,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['main']);
         },
         error => {
-          this.errmsg = error.statusText;
+          if (error.status == 401) {
+            this.errmsg = "Errore di autenticazione";
+          } else {
+            this.errmsg = "Server Error";
+          }
+          
         });
   }
 
