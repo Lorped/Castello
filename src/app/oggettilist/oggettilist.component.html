@@ -29,9 +29,9 @@
           </div>
           <!--- -->
           <div class="row" *ngFor="let item of listaoggetti">
-            <div class="col-1"><a class="mya" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.IDoggetto}}</a></div>
-            <div class="col-2 all"><a class="mya" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
-            <div class="col-6 all"><a class="mya" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.descrizione}}</a></div>
+            <div class="col-1 all"><a class="btn btn-link myx" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.IDoggetto}}</a></div>
+            <div class="col-2 all"><a class="btn btn-link myx"  routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
+            <div class="col-6 all">{{item.ogg.descrizione}}</div>
             <div class="col-2 alc">
               <div class="table mystyle">
                 <div class="row">
@@ -41,7 +41,7 @@
             </div>
             <div class="col-1"><button type="button" class="btn btn-sm btn-danger btn-block" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row" *ngIf="!(i.nomeprofessione===null)">
+              <div class="row mystyle" *ngIf="!(i.nomeprofessione===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
@@ -56,7 +56,7 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row" *ngIf="(i.nomeprofessione===null && i.descbp===null)">
+              <div class="row mystyle" *ngIf="(i.nomeprofessione===null && i.descbp===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all gold">({{i.nomespecial}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row" *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
+              <div class="row mystyle" *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all pink">({{i.descbp}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
@@ -86,7 +86,7 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.pair">
-              <div class="row">
+              <div class="row mystyle">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all green">({{i.nome}})</div>
                   <div class="col-6 all">{{i.pdescrizione}}</div>
@@ -103,26 +103,28 @@
           </div>
 
           <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
-          <div class="row">
+          <div class="table">
+            <div class="row mystyle">
 
-            <div class="col-1">&nbsp;</div>
-            <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
-            <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
-            <div class="col-2 alc">
-              <div class="table mystyle">
-                <div class="row">
-                  <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
-                  <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
-                  <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
+              <div class="col-1">&nbsp;</div>
+              <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
+              <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
+              <div class="col-2 alc">
+                <div class="table mystyle">
+                  <div class="row">
+                    <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
+                    <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
+                    <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
+                  </div>
                 </div>
               </div>
+              <div class="col-1">&nbsp;</div>
             </div>
-            <div class="col-1">&nbsp;</div>
-          </div>
-          <div class="row">
-            <div class="col-3">&nbsp;</div>
-            <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger btn-block" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
-            <div class="col-4">&nbsp;</div>
+            <div class="row mystyle">
+              <div class="col-3">&nbsp;</div>
+              <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger btn-block" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+              <div class="col-4">&nbsp;</div>
+            </div>
           </div>
           </form>
           <!-- -->

@@ -24,6 +24,14 @@
   vertical-align: middle;
 }
 
+.myx {
+  background: rgba(0,0,0,0.5) !important;
+  color: white;
+}
+
+.mya {
+  background: rgba(0,0,0,0.5);
+}
 .mya:link {
     color: white;
 }

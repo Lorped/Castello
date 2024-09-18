@@ -1,8 +1,14 @@
 .mystyle {
-  background-color:black;
+  /*background-color:black;*/
   background:rgba(0,0,0,0.5);
   color: white;
 }
+
+.myx {
+  background:rgba(0,0,0,0.8) !important;
+  color: white;
+}
+
 
 .mya:link {
     color: white;
