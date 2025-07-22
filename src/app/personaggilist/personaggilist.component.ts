@@ -14,6 +14,9 @@ export class PersonaggilistComponent implements OnInit {
   order = 1;
   propertyName = '';
 
+  allchecked = false;
+  partialChecked = false;
+
   constructor( private personaggi: PersonaggioService ) { }
 
   ngOnInit() {
@@ -21,6 +24,10 @@ export class PersonaggilistComponent implements OnInit {
       .subscribe( (res: any) => {
         //console.log(res);
         this.listapg = res;
+
+        for (let i = 0; i < this.listapg.length; i++) {
+          this.listapg[i].selected = false;
+        }
       });
   }
   sortBy ( prop: string) {
@@ -32,4 +39,41 @@ export class PersonaggilistComponent implements OnInit {
 
     // console.log(this.order);
   }
+
+  checked(item: Personaggio) {
+    
+    item.selected = !item.selected;
+
+    //console.log(item.NomePG , item.selected);
+    // Handle checkbox change event
+    if (item.selected) {
+      this.partialChecked = false;
+      this.allchecked = true;
+      for (let i = 0; i < this.listapg.length; i++) {
+        if (!this.listapg[i].selected) {
+          this.partialChecked = true;
+          this.allchecked = false;
+          break;
+        }
+      }
+    } else {
+      this.allchecked = false;
+      this.partialChecked = false;
+        for (let i = 0; i < this.listapg.length; i++) {
+        if (this.listapg[i].selected) {
+          this.partialChecked = true;
+          break;
+        }
+      }
+    }
+  }
+  doallchecked(){
+    this.allchecked = !this.allchecked;
+    this.partialChecked = false;
+
+    for (let i = 0; i < this.listapg.length; i++) {
+      this.listapg[i].selected = this.allchecked;
+    }
+  }
+
 }

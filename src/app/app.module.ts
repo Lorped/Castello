@@ -33,9 +33,12 @@ import { PersonaggilistComponent } from './personaggilist/personaggilist.compone
 import { ListscanComponent } from './listscan/listscan.component';
 import { PersonaggioComponent } from './personaggio/personaggio.component';
 import { MagielistComponent } from './magielist/magielist.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-
-
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button'; 
 
 @NgModule({
   declarations: [
@@ -63,6 +66,10 @@ import { MagielistComponent } from './magielist/magielist.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatButtonModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
@@ -74,7 +81,8 @@ import { MagielistComponent } from './magielist/magielist.component';
     AuthenticationService,
     SchedaService,
     OggettiService,
-    PersonaggioService
+    PersonaggioService,
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

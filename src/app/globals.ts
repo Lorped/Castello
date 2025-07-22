@@ -38,6 +38,7 @@ export class Personaggio {
   xbonus = '';
   bonus = '';
   xspecpg = 0;
+  selected = false;
 
 }
 

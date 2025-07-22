@@ -1,30 +1,37 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
+<div class="mx-auto" style=" margin-top: 50px;">
+  <div class="container" style="width: 80%; margin-top: 1em;">
     <div class="row justify-content-md-center">
       <div class="col-sm-8 alc">
-        <h1><span class="mytitle">Lista Personaggi</span></h1>
+        <h1><span class="mytitle white">Lista Personaggi</span></h1>
       </div>
     </div>
 
 
-    <div class="row justify-content-md-center mypad" >
+
+
+    <mat-card>
+      <mat-card-content>
+        
       <div class="col-sm-10 alc" >
 
       <!-- tabella -->
-        <div class="table">
-          <div class="row red">
-            <div class="col-3 all">
-              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('NomePG')">Nome
+        <div class="table" style="--bs-table-color: #ffffff1a; --bs-table-bg: transparent;">
+          <div class="row white">
+            <div class="col-1 smaller" >
+              <mat-checkbox [checked]="allchecked" [indeterminate]="partialChecked" (change)="doallchecked()"></mat-checkbox>
+            </div>
+            <div class="col-3 all" style="margin-top: 8px;">
+              <button mat-raised-button color="accent" class="full" (click)="sortBy('NomePG')">Nome
               <span class="sortorder" *ngIf="propertyName === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-3 all">
-              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('nomeprofessione')">Professione
+            <div class="col-2 all" style="margin-top: 8px;">
+              <button mat-raised-button color="accent" class="full" (click)="sortBy('nomeprofessione')">Professione
               <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-3 all">
-              <button class="btn btn-sm w-100 btn-std" (click)="sortBy('nomespecial')">Specialità
+            <div class="col-3 all" style="margin-top: 8px;">
+              <button mat-raised-button color="accent" class="full" (click)="sortBy('nomespecial')">Specialità
               <span class="sortorder" *ngIf="propertyName === 'nomespecial'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
@@ -39,9 +46,10 @@
               Salute
             </div>
           </div>
-          <div class="row" *ngFor="let item of listapg">
+          <div class="row white" *ngFor="let item of listapg">
+            <div class="col-1 smaller"> <mat-checkbox [checked]="item.selected" (change)="checked(item)"></mat-checkbox> </div>
             <div class="col-3 all smaller"><a class="btn btn-outline-danger myx" routerLink="/personaggio/{{item.IDutente}}">{{item.NomePG}} {{item.CognomePG}}</a></div>
-            <div class="col-3 all smaller">{{item.nomeprofessione}}</div>
+            <div class="col-2 all smaller">{{item.nomeprofessione}}</div>
             <div class="col-3 all smaller">{{item.nomespecial}}</div>
             <div class="col-1 smaller">{{item.Sanita}}</div>
             <div class="col-1 smaller">{{item.Miti}}</div>
@@ -50,7 +58,11 @@
         </div>
 
       </div>
-    </div>
+
+      
+      </mat-card-content>
+      </mat-card>
+
 
     <div class="row justify-content-md-center mypad">
       <div style="text-align:center">

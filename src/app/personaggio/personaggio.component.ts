@@ -21,6 +21,7 @@ export class PersonaggioComponent implements OnInit {
   ngOnInit() {
 
     const id = +this.route.snapshot.paramMap.get('id');
+    this.pgcorrente.URLimg="nopicture.gif";
 
     this.schedaService.getpgbyID( id)
     .subscribe( (data: any) => {
