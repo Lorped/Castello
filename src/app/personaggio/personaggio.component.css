@@ -8,3 +8,18 @@
 .btn.btn-primary:disabled{
     background-color: #a0a0a0;
 }
+
+mat-card {
+  /* margin-top: 0.25em; */
+    padding-bottom: 0.5em;
+    margin-bottom: 0.1em;
+}
+
+
+
+mat-card-title {
+  margin-top: 1em;
+    padding-top: 2em;
+      padding-bottom: 2em;
+}
+

@@ -1,22 +1,22 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
-    <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc">
-        <h1><span class="mytitle">Gestione Magie</span></h1>
-      </div>
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+<p>
+  
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Gestione Magie</span></mat-card-title>
     </div>
 
-    <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-12 alc" >
+    <mat-card-content>
 
-      <!-- tabella -->
-        <div class="table">
+      <div class="alc white" >
+
+        <!-- tabella -->
+        <div >
           <div class="row red">
             <div class="col-1">ID</div>
             <div class="col-2 all">Nome</div>
             <div class="col-5">Descrizione</div>
             <div class="col-1">Miti Min.</div>
-
             <div class="col-2 alc">
               <div class="table mystyle">
                 <div class="row red">
@@ -29,62 +29,71 @@
             </div>
             <div class="col-1">Canc.</div>
           </div>
-          <!--- -->
+
+          <mat-divider></mat-divider>
+          <p>
+
           <div class="row" *ngFor="let item of listaoggetti">
             <div class="col-1">{{item.IDmagia}}</div>
             <div class="col-2 all">{{item.nome}}</div>
             <div class="col-5 all">{{item.descrizione}}</div>
             <div class="col-1 ">{{item.minmiti}}</div>
             <div class="col-2 alc">
-              <div class="table mystyle">
+              <div class="table">
                 <div class="row">
                   <div class="col">{{item.basesan}}</div><div class="col">{{item.basemiti}}</div><div class="col">{{item.basepf}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="cancbase(item.IDmagia)" >X</button></div>
-
+            <div class="col-1"><button mat-raised-button color="warn" (click)="cancbase(item.IDmagia)" >X</button></div>
           </div>
 
-          <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
-          <div class="row">
-
-            <div class="col-1">&nbsp;</div>
-            <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
-            <div class="col-5 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
-            <div class="col-1 "><input name="minmiti" type="number" class="form-control" [(ngModel)]="newminmiti" required></div>
-            <div class="col-2 alc">
-              <div class="table mystyle">
-                <div class="row">
-                  <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
-                  <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
-                  <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-1">&nbsp;</div>
-          </div>
-          <div class="row">
-            <div class="col-3">&nbsp;</div>
-            <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
-            <div class="col-4">&nbsp;</div>
-          </div>
-          </form>
-          <!-- -->
         </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-      </div>
-    </div>
+          
+  <mat-card>
+    <mat-card-content>
 
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger w-100" >Stampa magie</button>
+      <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
+      <div class="row">
+
+        <div class="col-1">&nbsp;</div>
+        <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
+        <div class="col-5 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
+        <div class="col-1 "><input name="minmiti" type="number" class="form-control" [(ngModel)]="newminmiti" required></div>
+        <div class="col-2 alc">
+          <div class="table">
+            <div class="row">
+              <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
+              <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
+              <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-1">&nbsp;</div>
       </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
+      <div class="row">
+        <div class="col-3">&nbsp;</div>
+        <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+        <div class="col-4">&nbsp;</div>
       </div>
-    </div>
-  </div>
+      </form>
+      
+      <p>
+      <div class="row justify-content-md-center mypad">
+        <div style="text-align:center">
+          <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger w-100" >Stampa magie</button>
+        </div>
+      </div>
+      <div class="row justify-content-md-center mypad">
+        <div style="text-align:center">
+          <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>

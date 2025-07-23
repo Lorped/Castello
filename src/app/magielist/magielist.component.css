@@ -1,8 +1,4 @@
-.mystyle {
-  background-color:black;
-  background:rgba(0,0,0,0.5);
-  color: white;
-}
+
 
 .mya:link {
     color: white;
@@ -48,3 +44,31 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; /* Removes leftover margin */
 }
+
+
+mat-card {
+  /* margin-top: 0.25em; */
+    padding-bottom: 0.5em;
+    margin-bottom: 0.1em;
+}
+
+
+
+mat-card-title {
+  margin-top: 1em;
+    padding-top: 2em;
+      padding-bottom: 2em;
+}
+
+.mystyle{
+  background-color: transparent;
+  border-left-style: solid;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-left-width: 1px;
+}
+

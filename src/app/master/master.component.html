@@ -1,34 +1,45 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
-        <h1><span class="mytitle">Accesso Custode</span></h1>
-      </div>
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+  <p>
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Accesso Custode</span></mat-card-title>
     </div>
-    <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-sm w-100 btn-std" (click)="gotostat()">Statistiche Iscritti</button>
+
+    <mat-card-content>
+      <div class="alc" >
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            <button mat-stroked-button color="accent" class ="full" (click)="gotostat()">Statistiche Iscritti</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            <button mat-stroked-button color="accent" class ="full" (click)="gotopg()">Lista Personaggi</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            <button mat-stroked-button color="accent" class ="full" (click)="gotooggetti()">Gestione Oggetti</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            <button mat-stroked-button color="accent" class ="full" (click)="gotomagie()">Gestione Magie</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            <button mat-stroked-button color="accent" class ="full" (click)="gotolistscan()">Oggetti Analizzati</button>
+          </div>
+        </div>
+        <div class="row justify-content-md-center " >
+          <div class="col-6">
+            &nbsp;
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-sm w-100 btn-std" (click)="gotopg()">Lista Personaggi</button>
-      </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-sm w-100 btn-std" (click)="gotooggetti()">Gestione Oggetti</button>
-      </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-sm w-100 btn-std" (click)="gotomagie()">Gestione Magie</button>
-      </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div class="col-sm-6">
-        <button type="button" class="btn btn-sm w-100 btn-std" (click)="gotolistscan()">Oggetti Analizzati</button>
-      </div>
-    </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>
+

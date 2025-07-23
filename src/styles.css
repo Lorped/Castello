@@ -24,7 +24,7 @@ html, body {
   min-height: 100vh;
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #121212;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #303030;}
 
 
 
@@ -82,4 +82,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
 }
 
 
+.bigger {
+  font-size: 1.5em;
+}
 
+.true_primary {
+  color: #E91E63;
+}
