@@ -5,47 +5,38 @@
   content: '\25bc';   /* BLACK DOWN-POINTING TRIANGLE */
 }
 
-.btn-std {
-    color: #ff0000;
-    background-color: transparent;
-    border-color: transparent; /*set the color you want here*/
-    text-align: left;
-    padding-left: 0px;
-    padding-right: 0px;
 
-}
-.btn-std:hover, .btn-std:focus, .btn-std:active, .btn-std.active, .open>.dropdown-toggle.btn-std {
 
-    background-color: #3d3d3d;
-    border-color: #285e8e; /*set the color you want here*/
+.margin-top-8 {
+  margin-top: 8px;
 }
+
+
+
+.margin-top-12 {
+  margin-top: 12px;
+}
+
 .smaller {
   font-size: .875rem;
   vertical-align: middle;
 }
 
-.myx {
-  background: rgba(0,0,0,0.5) !important;
-  color: white;
-}
 
-.mya {
-  background: rgba(0,0,0,0.5);
-}
-.mya:link {
-    color: white;
-}
-
-.mya:visited {
-    color: white;
-}
-
-.mya:active {
-    color: white;
-}
 
 mat-card {
   /* margin-top: 0.25em; */
-  font-size: 1em;
-  margin-bottom: 0.25em;
+    padding-bottom: 0.5em;
+    margin-bottom: 0.1em;
+
+
+   
+}
+
+
+
+mat-card-title {
+  margin-top: 1em;
+    padding-top: 2em;
+      padding-bottom: 2em;
 }

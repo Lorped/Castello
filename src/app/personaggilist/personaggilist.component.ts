@@ -17,6 +17,8 @@ export class PersonaggilistComponent implements OnInit {
   allchecked = false;
   partialChecked = false;
 
+  messaggio = '';
+
   constructor( private personaggi: PersonaggioService ) { }
 
   ngOnInit() {
@@ -74,6 +76,34 @@ export class PersonaggilistComponent implements OnInit {
     for (let i = 0; i < this.listapg.length; i++) {
       this.listapg[i].selected = this.allchecked;
     }
+  }
+
+
+  inviamessaggio(){
+    if (this.messaggio.trim() === '') {
+      return;
+    }
+
+    const selectedCharacters = this.listapg.filter(item => item.selected);
+    if (selectedCharacters.length === 0) {
+      return;
+    }
+
+    const payload = {
+      messaggio: this.messaggio,
+      personaggi: selectedCharacters
+    };
+
+    this.personaggi.inviamessaggio(payload)
+      .subscribe(response => {
+        console.log('Messaggio inviato con successo:', response);
+        this.messaggio = '';
+        this.allchecked = false;
+        this.partialChecked = false;
+        this.listapg.forEach(item => item.selected = false);
+      }, error => {
+        console.error('Errore durante l\'invio del messaggio:', error);
+      });
   }
 
 }

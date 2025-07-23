@@ -39,6 +39,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button'; 
+import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCheckboxModule,
     MatCardModule,
     MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],

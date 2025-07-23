@@ -1,67 +1,94 @@
-<div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" style="width: 80%; margin-top: 1em;">
-    <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc">
-        <h1><span class="mytitle white">Lista Personaggi</span></h1>
-      </div>
+  <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+  <p>
+  
+
+
+
+
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Lista Personaggi</span></mat-card-title>
     </div>
 
-
-
-
-    <mat-card>
-      <mat-card-content>
+    <mat-card-content>
         
-      <div class="col-sm-10 alc" >
+      <div class="alc" >
 
-      <!-- tabella -->
-        <div class="table" style="--bs-table-color: #ffffff1a; --bs-table-bg: transparent;">
+        <!-- tabella -->
+
+        <div>
           <div class="row white">
             <div class="col-1 smaller" >
-              <mat-checkbox [checked]="allchecked" [indeterminate]="partialChecked" (change)="doallchecked()"></mat-checkbox>
+              <mat-checkbox [checked]="allchecked" [indeterminate]="partialChecked" (change)="doallchecked()" color="primary"></mat-checkbox>
             </div>
-            <div class="col-3 all" style="margin-top: 8px;">
+            <div class="col-3 all margin-top-8">
               <button mat-raised-button color="accent" class="full" (click)="sortBy('NomePG')">Nome
               <span class="sortorder" *ngIf="propertyName === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-2 all" style="margin-top: 8px;">
+            <div class="col-2 all margin-top-8">
               <button mat-raised-button color="accent" class="full" (click)="sortBy('nomeprofessione')">Professione
               <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-3 all" style="margin-top: 8px;">
+            <div class="col-3 all margin-top-8">
               <button mat-raised-button color="accent" class="full" (click)="sortBy('nomespecial')">Specialità
               <span class="sortorder" *ngIf="propertyName === 'nomespecial'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
 
-            <div class="col-1 smaller" style="margin-top: 4px;">
+            <div class="col-1 smaller  margin-top-12" >
               SAN
             </div>
-            <div class="col-1 smaller" style="margin-top: 4px;">
+            <div class="col-1 smaller margin-top-12" >
               Miti
             </div>
-            <div class="col-1 smaller" style="margin-top: 4px;">
+            <div class="col-1 smaller margin-top-12" >
               Salute
             </div>
           </div>
           <div class="row white" *ngFor="let item of listapg">
-            <div class="col-1 smaller"> <mat-checkbox [checked]="item.selected" (change)="checked(item)"></mat-checkbox> </div>
-            <div class="col-3 all smaller"><a class="btn btn-outline-danger myx" routerLink="/personaggio/{{item.IDutente}}">{{item.NomePG}} {{item.CognomePG}}</a></div>
-            <div class="col-2 all smaller">{{item.nomeprofessione}}</div>
-            <div class="col-3 all smaller">{{item.nomespecial}}</div>
-            <div class="col-1 smaller">{{item.Sanita}}</div>
-            <div class="col-1 smaller">{{item.Miti}}</div>
-            <div class="col-1 smaller">{{item.PF}}</div>
+            <div class="col-1 smaller"> <mat-checkbox [checked]="item.selected" (change)="checked(item)" color="primary"></mat-checkbox> </div>
+            <div class="col-3 all margin-top-8" ><button mat-stroked-button routerLink="/personaggio/{{item.IDutente}}" >{{item.NomePG}} {{item.CognomePG}} </button> </div>
+            <div class="col-2 all margin-top-8">{{item.nomeprofessione}}</div>
+            <div class="col-3 all margin-top-8">{{item.nomespecial}}</div>
+            <div class="col-1 margin-top-8">{{item.Sanita}}</div>
+            <div class="col-1 margin-top-8">{{item.Miti}}</div>
+            <div class="col-1 margin-top-8">{{item.PF}}</div>
           </div>
         </div>
 
       </div>
 
       
-      </mat-card-content>
-      </mat-card>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-divider></mat-divider>
+
+
+  <mat-card>
+    <mat-card-content>
+
+      <form name="msgForm"  #msgForm="ngForm" class="form-signin" >
+      <div class="row white">
+        <div class="col-11">
+          <mat-form-field class="full">
+          <mat-label>Messaggio</mat-label>
+          <input matInput [(ngModel)]="messaggio" name="messaggio" required>
+          <mat-hint align="start"><strong>Selezionare almeno un personaggio</strong> </mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="col-1">
+          <button mat-raised-button color="primary" [disabled]="!msgForm.valid || (allchecked==false && partialChecked==false)" (click)="inviamessaggio()">Invia</button>
+        </div>
+      </div>
+    </form>
+
+
+    </mat-card-content>
+
+  </mat-card>
 
 
     <div class="row justify-content-md-center mypad">
@@ -69,5 +96,6 @@
         <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
       </div>
     </div>
+
   </div>
-</div>
+

@@ -1,5 +1,5 @@
 <?php
-	include ('messaggi.php');
+	
 
 	header("Access-Control-Allow-Origin: *");
 
@@ -27,6 +27,7 @@
 
 
 	include ('db.inc.php');
+	include ('messaggi.inc.php');
 
 
 	$postdata = file_get_contents("php://input");
@@ -44,10 +45,10 @@
 	$xnomepg=mysqli_real_escape_string($db, $nomepg);
 	$xmessaggio=mysqli_real_escape_string($db,  $messaggio );
 
-$idutente=1 ;
+$idutente=9 ;
 $messaggio="prova prova hai perso 1 punto sanità";
 
-	master2user($db, $idutente,$messaggio );
+	master2user($idutente,$messaggio , $db );
 
 
 

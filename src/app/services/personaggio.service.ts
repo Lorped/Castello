@@ -35,5 +35,8 @@ export class PersonaggioService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/listutenti.php' );
   }
 
+  inviamessaggio(payload: any) {
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/inviamessaggio.php', payload);
+  }
 
 }

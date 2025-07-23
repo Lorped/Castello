@@ -1,5 +1,5 @@
 <?php
-	include ('messaggi.php');
+
 
 //http://stackoverflow.com/questions/18382740/cors-not-working-php
 if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 
 include ('db.inc.php');
-
+include ('messaggi.inc.php');
 
 $IDutente=$_GET['id'];
 $cosa=$_GET['sm'];
@@ -83,7 +83,7 @@ if ($cosa=='P') {
 
 $Result = mysqli_query($db, $MySql);
 
-master2user($db, $IDutente,$msg );
+master2user($IDutente,$msg , $db  );
 
 
 header("HTTP/1.1 200 OK");
