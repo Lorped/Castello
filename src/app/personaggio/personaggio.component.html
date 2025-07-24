@@ -8,79 +8,105 @@
 
     <mat-card-content>
 
-
-      <div class="row justify-content-md-center">
-        <div class="col-2">
-          <img src="assets/{{pgcorrente.URLimg}}" height="100"  class="avatar">
-        </div>
-
-        <div class="col-9 white">
-          <div class="row" >
-            <div class="col bigger">{{pgcorrente.NomePG}} {{pgcorrente.CognomePG}}</div>
-          </div>
-          <div class="row" >
-            <div class="col">Data di nascita: {{pgcorrente.gg}}/{{pgcorrente.mm}}/{{pgcorrente.aaaa}}</div>
-          </div>
-          <div class="row" >
-            <div class="col">{{pgcorrente.nomeprofessione}} - {{pgcorrente.nomespecial}} </div>
-          </div>
-          <div class="row" >
-            <div class="col">Conoscenze: {{pgcorrente.descbp}}</div>
-          </div>
-          <div class="row" *ngIf="pgcorrente.xbonus=== null ">
-            <div class="col">{{pgcorrente.bonus}}</div>
-          </div>
-          <div class="row" *ngIf="!(pgcorrente.xbonus===null) ">
-            <div class="col">{{pgcorrente.xbonus}}</div>
-          </div>
-
-          <div class="row" >
-            <div class="col-1">Sanità:</div>
-            <div class="col-2">
-              <button class="btn btn-primary btn-xs" (click)="menosan()" [disabled]="pgcorrente.Sanita==0"><i class="fa fa-minus"></i></button>
-              {{pgcorrente.Sanita}}
-              <button class="btn btn-primary btn-xs" (click)="piusan()" [disabled]="pgcorrente.Sanita+pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+      <mat-card>
+        <mat-card-content>
+          <div class = "row nomargin white">
+            <div class = "col-2">
+              <img  src="assets/{{pgcorrente.URLimg}}" height="100"  >
             </div>
-            <div class="col-1">Miti:</div>
-            <div class="col-2">
-              <button class="btn btn-primary btn-xs" (click)="menomiti()" [disabled]="pgcorrente.Miti==0"><i class="fa fa-minus"></i></button>
-              {{pgcorrente.Miti}}
-              <button class="btn btn-primary btn-xs" (click)="piumiti()" [disabled]="pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+            <div class = "col-10">
+              <div class="bigger">{{pgcorrente.NomePG}} {{pgcorrente.CognomePG}}</div>
+              <div >Data di nascita: {{pgcorrente.gg}}/{{pgcorrente.mm}}/{{pgcorrente.aaaa}}</div>
+              <div >{{pgcorrente.nomeprofessione}} - {{pgcorrente.nomespecial}} </div>
+              <div >Conoscenze: {{pgcorrente.descbp}}</div>
+              <div *ngIf="pgcorrente.xbonus=== null "> {{pgcorrente.bonus}}</div>
+              <div *ngIf="!(pgcorrente.xbonus===null) ">{{pgcorrente.xbonus}}</div>
+
+              <p>
+              <mat-divider></mat-divider>
+              <p>
+
+              <div class="row">
+                <div class="col-1">Sanità:</div>
+                <div class="col-2">
+                  <button class="btn btn-primary btn-xs" (click)="menosan()" [disabled]="pgcorrente.Sanita==0"><i class="fa fa-minus"></i></button>
+                  {{pgcorrente.Sanita}}
+                  <button class="btn btn-primary btn-xs" (click)="piusan()" [disabled]="pgcorrente.Sanita+pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+                </div>
+                <div class="col-1">Miti:</div>
+                <div class="col-2">
+                  <button class="btn btn-primary btn-xs" (click)="menomiti()" [disabled]="pgcorrente.Miti==0"><i class="fa fa-minus"></i></button>
+                  {{pgcorrente.Miti}}
+                  <button class="btn btn-primary btn-xs" (click)="piumiti()" [disabled]="pgcorrente.Miti>=10"><i class="fa fa-plus"></i></button>
+                </div>
+                <div class="col-1">Salute:</div>
+                <div class="col-2">
+                  <button class="btn btn-primary btn-xs" (click)="menoPF()" [disabled]="pgcorrente.PF==0"><i class="fa fa-minus"></i></button>
+                  {{pgcorrente.PF}}
+                  <button class="btn btn-primary btn-xs" (click)="piuPF()" [disabled]="pgcorrente.PF>=5"><i class="fa fa-plus"></i></button>
+                </div>
+              </div>
+
+
             </div>
-            <div class="col-1">Salute:</div>
-            <div class="col-2">
-              <button class="btn btn-primary btn-xs" (click)="menoPF()" [disabled]="pgcorrente.PF==0"><i class="fa fa-minus"></i></button>
-              {{pgcorrente.PF}}
-              <button class="btn btn-primary btn-xs" (click)="piuPF()" [disabled]="pgcorrente.PF>=5"><i class="fa fa-plus"></i></button>
+          </div>          
+        </mat-card-content>
+      </mat-card>
+
+
+
+      <mat-card>
+        <mat-card-content>
+          <div class="table white">
+            <div class="col">
+              <span class="true_primary">Scan Effettuati</span>
             </div>
+            <div class="row" *ngFor="let item of scancorrenti">
+              <div class="col-4 all smaller">{{item.nome}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+            </div>
+            <div class="row" *ngIf="scancorrenti.length == 0">
+              <div class="col-4 all smaller"> -- Nessuno -- </div>
+            </div>
+            <div class="col">
+              <span class="true_primary">Pair Effettuati</span>
+            </div>
+            <div class="row" *ngFor="let item of paircorrenti">
+              <div class="col-4 all smaller">{{item.nome1}} + {{item.nome2}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+            </div>
+            <div class="row" *ngIf="paircorrenti.length == 0 ">
+              <div class="col-4 all smaller"> -- Nessuno -- </div>
+            </div>
+            <div class="col">
+              <span class="true_primary">Magie Visionate</span>
+            </div>
+            <div class="row" *ngFor="let item of magie">
+              <div class="col-4 all smaller">{{item.DescEstesa}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+              <div class="col-2 smaller" *ngIf="item.compreso == 'N'">NON Compresa</div>
+              <div class="col-2 smaller" *ngIf="item.compreso == 'Y'">Compresa !!</div>
+            </div>
+            <div class="row" *ngIf="magie.length == 0">
+              <div class="col-4 all smaller"> -- Nessuna -- </div>
+            </div>
+            <div class="col">
+              <span class="true_primary">Magie Lanciate</span>
+            </div>
+            <div class="row" *ngFor="let item of magielanciate">
+              <div class="col-4 all smaller">{{item.DescEstesa}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+            </div>
+            <div class="row" *ngIf="magielanciate.length == 0">
+              <div class="col-4 all smaller"> -- Nessuna -- </div>
+            </div>
+            
           </div>
-        </div>
-      </div>
+        </mat-card-content>
+      </mat-card>
+  
 
-      <div class="table white">
 
-        <div class="col">
-          <span class="true_primary">Scan Effettuati</span>
-        </div>
-        <div class="row" *ngFor="let item of scancorrenti">
-          <div class="col-4 all smaller">{{item.nome}}</div>
-          <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-        </div>
-        <div class="row" *ngIf="scancorrenti.length == 0">
-          <div class="col-4 all smaller"> -- Nessuno -- </div>
-        </div>
-        <div class="col">
-          <span class="true_primary">Pair Effettuati</span>
-        </div>
-        <div class="row" *ngFor="let item of paircorrenti">
-          <div class="col-4 all smaller">{{item.nome1}} + {{item.nome2}}</div>
-          <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-        </div>
-        <div class="row" *ngIf="paircorrenti.length == 0 ">
-          <div class="col-4 all smaller"> -- Nessuno -- </div>
-        </div>
-
-      </div>
       <div class="row justify-content-md-center mypad">
         <div style="text-align:center">
           <a [routerLink]="['/personaggilist']" class="btn btn-link">Ritorna alla pagina Personaggi</a>

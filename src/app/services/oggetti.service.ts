@@ -69,12 +69,26 @@ export class Listscan  {
 };
 
 export class Listpaired  {
-  nome1: '';
-  nome2: '';
-  data: '';
-  NomePG: '';
-  CognomePG: '';
+  nome1 = '';
+  nome2 = '';
+  data = '';
+  NomePG = '';
+  CognomePG = '';
 };
+
+
+export class Listmagie  {
+  data = '';
+  DescEstesa = '';
+  compreso = '';
+};
+
+export class Listmagiex  {
+  data = '';
+  DescEstesa = '';
+};
+
+
 
 @Injectable()
 export class OggettiService {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchedaService } from '../services/scheda.service';
 import { Personaggio } from '../globals';
-import { Listscan, Listpaired } from '../services/oggetti.service';
+import { Listscan, Listpaired, Listmagie, Listmagiex } from '../services/oggetti.service';
 
 @Component({
   selector: 'app-personaggio',
@@ -14,6 +14,8 @@ export class PersonaggioComponent implements OnInit {
   pgcorrente = new Personaggio;
   scancorrenti: Array<Listscan> = [];
   paircorrenti: Array<Listpaired> = [];
+   magie: Array<Listmagie> = [];
+   magielanciate: Array<Listmagiex> = [];
 
   constructor( private schedaService: SchedaService,
       private route: ActivatedRoute, ) { }
@@ -29,6 +31,8 @@ export class PersonaggioComponent implements OnInit {
       this.pgcorrente = data.pg;
       this.scancorrenti = data.scan;
       this.paircorrenti = data.pair;
+      this.magie = data.magie;
+      this.magielanciate = data.magiex;
 
       this.pgcorrente.Sanita = Number(data.pg.Sanita);
       this.pgcorrente.Miti = Number(data.pg.Miti);

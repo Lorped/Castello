@@ -52,10 +52,29 @@ while ($res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ){
 	$out3[] = $res;
 }
 
+
+$out4 = [];
+$MySql="SELECT data, DescEstesa, compreso FROM logscanmagia
+	 WHERE IDutente = $IDutente  order by data";
+$Result=mysqli_query($db, $MySql);
+while ($res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ){
+	$out4[] = $res;
+}
+
+$out5 = [];
+$MySql="SELECT data, DescEstesa FROM logmagia
+	 WHERE IDutente = $IDutente  order by data";
+$Result=mysqli_query($db, $MySql);
+while ($res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ){
+	$out5[] = $res;
+}
+
 $out = [
 	'pg' => $out1,
 	'scan' => $out2,
-	'pair' => $out3
+	'pair' => $out3,
+	'magie' => $out4,
+	'magiex' => $out5
 ];
 
 header("HTTP/1.1 200 OK");

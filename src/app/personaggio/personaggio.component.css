@@ -23,3 +23,6 @@ mat-card-title {
       padding-bottom: 2em;
 }
 
+.nomargin {
+margin: 0;
+}
