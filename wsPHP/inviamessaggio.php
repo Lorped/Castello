@@ -24,6 +24,7 @@ include ('messaggi.inc.php');
 	$request = json_decode($postdata);
 
 	$messaggio = $request -> messaggio;
+	$link = $request -> link;
 	$personaggi = $request -> personaggi;
 
 	$destinatari = [];
@@ -31,6 +32,13 @@ include ('messaggi.inc.php');
 	foreach ($personaggi as $item) {
 		master2user($item->IDutente, $messaggio ,  $db);
 		$destinatari[] = $item->IDutente;
+
+		$messaggio = mysqli_real_escape_string($db, $messaggio);
+		$link = mysqli_real_escape_string($db, $link);
+
+		$MySql = "INSERT INTO messaggi (data , destinatario, testo, url) VALUES (NOW(), $item->IDutente, '$messaggio', '$link')";
+		$Result=mysqli_query($db, $MySql);
+	
 	}
 
 	

@@ -78,6 +78,11 @@
           <input matInput [(ngModel)]="messaggio" name="messaggio" required>
           <mat-hint align="start"><strong>Selezionare almeno un personaggio</strong> </mat-hint>
           </mat-form-field>
+          <mat-form-field class="full">
+          <mat-label>Url link</mat-label>
+          <input matInput [(ngModel)]="link" name="link" placeholder="https://www.mysite.com/...">
+          <mat-hint align="start"><strong>Facoltativo</strong> </mat-hint>
+          </mat-form-field>
         </div>
         <div class="col-1">
           <button mat-raised-button color="primary" [disabled]="!msgForm.valid || (allchecked==false && partialChecked==false)" (click)="inviamessaggio()">Invia</button>

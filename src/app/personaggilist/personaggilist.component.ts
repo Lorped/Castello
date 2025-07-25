@@ -18,6 +18,7 @@ export class PersonaggilistComponent implements OnInit {
   partialChecked = false;
 
   messaggio = '';
+  link = '';
 
   constructor( private personaggi: PersonaggioService ) { }
 
@@ -91,6 +92,7 @@ export class PersonaggilistComponent implements OnInit {
 
     const payload = {
       messaggio: this.messaggio,
+      link: this.link,
       personaggi: selectedCharacters
     };
 
@@ -98,6 +100,7 @@ export class PersonaggilistComponent implements OnInit {
       .subscribe(response => {
         console.log('Messaggio inviato con successo:', response);
         this.messaggio = '';
+        this.link = '';
         this.allchecked = false;
         this.partialChecked = false;
         this.listapg.forEach(item => item.selected = false);
