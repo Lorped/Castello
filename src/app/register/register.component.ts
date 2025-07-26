@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
 
+  hide = true;
 
   constructor( private signupService: SignupService , private router: Router  ) { }
 
@@ -48,6 +49,14 @@ export class RegisterComponent implements OnInit {
         Validators.required
       ])
     });
+
+
+    this.password2.addValidators( () => {
+     if (!this.password2.value) return null;
+
+     return this.password.value === this.password2.value ? null: {mismatch : true};
+    });
+
   }
 
   get regname() {

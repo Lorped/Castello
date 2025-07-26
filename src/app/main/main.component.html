@@ -1,14 +1,37 @@
-<div class="mx-auto" style=" margin-top: -50px; color: white;">
-  <div class="container">
-    <div class="row justify-content-md-center">
-        <span class="mytitle">Il Castello della Follia</span>
+<div>
+  <p>
+  <mat-toolbar>
+    <!--
+    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    -->
+    <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
+  </mat-toolbar>
+</p>
+</div>
+
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+<p>
+
+  <mat-card>
+
+
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Personaggio</span></mat-card-title>
     </div>
+
+
     <form [formGroup]="personaggioForm" #formDir="ngForm" class="form-signin" >
-      <div class="row justify-content-md-center">
-        <div class="col-2" style="background-image: url('assets/cornice2.png');  background-size: contain; background-repeat: no-repeat; padding-top: 43px;">
-          <div class="img-overlay">
+    
+      <div >
+      <div class="row " style="margin: 0;">
+        <!-- <div class="col-2" style="background-image: url('assets/cornice2.png');  background-size: contain; background-repeat: no-repeat; padding-top: 43px;"> -->
+        <div class="col-2" >
+          <div class="img-overlay alc">
             <label for="avatar">
-              <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar">
+              <img src="assets/{{URLimg}}"  >
+              <!-- <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar"> -->
               <div class="overlay">
                 <span class="text-overlay fa fa-upload" ></span>
               </div>
@@ -19,12 +42,11 @@
 
         <div class="col-10">
           <!-- inizio col9 -->
+           <!---
           <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:75px; padding-bottom: 80px;">
-
-
-
-          <div class="form-group row divrotate">
-
+          -->
+            <!--   <div class="form-group row divrotate"> -->
+            <div class=" row "> 
 
             <div class="col">
               <input id="nomepg" name="nomepg" type="text" class="form-control" formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
@@ -42,7 +64,7 @@
             </div>
           </div>
 
-          <div class="form-group row divrotate"  >
+          <div class=" row "  >
             <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
             <label for="desc" class="col-3 col-form-label" >Data di nascita</label>
             <div class="col-2">
@@ -68,7 +90,7 @@
             </div>
           </div>
 
-          <div class="form-group row divrotate" *ngIf="professioni.length>0">
+          <div class=" row " *ngIf="professioni.length>0">
             <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
             <div class="col">
               <select id="profpg" name="profpg" class="form-control" required formControlName="profPG">
@@ -81,7 +103,7 @@
             </div>
           </div>
 
-          <div class="form-group row divrotate" >
+          <div class=" row " >
             <label for="bonus" class="col-3 col-form-label" >Competenze</label>
             <div class="col">
 
@@ -104,7 +126,7 @@
           </div>
 
 
-          <div class="form-group row divrotate" >
+          <div class=" row " >
             <label for="specialita" class="col-3 col-form-label" >Specialità</label>
             <div class="col" *ngIf="professioni.length>0 && profPG.value>0">
               <select id="specpg" name="specpg" class="form-control" required formControlName="specPG">
@@ -118,7 +140,7 @@
             </div>
           </div>
 
-          <div class="form-group row divrotate" *ngIf="specPG.value==17">
+          <div class=" row " *ngIf="specPG.value==17">
             <label for="specialita" class="col-3 col-form-label" >Bonus a scelta</label>
             <div class="col" >
               <select id="xspecpg" name="xspecpg" class="form-control" required formControlName="xspecPG">
@@ -134,16 +156,22 @@
 
 
 
-          <div class="form-group row justify-content-md-center divrotate" >
+          <div class=" row " >
             <div class="col-8">
               <button type="button" class="btn btn-sm btn-danger w-100" [disabled]="(!(formDir.form.valid && checked && !formDir.form.pristine) && !changecheck)  || (aaaaPG.status == 'INVALID') ||(mmPG.status =='INVALID') || (ggPG.status =='INVALID') ||(specPG.status == 'INVALID' )" (click)="updatepg()">Aggiorna</button>
             </div>
           </div>
 
-          </div>
+
+          <!-- </div> -->
+          
           <!-- fine col9 -->
         </div>
       </div>
+    </div>
     </form>
-  </div>
+
+
+
+  </mat-card>
 </div>

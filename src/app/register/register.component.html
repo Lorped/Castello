@@ -1,61 +1,120 @@
+<div>
+  <p>
+  <mat-toolbar>
+    <!--
+    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    -->
+    <!-- <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span> -->
+  </mat-toolbar>
+</p>
+</div>
 
-<div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white; font-size: 0.8em; margin-top: 20px;">
-  <div class="row justify-content-center">
-    <div class="col-8">
-      <h3 class="dred">Registrazione</h3>
-      <form  [formGroup]="registrationForm" #formDir="ngForm">
-        <div class="form-group">
-          <label for="regName">Nome e Cognome del giocatore</label>
-          <input id="regName" class="form-control" type="text" formControlName="regname" placeholder="Nome e Cognome">
-          <div *ngIf="regname.invalid && (regname.dirty || regname.touched)" class="alert alert-danger" color="red">
-            <div *ngIf="regname.errors.required">Inserire un nome</div>
-            <div *ngIf="regname.errors.pattern">Carattere non ammesso</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="regEmail">Indirizzo Email (login)</label>
-          <input id="regEmail" class="form-control" type="email" formControlName="regemail" placeholder="Inserire email">
-          <div *ngIf="regemail.invalid && (regemail.dirty || regemail.touched)" class="alert alert-danger" color="red">
-            <div *ngIf="regemail.errors.required">Inserire una email</div>
-            <div *ngIf="regemail.errors.email">Inserire una email valida</div>
-            <div *ngIf="regemail.errors.emailTaken">Email già presente</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password1">Password</label>
-          <input id="password1" class="form-control" type="password" formControlName="password" placeholder="Password">
-          <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger" color="red">
-            <div *ngIf="password.errors.required">Inserire la password</div>
-            <div *ngIf="password.errors.pattern">Solo caratteri alfanumerici, almeno una lettera e un numero</div>
-            <div *ngIf="password.errors.minlength">La lunghezza minima è 8 caratteri</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password2">Ripetere la password</label>
-          <input id="password2" class="form-control" type="password" formControlName="password2" placeholder="Password" >
-          <div *ngIf=" password2.value != password.value && (password2.dirty || password2.touched)" class="alert alert-danger">
-            <div>Le due password non coincidono</div>
-          </div>
-        </div>
-        <div class="form-group">
-          In ottemperanza al Regolamento UE 2016/679 (GDPR) e alla normativa sulla protezione dei dati personali si informa che:<br>
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+<p>
+
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title>
+        <span class="mytitle white">Il Castello della Follia</span>
+        <p>
+        <p>
+        <span class="mysubtitle white">Registrazione</span>
+      </mat-card-title>
+    </div>
+
+       <mat-card-content>
+
+      
+      
+      <div class="alc">
+        <div class="row alc">
+          <div class="col-3" >&nbsp;</div>
+          <div class="col-6" >
+
+
+
+            <form  [formGroup]="registrationForm" #formDir="ngForm" (ngSubmit)="doRegister()">
+
+            <mat-form-field class="full">
+              <mat-label>Nome e Cognome del GIOCATORE</mat-label>
+              <input  matInput type="text" formControlName="regname" placeholder="Nome e Cognome">
+                  <mat-error *ngIf="regname.hasError('required')" >
+                    Campo <strong>richiesto</strong>
+                  </mat-error>
+                  <mat-error *ngIf="regname.hasError('pattern')">
+                    Carattere non ammesso
+                  </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full">
+                <mat-label>Indirizzo Email (login)</mat-label>
+                <input  matInput type="email" formControlName="regemail" placeholder="Inserire email">
+                <mat-error *ngIf="regemail.hasError('required')" >
+                  Campo <strong>richiesto</strong>
+                </mat-error>
+                <mat-error *ngIf="regemail.hasError('email')">
+                  Inserire una Email Valida
+                </mat-error>
+                <mat-error *ngIf="regemail.hasError('emailTaken')">
+                  Email già presente
+                </mat-error>
+              </mat-form-field>
+
+          <mat-form-field class="full">
+            <mat-label>Password</mat-label>
+             <input  matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password">
+                <button mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon class="white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              <mat-error *ngIf="password.hasError('required')" >
+                Campo <strong>richiesto</strong>
+              </mat-error>
+            <mat-error *ngIf="password.hasError('pattern')">
+               Solo caratteri alfanumerici, almeno una lettera e un numero
+            </mat-error>
+            <mat-error *ngIf="password.hasError('minlength')">
+              La lunghezza minima è 8 caratteri
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full">
+            <mat-label>Conferma Password</mat-label>
+            <input  matInput [type]="hide ? 'password' : 'text'" formControlName="password2" placeholder="Conferma Password">
+            <mat-error *ngIf="password2.hasError('required')" >
+              Campo <strong>richiesto</strong>
+            </mat-error>
+            <mat-error *ngIf="password2.hasError('mismatch')">
+              Le password non corrispondono
+            </mat-error>
+          </mat-form-field>
+
+
+        <div class="smaller white all">
+        In ottemperanza al Regolamento UE 2016/679 (GDPR) e alla normativa sulla protezione dei dati personali si informa che:<br>
 l’indirizzo email verrà registrato come dato di login per l’accesso al sito e per l’eventuale recupero della password; titolare del trattamento dati è il gestore del sito www.roma-by-night.it; l’email sarà registrato nel database del sito, locato nella UE; le informazioni non verranno comunicate a entità terze ma solo trattate in modo automatico durante il login e durante i backup periodici; la conservazione del dato (indirizzo email) è relativa solo al tempo di mantenimento di una utenza sul sito "Il Castello della Follia", al termine del quale tale record verrà cancellato; gli utenti possono in ogni istante autonomamente modificare l’email o richiederne la cancellazione, in quest’ultimo caso verrà contestualmente cancellata l’utenza.
         </div>
-        <div class="form-check">
-            <input id="Check1" class="form-check-input"  type="checkbox" formControlName="check" required>
-            <label class="form-check-label" for="Check1">Accetto</label>
+            
+
+          <mat-checkbox formControlName="check" required> Accetto i termini e le condizioni </mat-checkbox>
+
+
+
+        
+        <button type="submit" mat-flat-button color="primary" class="full" [disabled]="!formDir.form.valid" >Registrati</button>
+        </form>
+
+          </div>
+          <div class="col-3" >&nbsp;</div>
         </div>
-        <div class="form-group">
-          <p></p>
-            <button type="button" [disabled]="!formDir.form.valid" (click)="doRegister()" class="btn btn-danger w-100">Registrati</button>
-            <div class="alc">
-              <a [routerLink]="['']" class="btn btn-link">Torna alla home</a>
-            </div>
+        <div style="text-align:center">
+          <a [routerLink]="['/login']" class="btn btn-link">Accesso Utente</a>
+       
         </div>
-      </form>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">&nbsp;</div>
-  </div>
+        
+      </div>
+
+    </mat-card-content>
+  </mat-card>
 </div>
