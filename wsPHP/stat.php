@@ -32,7 +32,7 @@ $iscritti=$res['s'];
 
 $MySql="SELECT P.nomeprofessione as n,
        Count(U.nomePG) as c ,
-			 Count(U.nomePG) * 100.0 / ( select count(*) from personaggi) AS perc
+			 FORMAT(Count(U.nomePG) * 100.0 / ( select count(*) from personaggi),2) AS perc
 FROM professioni P
 LEFT OUTER JOIN personaggi U ON U.`IDprofessione` = P.`IDprofessione`
 GROUP BY P.nomeprofessione";

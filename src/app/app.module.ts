@@ -41,6 +41,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatButtonModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatToolbarModule,
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
