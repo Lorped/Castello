@@ -28,4 +28,7 @@ export class MasterComponent implements OnInit {
   gotolistscan() {
     this.router.navigate(['listscan']);
   }
+  logout(){
+    this.router.navigate(['login']);
+  }
 }

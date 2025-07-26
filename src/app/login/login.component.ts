@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/index';
 import { Router } from '@angular/router';
 
+
 import { Status } from '../globals';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,18 @@ export class LoginComponent implements OnInit {
   loginCredentials = { email: '' , password: '' };
   errmsg = '';
   returnUrl: string;
+
+  loginFormGroup = new FormGroup ({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    password: new FormControl('', [
+      Validators.required
+    ]),
+  });
+
+  hide = true;
 
   constructor (private authenticationService: AuthenticationService, private router: Router , private status: Status) { }
 

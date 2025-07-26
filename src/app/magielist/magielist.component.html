@@ -74,17 +74,37 @@
       <div class="row">
 
         <div class="col-1">&nbsp;</div>
-        <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
-        <div class="col-5 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
-        <div class="col-1 "><input name="minmiti" type="number" class="form-control" [(ngModel)]="newminmiti" required></div>
-        <div class="col-2 alc">
-          <div class="table">
-            <div class="row">
-              <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
-              <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
-              <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
-            </div>
-          </div>
+        <div class="col-2 all">
+          <mat-form-field>
+            <input name="nome" type="text" matInput [(ngModel)]="newnome" required placeholder="Nome magia">
+          </mat-form-field>
+        </div>
+        <div class="col-5 all">
+          <mat-form-field class="full">
+            <input name="dsc1" type="text" matInput [(ngModel)]="newdescrizione" required placeholder="Descrizione estesa">
+          </mat-form-field>
+        </div>
+        <div class="col-1 ">
+          <mat-form-field >
+            <div >
+              <div class="row">
+                <div class="col"><input name="minmiti" type="number" matInput [(ngModel)]="newminmiti" required> </div>
+
+              </div>
+            </div>         
+          </mat-form-field>    
+        </div>
+        <div class="col-2 ">
+          <mat-form-field >
+            <div >
+              <div class="row">
+
+                <div class="col"><input name="bs" type="number" matInput [(ngModel)]="newbasesan" ></div>
+                <div class="col"><input name="bm" type="number" matInput [(ngModel)]="newbasemiti" ></div>
+                <div class="col"><input name="bpf" type="number" matInput [(ngModel)]="newbasepf" ></div>
+              </div>
+            </div>         
+          </mat-form-field>    
         </div>
         <div class="col-1">&nbsp;</div>
       </div>

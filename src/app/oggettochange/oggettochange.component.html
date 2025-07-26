@@ -48,17 +48,27 @@
           <form name="oggettoform" (ngSubmit)="doSave()" #oggettoForm="ngForm" class="form-cambia" >
           <!--- -->
           <div class="row" *ngIf="oggetto">
-            <div class="col-1">{{oggetto.ogg.IDoggetto}}</div>
-            <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="oggetto.ogg.nome" required></div>
-            <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="oggetto.ogg.descrizione" required></div>
+            <div class="col-1">{{oggetto.ogg.IDoggetto}}</div>          
+            <div class="col-2 all">
+                <mat-form-field>
+                  <input name="nome" type="text" matInput [(ngModel)]="oggetto.ogg.nome" required>
+                </mat-form-field>
+            </div>
+            <div class="col-6 all">
+              <mat-form-field class="full">
+                <input name="dsc1" type="text" matInput [(ngModel)]="oggetto.ogg.descrizione" required>
+              </mat-form-field>
+            </div>
             <div class="col-2 alc">
-              <div class="table ">
+              <mat-form-field>
+              <div >
                 <div class="row">
-                  <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basesan"></div>
-                  <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basemiti"></div>
-                  <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basepf"></div>
+                  <div class="col"><input name="bs" type="number" matInput [(ngModel)]="oggetto.ogg.basesan"></div>
+                  <div class="col"><input name="bm" type="number" matInput [(ngModel)]="oggetto.ogg.basemiti"></div>
+                  <div class="col"><input name="bpf" type="number" matInput [(ngModel)]="oggetto.ogg.basepf"></div>
                 </div>
               </div>
+              </mat-form-field>
             </div>
             <div class="col-1">&nbsp;</div>
             <div class="col-12" *ngFor="let i of oggetto.eff">
@@ -66,12 +76,12 @@
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
-                  <div class="col-2 alc">
+                  <div class="col-2 alc">                  
                     <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
-                    </div>
+                    </div>                   
                   </div>
                   <div class="col-1"><button mat-flat-button color="primary" (click)="delEff(i.IDeffetto)" >X</button></div>
               </div>
@@ -81,20 +91,28 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
-                    <select id="prof" [(ngModel)]="neweffselect" name="prof" class="form-control" >
-                      <option value=0>- Professione -</option>
-                      <option *ngFor="let i of professioni" [ngValue]="i.IDprofessione">{{i.nomeprofessione}}</option>
-                    </select>
+                    <mat-form-field>
+                      <mat-select id="prof" [(ngModel)]="neweffselect" name="prof">
+                        <mat-option [value]="0">- Professione -</mat-option>
+                        <mat-option *ngFor="let i of professioni" [value]="i.IDprofessione">{{i.nomeprofessione}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                  <div class="col-6 all"><input name="newdsc" type="text" class="form-control" [(ngModel)]="neweffdescrizione" [required]="neweffselect!=0"></div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newdsc" type="text" matInput [(ngModel)]="neweffdescrizione" [required]="neweffselect!=0">
+                    </mat-form-field>
+                  </div>
                   <div class="col-2 alc">
-                    <div class="table ">
-                      <div class="row">
-                        <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="neweffsan"></div>
-                        <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="neweffmiti"></div>
-                        <div class="col"><input name="nepf" type="number" class="form-control" [(ngModel)]="neweffpf"></div>
+                    <mat-form-field>
+                      <div >
+                        <div class="row">
+                          <div class="col"><input name="nes" type="number" matInput [(ngModel)]="neweffsan"></div>
+                          <div class="col"><input name="nem" type="number" matInput [(ngModel)]="neweffmiti"></div>
+                          <div class="col"><input name="nepf" type="number" matInput [(ngModel)]="neweffpf"></div>
+                        </div>
                       </div>
-                    </div>
+                    </mat-form-field>
                   </div>
                   <div class="col-1">&nbsp;</div>
               </div>
@@ -121,20 +139,28 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
-                    <select id="spec" [(ngModel)]="neweffselectspec" name="spec" class="form-control" >
-                      <option value=0>- Specializzazione -</option>
-                      <option *ngFor="let i of special" [ngValue]="i.IDspecial">{{i.nomespecial}}</option>
-                    </select>
+                    <mat-form-field>
+                      <mat-select [(ngModel)]="neweffselectspec" name="spec">
+                        <mat-option [value]="0">- Specializzazione -</mat-option>
+                        <mat-option *ngFor="let i of special" [value]="i.IDspecial">{{i.nomespecial}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                  <div class="col-6 all"><input name="newdscspec" type="text" class="form-control" [(ngModel)]="neweffdescrizionespec" [required]="neweffselectspec!=0"></div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newdscspec" type="text" matInput [(ngModel)]="neweffdescrizionespec" [required]="neweffselectspec!=0">
+                    </mat-form-field>
+                  </div>
                   <div class="col-2 alc">
-                    <div class="table ">
+                    <mat-form-field>
+                    <div >
                       <div class="row">
-                        <div class="col"><input name="nesspec" type="number" class="form-control" [(ngModel)]="neweffsanspec"></div>
-                        <div class="col"><input name="nemspec" type="number" class="form-control" [(ngModel)]="neweffmitispec"></div>
-                        <div class="col"><input name="nepfspec" type="number" class="form-control" [(ngModel)]="neweffpfspec"></div>
+                        <div class="col"><input name="nesspec" type="number" matInput [(ngModel)]="neweffsanspec"></div>
+                        <div class="col"><input name="nemspec" type="number" matInput [(ngModel)]="neweffmitispec"></div>
+                        <div class="col"><input name="nepfspec" type="number" matInput [(ngModel)]="neweffpfspec"></div>
                       </div>
                     </div>
+                    </mat-form-field>
                   </div>
                   <div class="col-1">&nbsp;</div>
               </div>
@@ -161,20 +187,28 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
-                    <select id="bp" [(ngModel)]="neweffselectbp" name="bp" class="form-control" >
-                      <option value=0>- Attitudine -</option>
-                      <option *ngFor="let i of bp" [ngValue]="i.IDbp">{{i.descbp}}</option>
-                    </select>
+                    <mat-form-field>
+                      <mat-select [(ngModel)]="neweffselectbp" name="bp">
+                        <mat-option [value]="0">- Attitudine -</mat-option>
+                        <mat-option *ngFor="let i of bp" [value]="i.IDbp">{{i.descbp}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                  <div class="col-6 all"><input name="newdscsbp" type="text" class="form-control" [(ngModel)]="neweffdescrizionebp" [required]="neweffselectbp!=0"></div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newdscsbp" type="text" matInput [(ngModel)]="neweffdescrizionebp" [required]="neweffselectbp!=0">
+                    </mat-form-field>
+                  </div>
                   <div class="col-2 alc">
-                    <div class="table ">
+                    <mat-form-field>
+                    <div >
                       <div class="row">
-                        <div class="col"><input name="nesbp" type="number" class="form-control" [(ngModel)]="neweffsanbp"></div>
-                        <div class="col"><input name="nembp" type="number" class="form-control" [(ngModel)]="neweffmitibp"></div>
-                        <div class="col"><input name="nepfbp" type="number" class="form-control" [(ngModel)]="neweffpfbp"></div>
+                        <div class="col"><input name="nesbp" type="number" matInput [(ngModel)]="neweffsanbp"></div>
+                        <div class="col"><input name="nembp" type="number" matInput [(ngModel)]="neweffmitibp"></div>
+                        <div class="col"><input name="nepfbp" type="number" matInput [(ngModel)]="neweffpfbp"></div>
                       </div>
                     </div>
+                    </mat-form-field>
                   </div>
                   <div class="col-1">&nbsp;</div>
               </div>
@@ -204,20 +238,28 @@
               <div class="row">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
-                    <select id="ogg" [(ngModel)]="newpairselect" name="ogg" class="form-control" >
-                      <option value=0>- Oggetto -</option>
-                      <option *ngFor="let i of oggettipair" [ngValue]="i.IDoggetto">{{i.nome}}</option>
-                    </select>
+                    <mat-form-field>
+                      <mat-select [(ngModel)]="newpairselect" name="ogg">
+                        <mat-option [value]="0">- Oggetto -</mat-option>
+                        <mat-option *ngFor="let i of oggettipair" [value]="i.IDoggetto">{{i.nome}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
-                  <div class="col-6 all"><input name="newpairdsc" type="text" class="form-control" [(ngModel)]="newpairdescrizione" [required]="newpairselect!=0"></div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newpairdsc" type="text" matInput [(ngModel)]="newpairdescrizione" [required]="newpairselect!=0">
+                    </mat-form-field>
+                  </div>
                   <div class="col-2 alc">
-                    <div class="table ">
+                    <mat-form-field>
+                    <div >
                       <div class="row">
-                        <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="newpairsan"></div>
-                        <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="newpairmiti"></div>
-                        <div class="col"><input name="nepf" type="number" class="form-control" [(ngModel)]="newpairpf"></div>
+                        <div class="col"><input name="nes" type="number" matInput [(ngModel)]="newpairsan"></div>
+                        <div class="col"><input name="nem" type="number" matInput [(ngModel)]="newpairmiti"></div>
+                        <div class="col"><input name="nepf" type="number" matInput [(ngModel)]="newpairpf"></div>
                       </div>
                     </div>
+                    </mat-form-field>
                   </div>
                   <div class="col-1">&nbsp;</div>
               </div>

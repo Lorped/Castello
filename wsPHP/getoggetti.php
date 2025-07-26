@@ -26,6 +26,8 @@ $out = [];
 $Mysql="SELECT * FROM oggetti ";
 if ($IDoggetto!="") {
 	$Mysql = $Mysql . "WHERE IDoggetto='$IDoggetto'";
+} else {
+	$Mysql = $Mysql . "ORDER BY IDoggetto";
 }
 $Result=mysqli_query($db, $Mysql);
 while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {

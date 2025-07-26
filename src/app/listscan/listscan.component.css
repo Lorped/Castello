@@ -25,7 +25,9 @@ mat-card {
    
 }
 
-
+mat-icon-button {
+  color: white;
+}
 
 mat-card-title {
   margin-top: 1em;

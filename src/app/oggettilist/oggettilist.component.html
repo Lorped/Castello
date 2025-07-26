@@ -133,16 +133,35 @@
             <div class="row ">
 
               <div class="col-1">&nbsp;</div>
-              <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
-              <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
+              <div class="col-2 all">
+                <mat-form-field >
+                  <input matInput name="nome" type="text"  [(ngModel)]="newnome" required placeholder="Nome oggetto">
+                </mat-form-field>
+              </div>
+              <div class="col-6 all">
+                <mat-form-field class="full">
+                  <input matInput name="dsc1" type="text"  [(ngModel)]="newdescrizione" required placeholder="Descrizione estesa">
+                </mat-form-field>
+              </div>
               <div class="col-2 alc">
-                <div class="table ">
+                <mat-form-field >
+
+                
+                <div >
                   <div class="row">
-                    <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
-                    <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
-                    <div class="col"><input name="bpf" type="number" class="form-control" [(ngModel)]="newbasepf" ></div>
+                    <div class="col-4">                      
+                      <input matInput name="bs" type="number" [(ngModel)]="newbasesan">
+                    </div>
+                    <div class="col-4">
+                      <input matInput name="bm" type="number" [(ngModel)]="newbasemiti">
+                    </div>
+                    <div class="col-4">
+                      <input matInput name="bpf" type="number" [(ngModel)]="newbasepf">
+                    </div>
                   </div>
                 </div>
+
+                </mat-form-field>
               </div>
               <div class="col-1">&nbsp;</div>
             </div>

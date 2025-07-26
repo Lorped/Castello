@@ -19,4 +19,7 @@ export class IntroComponent implements OnInit {
   goRegister() {
     this.router.navigate(['register']);
   }
+  gocustode() {
+    this.router.navigate(['loginmaster']);
+  }
 }

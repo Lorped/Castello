@@ -1,28 +1,49 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" >
-    <div class="row justify-content-sm-center" style="background-color:black; background:rgba(0,0,0,0.5); color: white;" >
-      <div class="col-sm-8 alc" >
-        <span class="mytitle">Il Castello della Follia</span>
-      </div>
+<div>
+  <p>
+  <mat-toolbar>
+    <!--
+    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+      <mat-icon>menu</mat-icon>
+    </button>
+    -->
+    <!-- <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span> -->
+  </mat-toolbar>
+</p>
+</div>
+
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+  <p>
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Il Castello della Follia</span></mat-card-title>
     </div>
-    <div class="row justify-content-sm-center" style="background-color:black; background:rgba(0,0,0,0.5); color: white;"  >
-      <div class="col-sm-8">
-        <p>Un evento live che vi porterà in un mondo di orrori ancestrali, mostri apocalittici e culti innominabili!</p>
-        <p>Siete disposti a rischiare la vostra salute mentale per scoprire il lato più nascosto dell'ombra?</p>
+
+    <mat-card-content>
+        <div class="alc white">
+          <p>Un evento live che vi porterà in un mondo di orrori ancestrali, mostri apocalittici e culti innominabili!</p>
+          <p>Siete disposti a rischiare la vostra salute mentale per scoprire il lato più nascosto dell'ombra?</p>
+
+          <p>&nbsp;</p>
+          <div >
+            <div class="row alc">
+              <div class="col-4">
+                <button mat-flat-button (click)="goLogin()" class="full" color="primary">Accedi</button>
+              </div>
+              <div class="col-4">
+                  <button mat-stroked-button (click)="goRegister()" class="full" color="primary">Registrati</button>
+              </div>
+              <div class="col-4">
+                <button mat-flat-button (click)="gocustode()" class="full" color="accent">Accesso Custode</button>
+              </div>
+            </div>
+          </div>
+
+
       </div>
-    </div>
-    <div class="row justify-content-sm-center" style="background-color:black; background:rgba(0,0,0,0.5); color: white;" >
-      <div class="col-sm-3" >
-        <button type="button" class="btn btn-sm btn-danger w-100" (click)="goLogin()" >Accedi</button>
-      </div>
-      <div class="col-sm-3" >
-        <button type="button" class="btn btn-sm btn-danger w-100" (click)="goRegister()">Registrati</button>
-      </div>
-    </div>
-    <div class="row justify-content-sm-center" style="background-color:black; background:rgba(0,0,0,0.5); color: white;" >
-      <div class="col" >
-        &nbsp;
-      </div>
-    </div>
-  </div>
+
+    </mat-card-content>
+ 
+
+    
+</mat-card>
 </div>
