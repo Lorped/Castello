@@ -1,16 +1,17 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
-    <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc">
-        <h1><span class="mytitle">Gestione Oggetti</span></h1>
-      </div>
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+<p>
+
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Gestione Oggetti</span></mat-card-title>
     </div>
 
-    <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-12 alc" >
+    <mat-card-content>
+
+      <div class="alc white" >
 
       <!-- tabella -->
-        <div class="table">
+        <div>
           <div class="row red">
             <div class="col-1">ID</div>
             <div class="col-2 all">Nome</div>
@@ -27,26 +28,30 @@
             </div>
             <div class="col-1">Canc.</div>
           </div>
+
+          <mat-divider></mat-divider>
+          <p>
+
           <!--- -->
           <div class="row" *ngFor="let item of listaoggetti">
-            <div class="col-1 all"><a class="btn btn-link myx" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.IDoggetto}}</a></div>
-            <div class="col-2 all"><a class="btn btn-link myx"  routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
+            <div class="col-1 ">{{item.ogg.IDoggetto}}</div>
+            <div class="col-2 all"><a mat-flat-button  color="accent" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
             <div class="col-6 all">{{item.ogg.descrizione}}</div>
             <div class="col-2 alc">
-              <div class="table mystyle">
+              <div class="table ">
                 <div class="row">
                   <div class="col">{{item.ogg.basesan}}</div><div class="col">{{item.ogg.basemiti}}</div><div class="col">{{item.ogg.basepf}}</div>
                 </div>
               </div>
             </div>
-            <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
+            <div class="col-1"><button mat-flat-button color="primary" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row mystyle" *ngIf="!(i.nomeprofessione===null)">
+              <div class="row " *ngIf="!(i.nomeprofessione===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
@@ -56,12 +61,12 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row mystyle" *ngIf="(i.nomeprofessione===null && i.descbp===null)">
+              <div class="row " *ngIf="(i.nomeprofessione===null && i.descbp===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all gold">({{i.nomespecial}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
@@ -71,12 +76,12 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row mystyle" *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
+              <div class="row " *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all pink">({{i.descbp}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
@@ -86,12 +91,12 @@
               </div>
             </div>
             <div class="col-12" *ngFor="let i of item.pair">
-              <div class="row mystyle">
+              <div class="row ">
                   <div class="col-1">&nbsp;</div>
                   <div class="col-2 all green">({{i.nome}})</div>
                   <div class="col-6 all">{{i.pdescrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
@@ -102,15 +107,23 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>      
+  
+  <mat-card>
+    <mat-card-content>
+
           <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
-          <div class="table">
-            <div class="row mystyle">
+
+            <div class="row ">
 
               <div class="col-1">&nbsp;</div>
               <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="newnome" required></div>
               <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="newdescrizione" required></div>
               <div class="col-2 alc">
-                <div class="table mystyle">
+                <div class="table ">
                   <div class="row">
                     <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="newbasesan" ></div>
                     <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="newbasemiti" ></div>
@@ -120,22 +133,19 @@
               </div>
               <div class="col-1">&nbsp;</div>
             </div>
-            <div class="row mystyle">
+            <div class="row ">
               <div class="col-3">&nbsp;</div>
-              <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
-              <div class="col-4">&nbsp;</div>
+              <div class="col-6 all"><button mat-raised-button color="primary" class="full" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+              <div class="col-3">&nbsp;</div>
             </div>
-          </div>
+
           </form>
           <!-- -->
-        </div>
-
-      </div>
-    </div>
+        <p>
 
     <div class="row justify-content-md-center mypad">
       <div style="text-align:center">
-        <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger w-100" >Stampa oggetti</button>
+        <button (click)="openstampaoggetti()" mat-raised-button color="warn" >Stampa oggetti</button>
       </div>
     </div>
     <div class="row justify-content-md-center mypad">
@@ -143,5 +153,8 @@
         <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
       </div>
     </div>
-  </div>
+
+    </mat-card-content>
+  </mat-card>   
+
 </div>

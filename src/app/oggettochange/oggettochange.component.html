@@ -1,16 +1,18 @@
-<div div class="mx-auto" style=" margin-top: 50px;">
-  <div class="container" style="background-color:black; background:rgba(0,0,0,0.5); color: white;">
-    <div class="row justify-content-md-center">
-      <div class="col-sm-8 alc">
-        <h1><span class="mytitle">Modifica Oggetto</span></h1>
-      </div>
+<div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+<p>
+
+  <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Modifica Oggetto</span></mat-card-title>
     </div>
 
-    <div class="row justify-content-md-center mypad" >
-      <div class="col-sm-12 alc" >
+    <mat-card-content>
+
+      <div class="alc white" >
+
 
       <!-- tabella -->
-        <div class="table">
+        <div>
           <div class="row red">
             <div class="col-1">ID</div>
             <div class="col-2 all">Nome</div>
@@ -27,15 +29,17 @@
             </div>
             <div class="col-1">Canc.</div>
           </div>
+       
+
           <!--- -->
-      <form name="oggettoform" (ngSubmit)="doSave()" #oggettoForm="ngForm" class="form-cambia" >
+          <form name="oggettoform" (ngSubmit)="doSave()" #oggettoForm="ngForm" class="form-cambia" >
           <!--- -->
           <div class="row" *ngIf="oggetto">
             <div class="col-1">{{oggetto.ogg.IDoggetto}}</div>
             <div class="col-2 all"><input name="nome" type="text" class="form-control" [(ngModel)]="oggetto.ogg.nome" required></div>
             <div class="col-6 all"><input name="dsc1" type="text" class="form-control" [(ngModel)]="oggetto.ogg.descrizione" required></div>
             <div class="col-2 alc">
-              <div class="table mystyle">
+              <div class="table ">
                 <div class="row">
                   <div class="col"><input name="bs" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basesan"></div>
                   <div class="col"><input name="bm" type="number" class="form-control" [(ngModel)]="oggetto.ogg.basemiti"></div>
@@ -50,13 +54,13 @@
                   <div class="col-2 all blue">({{i.nomeprofessione}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="delEff(i.IDeffetto)" >X</button></div>
+                  <div class="col-1"><button mat-flat-button color="primary" (click)="delEff(i.IDeffetto)" >X</button></div>
               </div>
             </div>
 
@@ -71,7 +75,7 @@
                   </div>
                   <div class="col-6 all"><input name="newdsc" type="text" class="form-control" [(ngModel)]="neweffdescrizione" [required]="neweffselect!=0"></div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="neweffsan"></div>
                         <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="neweffmiti"></div>
@@ -89,13 +93,13 @@
                   <div class="col-2 all gold">({{i.nomespecial}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="delEff(i.IDeffetto)" >X</button></div>
+                  <div class="col-1"><button mat-flat-button color="primary" (click)="delEff(i.IDeffetto)" >X</button></div>
               </div>
             </div>
 
@@ -111,7 +115,7 @@
                   </div>
                   <div class="col-6 all"><input name="newdscspec" type="text" class="form-control" [(ngModel)]="neweffdescrizionespec" [required]="neweffselectspec!=0"></div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col"><input name="nesspec" type="number" class="form-control" [(ngModel)]="neweffsanspec"></div>
                         <div class="col"><input name="nemspec" type="number" class="form-control" [(ngModel)]="neweffmitispec"></div>
@@ -129,13 +133,13 @@
                   <div class="col-2 all pink">({{i.descbp}})</div>
                   <div class="col-6 all">{{i.descrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="delEff(i.IDeffetto)" >X</button></div>
+                  <div class="col-1"><button mat-flat-button color="primary" (click)="delEff(i.IDeffetto)" >X</button></div>
               </div>
             </div>
 
@@ -151,7 +155,7 @@
                   </div>
                   <div class="col-6 all"><input name="newdscsbp" type="text" class="form-control" [(ngModel)]="neweffdescrizionebp" [required]="neweffselectbp!=0"></div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col"><input name="nesbp" type="number" class="form-control" [(ngModel)]="neweffsanbp"></div>
                         <div class="col"><input name="nembp" type="number" class="form-control" [(ngModel)]="neweffmitibp"></div>
@@ -173,13 +177,13 @@
                   <div class="col-2 all green">({{i.nome}})</div>
                   <div class="col-6 all">{{i.pdescrizione}}</div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-1"><button type="button" class="btn btn-sm btn-danger w-100" (click)="delPair(i.IDX)" >X</button></div>
+                  <div class="col-1"><button mat-flat-button color="primary" (click)="delPair(i.IDX)" >X</button></div>
               </div>
             </div>
 
@@ -194,7 +198,7 @@
                   </div>
                   <div class="col-6 all"><input name="newpairdsc" type="text" class="form-control" [(ngModel)]="newpairdescrizione" [required]="newpairselect!=0"></div>
                   <div class="col-2 alc">
-                    <div class="table mystyle">
+                    <div class="table ">
                       <div class="row">
                         <div class="col"><input name="nes" type="number" class="form-control" [(ngModel)]="newpairsan"></div>
                         <div class="col"><input name="nem" type="number" class="form-control" [(ngModel)]="newpairmiti"></div>
@@ -209,7 +213,7 @@
             <div class="col-12" >
               <div class="row">
                 <div class="col-3">&nbsp;</div>
-                <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! (oggettoForm.form.valid && oggettoForm.form.touched)" >Salva</button></div>
+                <div class="col-5 all"><button mat-raised-button color="primary" class="full" [disabled]="! (oggettoForm.form.valid && oggettoForm.form.touched)" >Salva</button></div>
                 <div class="col-4">&nbsp;</div>
               </div>
             </div>
@@ -220,12 +224,16 @@
         </div>
 
       </div>
-    </div>
+ 
 
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <a [routerLink]="['/oggettilist']" class="btn btn-link">Ritorna alla pagina Oggetti</a>
+      <div class="row justify-content-md-center mypad">
+        <div style="text-align:center">
+          <a [routerLink]="['/oggettilist']" class="btn btn-link">Ritorna alla pagina Oggetti</a>
+        </div>
       </div>
-    </div>
-  </div>
+
+    </mat-card-content>
+  </mat-card>   
+
 </div>
+

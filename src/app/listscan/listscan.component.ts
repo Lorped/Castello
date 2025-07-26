@@ -12,6 +12,7 @@ export class ListscanComponent implements OnInit {
   listapaired: Array<Listpaired> = [];
   order = 1;
   propertyName = '';
+  propertyName2 = '';
 
   constructor( private oggetti: OggettiService ) { }
 
@@ -21,6 +22,15 @@ export class ListscanComponent implements OnInit {
         // console.log(res);
         this.listascan = res.scan;
         this.listapaired = res.paired;
+
+        this.listapaired.forEach(element => {
+          // Do something with each element
+          if (element.nome1 > element.nome2) {
+            let x = element.nome1;
+            element.nome1 = element.nome2;
+            element.nome2 = x;
+          }
+        });
       });
   }
   sortBy ( prop: string) {
@@ -32,4 +42,15 @@ export class ListscanComponent implements OnInit {
 
     // console.log(this.order);
   }
+
+    sortBy2 ( prop: string) {
+    this.propertyName2 = prop;
+    this.listapaired.sort ( (a, b) => {
+      return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
+    });
+    this.order = -1 * this.order;
+
+    // console.log(this.order);
+  }
+
 }

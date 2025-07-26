@@ -45,7 +45,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-1"><button mat-raised-button color="warn" (click)="cancbase(item.IDmagia)" >X</button></div>
+            <div class="col-1"><button mat-flat-button color="primary" (click)="cancbase(item.IDmagia)" >X</button></div>
           </div>
 
         </div>
@@ -77,7 +77,7 @@
       </div>
       <div class="row">
         <div class="col-3">&nbsp;</div>
-        <div class="col-5 all"><button type="submit" class="btn btn-sm btn-danger w-100" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
+        <div class="col-5 all"><button mat-raised-button color="primary" class="full" [disabled]="! addForm.form.valid " >Aggiungi</button></div>
         <div class="col-4">&nbsp;</div>
       </div>
       </form>
@@ -85,7 +85,7 @@
       <p>
       <div class="row justify-content-md-center mypad">
         <div style="text-align:center">
-          <button (click)="openstampaoggetti()" class="btn btn-lg btn-danger w-100" >Stampa magie</button>
+          <button (click)="openstampaoggetti()" mat-raised-button color="warn" >Stampa magie</button>
         </div>
       </div>
       <div class="row justify-content-md-center mypad">
