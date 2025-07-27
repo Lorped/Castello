@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routing' ;
 
 import { Status, Personaggio } from './globals';
-import { ModalService } from './services/index';
 import { SignupService } from './services/index';
 import { AuthenticationService } from './services/index';
 import { SchedaService } from './services/index';
@@ -17,13 +16,13 @@ import { PersonaggioService } from './services/index';
 
 import { AppComponent } from './app.component';
 import { IntroComponent } from './intro/intro.component';
-import { MenuComponent } from './menu/menu.component';
-import { ModalComponent } from './modal/modal.component';
+
+
 import { RegisterComponent } from './register/register.component';
-import { RegolamentoComponent } from './regolamento/regolamento.component';
+
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
-import { NewsComponent } from './news/news.component';
+
 import { LoginmasterComponent } from './loginmaster/loginmaster.component';
 import { MasterComponent } from './master/master.component';
 import { StatComponent } from './stat/stat.component';
@@ -44,18 +43,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon'; 
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import {MatNativeDateModule} from '@angular/material/core';
+
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     IntroComponent,
-    MenuComponent,
-    ModalComponent,
     RegisterComponent,
-    RegolamentoComponent,
     LoginComponent,
     MainComponent,
-    NewsComponent,
     LoginmasterComponent,
     MasterComponent,
     StatComponent,
@@ -81,18 +85,21 @@ import {MatIconModule} from '@angular/material/icon';
     HttpClientModule,
     MatSelectModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [
     Status,
     Personaggio,
-    ModalService,
     SignupService,
     AuthenticationService,
     SchedaService,
     OggettiService,
     PersonaggioService,
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {provide: MAT_DATE_LOCALE, useValue: 'it'},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
   ],
   bootstrap: [AppComponent]
 })

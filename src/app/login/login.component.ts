@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginCredentials.email, this.loginCredentials.password)
       .subscribe(
         data => {
-          this.status.IDutente = data.IDutente;
+
+          this.status.IDutente = data[0].IDutente;
+          sessionStorage.setItem('CastelloUser', data[0].IDutente);
           this.router.navigate(['main']);
         },
         error => {

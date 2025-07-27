@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/map';
 
 
 @Injectable()
@@ -59,8 +59,7 @@ export class SchedaService {
     const user = sessionStorage.getItem('CastelloUser') ;
     formData.append('token', user);
     formData.append('fileKey', fileToUpload, fileToUpload.name);
-    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/putavatar.php', formData )
-      .map(() => { return  true; } );
+    return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/putavatar.php', formData );
 
   }
 

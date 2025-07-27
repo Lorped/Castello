@@ -30,7 +30,7 @@
         <div class="col-2" >
           <div class="img-overlay alc">
             <label for="avatar">
-              <img src="assets/{{URLimg}}"  >
+              <img src="assets/{{URLimg}}" height="200px">
               <!-- <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar"> -->
               <div class="overlay">
                 <span class="text-overlay fa fa-upload" ></span>
@@ -49,106 +49,130 @@
             <div class=" row "> 
 
             <div class="col">
-              <input id="nomepg" name="nomepg" type="text" class="form-control" formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
-              <div *ngIf="NomePG.invalid && (NomePG.dirty || NomePG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="NomePG.errors.required">Inserire il nome del Personaggio</div>
-                <div *ngIf="NomePG.errors.pattern">Carattere non ammesso</div>
-              </div>
+              <mat-form-field class="full">
+              <input  name="nomepg" type="text" matInput formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
+              <mat-error *ngIf="NomePG.hasError('required')" >
+                    Campo richiesto
+                  </mat-error>
+                  <mat-error *ngIf="NomePG.hasError('pattern')">
+                    Carattere non ammesso
+                  </mat-error>
+              </mat-form-field>
             </div>
             <div class="col">
-              <input id="cognomepg" name="cognomepg" type="text" class="form-control" formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
-              <div *ngIf="CognomePG.invalid && (CognomePG.dirty || CognomePG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="CognomePG.errors.required">Inserire il cognome del Personaggio</div>
-                <div *ngIf="CognomePG.errors.pattern">Carattere non ammesso</div>
-              </div>
+              <mat-form-field class="full">
+              <input  name="cognomepg" type="text" matInput formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
+              <mat-error *ngIf="CognomePG.hasError('required')" >
+                    Campo richiesto
+                  </mat-error>
+                  <mat-error *ngIf="CognomePG.hasError('pattern')">
+                    Carattere non ammesso
+                  </mat-error>
+              </mat-form-field>
             </div>
           </div>
 
-          <div class=" row "  >
-            <!-- <label for="desc" class="col-3 col-form-label" >Professione<span style="font-size:0.8em"><br>{{professioni[profPG.value-1].desc}}</span></label> -->
-            <label for="desc" class="col-3 col-form-label" >Data di nascita</label>
-            <div class="col-2">
-              <input id="gg" name="gg" type="number" class="form-control" formControlName="ggPG" placeholder="gg" min=1 max=31  required  >
-              <div *ngIf="ggPG.invalid && (ggPG.dirty || ggPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="ggPG.errors.required">Inserire il giorno</div>
-                <div *ngIf="ggPG.errors.max || ggPG.errors.min">Errore di data</div>
-              </div>
+          <div class=" row white"  >
+            <div class="col-6">
+              Data di nascita
             </div>
-            <div class="col-2">
-              <input id="mm" name="mm" type="number" class="form-control" formControlName="mmPG" placeholder="mm" min=1 max=12  required >
-              <div *ngIf="mmPG.invalid && (mmPG.dirty || mmPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="mmPG.errors.required">Inserire il mese</div>
-                <div *ngIf="mmPG.errors.max || mmPG.errors.min">Errore di data</div>
-              </div>
+            <div class="col-6">
+              <mat-form-field>
+                <mat-label>Scegli una data</mat-label>
+                <input matInput [matDatepicker]="picker"  formControlName="DataNascita" [min]="minDate" [max]="maxDate" >
+                <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="DataNascita.hasError('matDatepickerMin')" >
+                    Data troppo remota
+                </mat-error>
+                <mat-error *ngIf="DataNascita.hasError('matDatepickerMax')" >
+                  Data troppo recente
+                </mat-error>
+                <mat-error *ngIf="DataNascita.hasError('required') && !DataNascita.hasError('matDatepickerMin') && !DataNascita.hasError('matDatepickerMax')" >
+                    Campo richiesto
+                </mat-error>
+              </mat-form-field>
             </div>
-            <div class="col-4">
-              <input id="aaaa" name="aaaa" type="number" class="form-control" formControlName="aaaaPG" placeholder="aaaa" min=1900 max=2018  required >
-              <div *ngIf="aaaaPG.invalid && (aaaaPG.dirty || aaaaPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="aaaaPG.errors.required">Inserire l'anno</div>
-                <div *ngIf="aaaaPG.errors.max || aaaaPG.errors.min">Errore di data</div>
-              </div>
+
+          </div>
+
+          <div class=" row white" *ngIf="professioni.length>0">
+            <div class="col-6">
+              Tipologia di Professione
+            </div>
+            <div class="col-6">
+              <mat-form-field class="full">
+                <mat-select  name="profpg"  required formControlName="profPG">
+                  <mat-option *ngFor="let i of professioni" [value]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</mat-option>
+                </mat-select>
+                <mat-hint *ngIf="profPG.value>0">( Es: {{professioni[profPG.value-1].prof.desc}} )</mat-hint>
+                <mat-error *ngIf="profPG.invalid && (profPG.dirty || profPG.touched) && profPG.hasError('required')">
+                  Scegliere la tipologia di professione
+                </mat-error>
+              </mat-form-field>
             </div>
           </div>
 
-          <div class=" row " *ngIf="professioni.length>0">
-            <label for="professioni" class="col-3 col-form-label" >Tipologia di Professione</label>
-            <div class="col">
-              <select id="profpg" name="profpg" class="form-control" required formControlName="profPG">
-                <option *ngFor="let i of professioni" [ngValue]="i.prof.IDprofessione" >{{i.prof.nomeprofessione}}</option>
-              </select>
-              <div *ngIf="profPG.value>0"><span style="font-size:0.8em">( Es: {{professioni[profPG.value-1].prof.desc}} )</span></div>
-              <div *ngIf="profPG.invalid && (profPG.dirty || profPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="profPG.errors.required">Scegliere la tipologia di professione</div>
-              </div>
+          <div class=" row white" style="margin-top: 8px;margin-bottom: 8px;">
+            <div class="col-6">
+              Competenze (selezionarne una)
             </div>
-          </div>
-
-          <div class=" row " >
-            <label for="bonus" class="col-3 col-form-label" >Competenze</label>
-            <div class="col">
+            <div class="col-6">
 
               <div class="row" *ngIf="professioni.length>0 && profPG.value>0">
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary w-100" [ngClass]="{'btn-secondary': checkbonus[0]==0 , 'btn-success': checkbonus[0]==1} " (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].descbp}}</button>
+                  <button type="button" mat-flat-button [color]="colors[0]" (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].descbp}}</button>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary w-100" [ngClass]="{'btn-secondary': checkbonus[1]==0 , 'btn-success': checkbonus[1]==1}" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].descbp}}</button>
+                  <button type="button" mat-flat-button [color]="colors[1]" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].descbp}}</button>
                 </div>
                 <div class="col">
-                  <button type="button" class="btn btn-sm  btn-secondary w-100" [ngClass]="{'btn-secondary': checkbonus[2]==0 , 'btn-success': checkbonus[2]==1}" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].descbp}}</button>
+                  <button type="button" mat-flat-button [color]="colors[2]" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].descbp}}</button>
                 </div>
               </div>
 
-              <div *ngIf="profPG.invalid && (profPG.dirty || profPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="profPG.errors.required">Scegliere la tipologia di professione</div>
+              <div *ngIf="profPG.invalid || profPG.hasError('required')">
+                Scegliere prima la tipologia di professione
               </div>
             </div>
           </div>
 
 
-          <div class=" row " >
-            <label for="specialita" class="col-3 col-form-label" >Specialità</label>
-            <div class="col" *ngIf="professioni.length>0 && profPG.value>0">
-              <select id="specpg" name="specpg" class="form-control" required formControlName="specPG">
-                <option *ngFor="let i of professioni[profPG.value-1].spec" [ngValue]="i.IDspecial">{{i.nomespecial}}</option>
-              </select>
+          <div class=" row  white" >
+            <div class="col-6">
+              Specialità
+            </div>
+
+            <div class="col-6" *ngIf="professioni.length>0 && profPG.value>0">
+              <mat-form-field class="full">
+              <mat-select  name="specpg"  required formControlName="specPG">
+                <mat-option *ngFor="let i of professioni[profPG.value-1].spec" [value]="i.IDspecial">{{i.nomespecial}}</mat-option>
+              </mat-select>
               <div *ngIf="specPG.value>0">BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
               <div *ngIf="specPG.value==0">&nbsp;</div>
-              <div *ngIf="specPG.invalid && (specPG.dirty || specPG.touched)" class="alert alert-danger" color="red">
-                <div *ngIf="specPG.errors.required">Scegliere la specializzazione</div>
-              </div>
+              <mat-error *ngIf="specPG.invalid && (specPG.dirty || specPG.touched) && specPG.hasError('required')">
+                  Scegliere la specializzazione
+                </mat-error>
+              </mat-form-field>
             </div>
           </div>
 
-          <div class=" row " *ngIf="specPG.value==17">
-            <label for="specialita" class="col-3 col-form-label" >Bonus a scelta</label>
+          <div class=" row white" *ngIf="specPG.value==17">
+            <div class="col-6">
+              Bonus a scelta
+            </div>
+            
             <div class="col" >
-              <select id="xspecpg" name="xspecpg" class="form-control" required formControlName="xspecPG">
-                <option *ngFor="let i of xspecial" [ngValue]="i.IDspecialx">{{i.xbonus}}</option>
-              </select>
-              <div *ngIf="xspecPG.invalid && (xspecPG.dirty || xspecPG.touched) && specPG.value==17" class="alert alert-danger" color="red">
-                <div *ngIf="xspecPG.errors.required">Scegliere il bonus speciale</div>
-              </div>
+              <mat-form-field class="full">
+                <mat-select  name="xspecpg"  required formControlName="xspecPG">
+                  <mat-option *ngFor="let i of xspecial" [value]="i.IDspecialx">{{i.xbonus}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="xspecPG.value==0 && specPG.value==17">
+                  Scegliere il bonus speciale
+                </mat-error>
+              </mat-form-field>
+
             </div>
           </div>
 
@@ -157,13 +181,21 @@
 
 
           <div class=" row " >
+            <div class="col-2">&nbsp;</div>
             <div class="col-8">
-              <button type="button" class="btn btn-sm btn-danger w-100" [disabled]="(!(formDir.form.valid && checked && !formDir.form.pristine) && !changecheck)  || (aaaaPG.status == 'INVALID') ||(mmPG.status =='INVALID') || (ggPG.status =='INVALID') ||(specPG.status == 'INVALID' )" (click)="updatepg()">Aggiorna</button>
+              <button mat-raised-button color="primary" class="full" [disabled]="!formDir.form.valid || (checked==0)  || (xspecPG.value == '' && specPG.value==17) || (formDir.form.pristine && changecheck==0)" (click)="updatepg()">Aggiorna</button>
+            </div>
+          </div>
+          <p>
+          <div class=" row " >
+            <div class="col-2">&nbsp;</div>
+            <div class="col-8">
+              <button mat-raised-button color="accent" class="full" (click)="logout()">Logout</button>
             </div>
           </div>
 
+          <p>
 
-          <!-- </div> -->
           
           <!-- fine col9 -->
         </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs' ;
+import {map} from 'rxjs/operators';
 
 
 @Injectable()
@@ -13,7 +13,7 @@ export class SignupService {
     }
     return this.http
       .get('https://www.roma-by-night.it/Castello/wsPHP/checkemail.php?email=' + email)
-      .map( (data: Ares) => data.res );
+      .pipe( map( (data: Ares) => data.res ));
   }
 
 

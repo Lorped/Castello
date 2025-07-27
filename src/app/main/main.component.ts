@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SchedaService } from '../services/index';
 import { Status, Personaggio} from '../globals';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -29,10 +30,18 @@ export class MainComponent implements OnInit {
 
   changecheck=0;
 
-  constructor( private schedaService: SchedaService, public status: Status, private pg: Personaggio ) { }
+  minDate: Date;
+  maxDate: Date;
+
+  colors = [ "", "", "" ];
+
+  constructor( private schedaService: SchedaService, public status: Status, private pg: Personaggio , private router: Router) { }
 
   ngOnInit() {
 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 90, 0, 1);
+    this.maxDate = new Date(currentYear - 16, 11, 31);
 
     this.personaggioForm = new FormGroup ({
 
@@ -43,27 +52,17 @@ export class MainComponent implements OnInit {
       CognomePG: new FormControl('', [
         Validators.pattern(this.unamePattern)
       ]),
+      DataNascita: new FormControl('', [
+        Validators.required
+      ]),
       profPG: new FormControl('', [
         Validators.required
       ]),
       specPG: new FormControl('', [
         Validators.required
       ]),
-      ggPG: new FormControl(1, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(31)
-      ]),
-      mmPG: new FormControl(1, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(12)
-      ]),
-      aaaaPG: new FormControl(1970, [
-        Validators.required,
-        Validators.min(1900),
-        Validators.max(this.today - 16)
-      ]),
+      
+
       xspecPG: new FormControl('', []),
 
     });
@@ -79,6 +78,7 @@ export class MainComponent implements OnInit {
       this.xspecial = data;
     });
 
+  
 
     this.schedaService.getpg()
     .subscribe( (data: any) => {
@@ -89,10 +89,11 @@ export class MainComponent implements OnInit {
         CognomePG: data.CognomePG,
         profPG: data.IDprofessione,
         specPG: data.IDspecial,
-        aaaaPG: data.aaaa,
-        mmPG: data.mm,
-        ggPG: data.gg,
-        xspecPG: data.xspecpg
+        //aaaaPG: data.aaaa,
+        //mmPG: data.mm,
+        //ggPG: data.gg,
+        xspecPG: data.xspecpg,
+        DataNascita: new Date(data.aaaa, data.mm - 1, data.gg)
       });
 
       this.URLimg = data.URLimg;
@@ -100,6 +101,7 @@ export class MainComponent implements OnInit {
       if (this.checkvalue != 0 ) {
         let xx = (data.IDbp-1)-3*Math.floor((data.IDbp-1)/3);
         this.checkbonus[xx]=1;
+        this.colors[xx]="primary";
         this.checked=1;
         this.checkvalue=data.IDbp;
       }
@@ -113,9 +115,14 @@ export class MainComponent implements OnInit {
   onChanges(): void {
     this.personaggioForm.get('profPG').valueChanges.subscribe(val => {
 
+      //console.log("here");
+
       this.checkbonus[0] = 0;
       this.checkbonus[1] = 0;
       this.checkbonus[2] = 0;
+      this.colors[0]="";
+      this.colors[1]="";
+      this.colors[2]="";
       this.checked = 0;
       this.changecheck = 0;
       this.personaggioForm.patchValue({
@@ -131,24 +138,20 @@ export class MainComponent implements OnInit {
   get CognomePG() {
     return this.personaggioForm.get('CognomePG');
   }
+  get DataNascita() {
+    return this.personaggioForm.get('DataNascita');
+  }
   get profPG() {
     return this.personaggioForm.get('profPG');
   }
   get specPG() {
     return this.personaggioForm.get('specPG');
   }
-  get aaaaPG() {
-    return this.personaggioForm.get('aaaaPG');
-  }
-  get mmPG() {
-    return this.personaggioForm.get('mmPG');
-  }
-  get ggPG() {
-    return this.personaggioForm.get('ggPG');
-  }
   get xspecPG() {
     return this.personaggioForm.get('xspecPG');
   }
+
+
 
 
 
@@ -176,7 +179,10 @@ export class MainComponent implements OnInit {
     if (this.specPG.value == 17 ) {  /*** studente ***/
       xpg = this.xspecPG.value;
     }
-    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, this.aaaaPG.value, this.mmPG.value, this.ggPG.value , xpg)
+    var aaaa = this.DataNascita.value.getFullYear();
+    var mm = this.DataNascita.value.getMonth() + 1;
+    var gg = this.DataNascita.value.getDate();
+    this.schedaService.updatepg(this.NomePG.value, this.CognomePG.value, this.profPG.value, this.specPG.value, this.checkvalue, aaaa, mm, gg , xpg)
     .subscribe( (data: any) => {
       this.personaggioForm.markAsPristine();
       this.changecheck=0;
@@ -202,7 +208,16 @@ export class MainComponent implements OnInit {
     this.checkvalue = this.professioni[this.profPG.value-1].bonus[i].IDbp;
 
     this.changecheck=1;
+
+    //console.log("docheck ", i);
+    this.colors[0]="";
+    this.colors[1]="";
+    this.colors[2]="";
+    this.colors[i]="primary";
   }
 
+  logout(){
+    this.router.navigate(['login']);
+  }
 
 }

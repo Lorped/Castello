@@ -40,6 +40,7 @@ export class LoginmasterComponent implements OnInit {
       .subscribe(
         data => {
           this.status.IDutente = data.IDutente;
+          sessionStorage.setItem('CastelloMaster', data.IDutente);
           this.router.navigate(['master']);
         },
         error => {

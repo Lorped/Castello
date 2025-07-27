@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { SignupService } from '../services/signup.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -77,9 +78,9 @@ export class RegisterComponent implements OnInit {
 
   validateEmailNotTaken(control: AbstractControl) {
     return this.signupService.checkEmail(control.value)
-    .map(res => {
+    .pipe( map(res => {
       return res === 'OK' ? null : { emailTaken: true };
-    });
+    }));
   }
 
   doRegister() {
