@@ -81,7 +81,7 @@ include('../phpqrcode2/lib/full/qrlib.php');
 			margin: 0;
 		}
 		.list {
-    		width: 198px;
+    		width: 320px;
     		/* height: 1061px; */
     		display: inline-block;
     		line-height: 1;
@@ -160,12 +160,13 @@ include('../phpqrcode2/lib/full/qrlib.php');
 
 ?>
 
-			<div class="list">
-				<img src='../assets/cart_f.png' class="bg-image" id="pg1">
+			<div class="list" style="border: 1px solid #000;">
 
-				<div class="list-inner" style="padding-top: 25px;">
+				<img src='../assets/cart_m_new.jpg'; class="bg-image" id="pg1">
+
+				<div class="list-inner" style="padding-top: 10px;">
 				<!--  <span style="font-size: 6pt; margin-left: 120px;"> <?=$id?> </span><br> <img src='../tmp/QR<?=$tt?>.png' style="width: 80px;height: 80px;margin-left: 34px;padding-top: 2px;"> -->
-				<span style="font-size: 6pt; margin-left: 120px;"> M<?=$id?> </span><br> <img src='../tmp/QR<?=$tt?>.svg' style="margin-left: 34px;padding-top: 2px;">
+				<span style="font-size: 6pt; margin-left: 70px;">Magia <?=$id?> </span><br> <img src='../tmp/QR<?=$tt?>.svg' style="margin-left: 50px;padding-top: 2px;">
 
 				</div>
 			</div>
