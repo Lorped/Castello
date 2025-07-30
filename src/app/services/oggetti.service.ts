@@ -39,6 +39,7 @@ export class Oggetto {
     basemiti: 0 ;
     basesan: 0 ;
     basepf: 0 ;
+    Tipo : 'm';
   } ;
  eff: Array <Effetti> = [];
  pair: Array<Paired> = [];
@@ -154,13 +155,14 @@ export class OggettiService {
     });
   }
 
-  addbase (nome:string, descrizione:string, basesan:number, basemiti:number, basepf:number) {
+  addbase (nome:string, descrizione:string, basesan:number, basemiti:number, basepf:number, tipo:string) {
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/addbase.php' , {
       nome: nome,
       descrizione: descrizione,
       basesan: basesan,
       basemiti: basemiti,
-      basepf: basepf
+      basepf: basepf,
+      tipo: tipo
     });
   }
 

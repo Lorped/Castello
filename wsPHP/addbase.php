@@ -27,12 +27,13 @@ $descrizione = mysqli_real_escape_string($db, $request->descrizione);
 $basemiti = $request->basemiti;
 $basesan = $request->basesan;
 $basepf= $request->basepf;
+$tipo= $request->tipo;
 
 $barcode=rand(100000000000,999999999999);
 $out = [];
 
-$Mysql="INSERT INTO oggetti ( scan, nome, descrizione, basemiti, basesan, basepf)
-	VALUES ('$barcode', '$nome', '$descrizione', $basemiti, $basesan, $basepf ) ";
+$Mysql="INSERT INTO oggetti ( scan, nome, descrizione, basemiti, basesan, basepf, Tipo)
+	VALUES ('$barcode', '$nome', '$descrizione', $basemiti, $basesan, $basepf, '$tipo') ";
 $Result=mysqli_query($db, $Mysql);
 
 

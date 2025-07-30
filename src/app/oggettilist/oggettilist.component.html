@@ -47,7 +47,7 @@
 
           <!--- -->
           <div class="row" *ngFor="let item of listaoggetti">
-            <div class="col-1 ">{{item.ogg.IDoggetto}}</div>
+            <div class="col-1 ">{{item.ogg.IDoggetto}} &nbsp; {{item.ogg.Tipo.toUpperCase()}}</div>
             <div class="col-2 all"><a mat-flat-button  color="accent" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
             <div class="col-6 all">{{item.ogg.descrizione}}</div>
             <div class="col-2 alc">
@@ -132,7 +132,14 @@
 
             <div class="row ">
 
-              <div class="col-1">&nbsp;</div>
+              <div class="col-1">
+                
+                <mat-radio-group [(ngModel)]="fissomobile"  class="example-radio-group">
+                  <mat-radio-button  class="example-radio-button"  *ngFor="let tipo of listafissomobile" [value]="tipo.id" >{{tipo.nome}} 
+                  </mat-radio-button>
+                </mat-radio-group>
+                
+              </div>
               <div class="col-2 all">
                 <mat-form-field >
                   <input matInput name="nome" type="text"  [(ngModel)]="newnome" required placeholder="Nome oggetto">

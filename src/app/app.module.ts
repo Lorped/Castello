@@ -45,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatDatepickerModule} from '@angular/material/datepicker'; 
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio'; 
 
 import {
   MAT_MOMENT_DATE_FORMATS,
@@ -87,6 +88,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
     RouterModule.forRoot(APP_ROUTES, {useHash: true})
   ],
   providers: [

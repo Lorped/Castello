@@ -37,3 +37,13 @@ mat-card-title {
   border-bottom-style: solid;
   border-left-width: 1px;
 }
+
+.example-radio-group {
+  /* display: flex; */
+  /* flex-direction: row; */
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}

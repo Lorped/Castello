@@ -48,7 +48,7 @@
           <form name="oggettoform" (ngSubmit)="doSave()" #oggettoForm="ngForm" class="form-cambia" >
           <!--- -->
           <div class="row" *ngIf="oggetto">
-            <div class="col-1">{{oggetto.ogg.IDoggetto}}</div>          
+            <div class="col-1">{{oggetto.ogg.IDoggetto}} {{oggetto.ogg.Tipo.toUpperCase()}}</div>
             <div class="col-2 all">
                 <mat-form-field>
                   <input name="nome" type="text" matInput [(ngModel)]="oggetto.ogg.nome" required>

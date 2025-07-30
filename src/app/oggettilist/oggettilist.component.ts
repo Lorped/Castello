@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Oggetto, OggettiService } from '../services/index';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-oggettilist',
@@ -17,11 +18,22 @@ export class OggettilistComponent implements OnInit {
 
   listaoggetti: Array<Oggetto> = [];
 
+  listafissomobile: { id: string, nome: string, def: boolean }[] = [
+    {id: 'f', nome: 'Fisso', def: true} ,
+    {id: 'm', nome: 'Mobile', def: false} ,
+    {id: 'e', nome: 'Enigma', def: false} 
+  ];
+
+  fissomobile = 'f';
+
+  
   newnome = '';
   newdescrizione = '';
   newbasesan = 0 ;
   newbasemiti = 0 ;
   newbasepf = 0 ;
+
+
 
   constructor( private oggetti: OggettiService ) { }
 
@@ -40,13 +52,14 @@ export class OggettilistComponent implements OnInit {
   }
 
   doSave() {
-    this.oggetti.addbase(this.newnome, this.newdescrizione, this.newbasesan, this.newbasemiti, this.newbasepf)
+    this.oggetti.addbase(this.newnome, this.newdescrizione, this.newbasesan, this.newbasemiti, this.newbasepf, this.fissomobile)
     .subscribe( res => {
       this.newnome = '';
       this.newdescrizione = '';
       this.newbasesan = 0 ;
       this.newbasemiti = 0 ;
       this.newbasepf = 0 ;
+      this.fissomobile = 'f';
       this.caricaoggetti();
     });
   }
