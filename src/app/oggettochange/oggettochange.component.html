@@ -265,6 +265,68 @@
               </div>
             </div>
 
+            <!--  DOMANDA   -->
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <mat-form-field class="full">
+                      <mat-slide-toggle [(ngModel)]="newflagdomanda">Domanda</mat-slide-toggle>
+                      <textarea matInput hidden></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newdomanda" type="text" matInput [(ngModel)]="newdomanda" [required]="newflagdomanda" [disabled]="!newflagdomanda">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr ">
+                    <strong>SI</strong>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newr1" type="text" matInput [(ngModel)]="newr1" [required]="newflagdomanda" [disabled]="!newflagdomanda">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    <mat-form-field>
+                      <div >
+                        <div class="row">
+                          <div class="col"><input name="newrispsan" type="number" matInput [(ngModel)]="newrispsan" [required]="newflagdomanda" [disabled]="!newflagdomanda"></div>
+                          <div class="col"><input name="newrispmiti" type="number" matInput [(ngModel)]="newrispmiti" [required]="newflagdomanda" [disabled]="!newflagdomanda"></div>
+                          <div class="col"><input name="newrisppf" type="number" matInput [(ngModel)]="newrisppf" [required]="newflagdomanda" [disabled]="!newflagdomanda"></div>
+                        </div>
+                      </div>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr ">
+                    <strong>NO</strong>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newr2" type="text" matInput [(ngModel)]="newr2" [required]="newflagdomanda" [disabled]="!newflagdomanda">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
+
+
             <div class="col-12" >
               <div class="row">
                 <div class="col-3">&nbsp;</div>

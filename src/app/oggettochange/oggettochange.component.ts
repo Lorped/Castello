@@ -45,6 +45,17 @@ export class OggettochangeComponent implements OnInit {
   newpairdescrizione = '';
   newpairselect = 0;
 
+  newrispsan = 0;
+  newrispmiti = 0;
+  newrisppf = 0;
+
+
+
+  newflagdomanda = false;
+  newdomanda = '';
+  newr1 = '';
+  newr2 = '';
+
   constructor( private oggettiService: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
 
   ngOnInit() {
@@ -98,7 +109,13 @@ export class OggettochangeComponent implements OnInit {
     this.oggettiService.getoggetto(id)
       .subscribe( (res:any) => {
         this.oggetto = res[0];
-        //console.log(res);
+
+
+        this.newflagdomanda = (this.oggetto.ogg.flagdomanda == 1);
+        this.newdomanda = this.oggetto.ogg.domanda;
+        this.newr1 = this.oggetto.ogg.r1;
+        this.newr2 = this.oggetto.ogg.r2;
+        //console.log(this.oggetto.ogg);
       });
   }
 
@@ -168,10 +185,22 @@ export class OggettochangeComponent implements OnInit {
       });
     }
 
+if (this.newflagdomanda == false) {
+        this.newdomanda = '';
+        this.newr1 = '';
+        this.newr2 = '';
+        this.newrispsan = 0;
+        this.newrispmiti = 0;
+        this.newrisppf = 0;
+      }
+
     this.oggettiService.changebase(this.oggetto.ogg.IDoggetto,
       this.oggetto.ogg.nome, this.oggetto.ogg.descrizione,
-      this.oggetto.ogg.basesan, this.oggetto.ogg.basemiti, this.oggetto.ogg.basepf )
+      this.oggetto.ogg.basesan, this.oggetto.ogg.basemiti, this.oggetto.ogg.basepf ,
+      this.newflagdomanda, this.newdomanda, this.newr1, this.newr2,
+      this.newrispsan, this.newrispmiti, this.newrisppf )
     .subscribe( (res) => {
+      
       this.oggettoForm.form.markAsPristine();
       this.oggettoForm.form.markAsUntouched();
     });

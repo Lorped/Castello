@@ -106,7 +106,7 @@
             <div class="col-12" *ngFor="let i of item.pair">
               <div class="row ">
                   <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all green">({{i.nome}})</div>
+                  <div class="col-2 all green"><strong>({{i.nome}})</strong></div>
                   <div class="col-6 all">{{i.pdescrizione}}</div>
                   <div class="col-2 alc">
                     <div class="table ">
@@ -118,6 +118,41 @@
                   <div class="col-1">&nbsp;</div>
               </div>
             </div>
+
+            <div class="col-12" *ngIf="item.ogg.flagdomanda == 1">
+              <div class="row ">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">Domanda</div>
+                  <div class="col-6 all">{{item.ogg.domanda}}</div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row ">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr green"><strong>SI</strong></div>
+                  <div class="col-6 all">{{item.ogg.r1}}</div>
+                  <div class="col-2 alc">
+                    <div class="table ">
+                      <div class="row">
+                        <div class="col">{{item.ogg.rispsan}}</div><div class="col">{{item.ogg.rispmiti}}</div><div class="col">{{item.ogg.risppf}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row ">
+                  <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr green"><strong>NO</strong></div>
+                  <div class="col-6 all">{{item.ogg.r2}}</div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
           </div>
 
         </div>

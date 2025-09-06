@@ -29,9 +29,18 @@ $basemiti = $request->basemiti;
 $basesan = $request->basesan;
 $basepf= $request->basepf;
 
+$flagdomanda = $request->flagdomanda;
+$domanda = mysqli_real_escape_string($db,$request->domanda);
+$r1 = mysqli_real_escape_string($db,$request->r1);
+$r2 = mysqli_real_escape_string($db,$request->r2);
+$rispsan = $request->rispsan;
+$rispmiti = $request->rispmiti;
+$risppf = $request->risppf;
+
 $out = [];
 
-$Mysql="UPDATE oggetti SET nome='$nome', descrizione='$descrizione', basemiti=$basemiti, basesan=$basesan, basepf=$basepf
+$Mysql="UPDATE oggetti SET nome='$nome', descrizione='$descrizione', basemiti=$basemiti, basesan=$basesan, basepf=$basepf ,
+flagdomanda='$flagdomanda', domanda='$domanda', r1='$r1', r2='$r2', rispsan=$rispsan, rispmiti=$rispmiti, risppf=$risppf
 	WHERE IDoggetto=$IDoggetto";
 $Result=mysqli_query($db,$Mysql);
 

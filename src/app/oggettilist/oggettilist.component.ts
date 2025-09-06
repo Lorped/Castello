@@ -46,7 +46,7 @@ export class OggettilistComponent implements OnInit {
   caricaoggetti() {
     this.oggetti.listoggetti()
       .subscribe( (res: any) => {
-        //console.log(res);
+        console.log(res);
         this.listaoggetti = res;
       });
   }
