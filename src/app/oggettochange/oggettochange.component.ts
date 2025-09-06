@@ -115,6 +115,9 @@ export class OggettochangeComponent implements OnInit {
         this.newdomanda = this.oggetto.ogg.domanda;
         this.newr1 = this.oggetto.ogg.r1;
         this.newr2 = this.oggetto.ogg.r2;
+        this.newrispsan = this.oggetto.ogg.rispsan;
+        this.newrispmiti = this.oggetto.ogg.rispmiti;
+        this.newrisppf = this.oggetto.ogg.risppf;
         //console.log(this.oggetto.ogg);
       });
   }
