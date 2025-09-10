@@ -75,6 +75,71 @@
     </mat-card-content>
   </mat-card>
   
+
+<mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Risposte Scelte</span></mat-card-title>
+    </div>
+
+    <mat-card-content>
+        
+    <div class="alc" >
+      <!-- tabella -->
+        <div class="row white">
+          <div class="col-3 all">
+          <button mat-raised-button color="accent" class="full" (click)="sortBy3('NomePG')">Personaggio
+            <span class="sortorder" *ngIf="propertyName3 === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
+          </button>
+          </div>
+          <div class="col-5 all">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('Risposta')">Risposte
+              <span class="sortorder" *ngIf="propertyName3 === 'Risposta'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+          <div class="col-2 all">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('nome')">Oggetto
+              <span class="sortorder" *ngIf="propertyName3 === 'nome'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('data')">Data
+              <span class="sortorder" *ngIf="propertyName3 === 'data'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="row white margin-top-4" *ngFor="let item of listrisposte">
+              <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+              <div class="col-5 all smaller">ha risposto
+                <span *ngIf="item.Risposta == '1'" class="red"><strong>SI</strong></span>
+                <span *ngIf="item.Risposta == '0'" class="green"><strong>NO</strong></span>
+                alla domanda <strong>{{item.Domanda}}</strong> dell'oggetto</div>
+              <div class="col-2 all smaller">{{item.nome}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+        </div>
+    </div>
+
+
+
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <mat-card>
     <div class ="alc">
       <mat-card-title><span class="mytitle white">Scansioni Accoppiate</span></mat-card-title>

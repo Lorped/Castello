@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 include ('db.inc.php');
 
+$out1 = [];
+$out2 = [];
+$out3 = [];
+
 
 $MySql="SELECT logscan.IDutente, logscan.IDoggetto, data,
 			NomePG, CognomePG, Miti, Sanita, nome, nomeprofessione
@@ -49,9 +53,25 @@ while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 	$out2[] = $res;
 }
 
+
+$MySql="SELECT logrisposte.IDutente, logrisposte.IDoggetto, Risposta, Domanda, logrisposte.data,
+			NomePG, CognomePG, nome
+			from logrisposte
+		LEFT JOIN personaggi on personaggi.IDutente = logrisposte.IDutente
+		LEFT JOIN oggetti on oggetti.IDoggetto = logrisposte.IDoggetto";
+$Result=mysqli_query($db, $MySql);
+$res=mysqli_fetch_array($Result);
+
+
+$Result=mysqli_query($db, $MySql);
+while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
+	$out3[] = $res;
+}
+
 $out = [
 	'scan' => $out1,
-	'paired' => $out2
+	'paired' => $out2,
+	'risposte' => $out3
 ];
 
 header("HTTP/1.1 200 OK");

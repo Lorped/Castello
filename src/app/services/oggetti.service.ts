@@ -112,6 +112,16 @@ export class Listmagiex  {
   DescEstesa = '';
 };
 
+export class Listrisposte {
+  IDutente = 0;
+  NomePG = '';
+  CognomePG = '';
+  Risposta = "";
+  Domanda = '';
+  IDoggetto = 0;
+  nome = '';
+  data = '';
+}
 
 
 @Injectable()

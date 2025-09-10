@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Listscan, Listpaired , OggettiService } from '../services/index';
+import { Listscan, Listpaired , Listrisposte, OggettiService } from '../services/index';
 
 @Component({
   selector: 'app-listscan',
@@ -10,9 +10,11 @@ export class ListscanComponent implements OnInit {
 
   listascan: Array<Listscan> = [];
   listapaired: Array<Listpaired> = [];
+  listrisposte: Array<Listrisposte> = [];
   order = 1;
   propertyName = '';
   propertyName2 = '';
+  propertyName3 = '';
 
   constructor( private oggetti: OggettiService ) { }
 
@@ -22,6 +24,9 @@ export class ListscanComponent implements OnInit {
         // console.log(res);
         this.listascan = res.scan;
         this.listapaired = res.paired;
+        this.listrisposte = res.risposte;
+
+        //console.log(this.listapaired);
 
         this.listapaired.forEach(element => {
           // Do something with each element
@@ -43,9 +48,19 @@ export class ListscanComponent implements OnInit {
     // console.log(this.order);
   }
 
-    sortBy2 ( prop: string) {
+  sortBy2 ( prop: string) {
     this.propertyName2 = prop;
     this.listapaired.sort ( (a, b) => {
+      return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
+    });
+    this.order = -1 * this.order;
+
+    // console.log(this.order);
+  }
+
+  sortBy3 ( prop: string) {
+    this.propertyName3 = prop;
+    this.listrisposte.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
     });
     this.order = -1 * this.order;
