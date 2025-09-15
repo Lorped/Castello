@@ -8,7 +8,7 @@ function pushmsg ($data) {
 
 	$url = "https://fcm.googleapis.com/v1/projects/castello-a99be/messages:send";
 
-	$access_token = get_access_token("castello-a99be-9527f3cbc445.json");
+	$access_token = get_access_token("/web/htdocs/www.roma-by-night.it/home/Castello/wsPHP/castello-a99be-9527f3cbc445.json");
     
     $options = array(
         CURLOPT_URL => $url,
@@ -38,24 +38,52 @@ function user2master ( $idutente , $testo, $db ) {
 		$cognomepg=$res['CognomePG'];
 	}
 
-	$data = [
-        'message' => [
-            "notification"=> [
-                "title" => "CASTELLO",
-                "body" => $nomepg." ".$cognomepg.": ".$testo,
+	$Mysql="SELECT registrationID FROM master";
+	$Result=mysqli_query($db, $Mysql);
+	$res=mysqli_fetch_array($Result);
 
-                // 'sound' => 'default',
-				// 'notification_priority' => '2'
-            ],
-            "android" => [
-                "notification" => [
-                    "channel_id" => "PushPluginChannel"
-                ]
-            ],
-            //'token' => $token,
-            'topic' => 'master' 
-        ]
-    ];
+	if ($res['registrationID'] != "" ) {
+
+		$token= $res['registrationID'];
+
+		$data = [
+			'message' => [
+				"notification"=> [
+					"title" => "CASTELLO",
+					"body" => $nomepg." ".$cognomepg.": ".$testo,
+					// 'sound' => 'default',
+					// 'notification_priority' => '2'
+				],
+				"android" => [
+					"notification" => [
+						"channel_id" => "PushPluginChannel"
+					]
+				],
+				'token' => $token
+				//'topic' => 'master' 
+			]
+		]; 
+	} else {   //potrebbe non arriavare ma ok
+
+		$data = [
+			'message' => [
+				"notification"=> [
+					"title" => "CASTELLO",
+					"body" => $nomepg." ".$cognomepg.": ".$testo,
+
+					// 'sound' => 'default',
+					// 'notification_priority' => '2'
+				],
+				"android" => [
+					"notification" => [
+						"channel_id" => "PushPluginChannel"
+					]
+				],
+				//'token' => $token,
+				'topic' => 'master'
+			]
+		];
+	}
 
 	pushmsg ($data);
 }

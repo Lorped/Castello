@@ -19,6 +19,17 @@ export class ListscanComponent implements OnInit {
   constructor( private oggetti: OggettiService ) { }
 
   ngOnInit() {
+    this.loadData();
+
+    const channel = new window.BroadcastChannel('my-channel2');
+      channel.addEventListener('message', (event: any) => {
+        console.log("Received message from channel 2:", event.data);
+        this.loadData();
+    });
+      
+  }
+
+  loadData() {
     this.oggetti.listscan()
       .subscribe( (res: any) => {
         // console.log(res);
@@ -37,7 +48,9 @@ export class ListscanComponent implements OnInit {
           }
         });
       });
+
   }
+
   sortBy ( prop: string) {
     this.propertyName = prop;
     this.listascan.sort ( (a, b) => {
