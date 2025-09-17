@@ -51,21 +51,22 @@ export class LoginmasterComponent implements OnInit {
           sessionStorage.setItem('CastelloMaster', data.IDutente);
 
           provideFirebaseApp(() => initializeApp(environment.firebase));
-          //console.log("Firebase app initialized:");
+          console.log("Firebase app initialized:");
 
           Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
-              //console.log('Notification permission granted.');
+              console.log('Notification permission granted.');
 
 
               this.mesg.requestToken.subscribe( (currentToken) => {
                 if (currentToken) {
-                  //console.log("Current token:", currentToken);
+                  console.log("Current token:", currentToken);
 
                   let updateurl = 'https://www.roma-by-night.it/Castello/wsPHPapp/updateid.php?userid=0'+'&id='+currentToken;
                   this.http.get(updateurl).subscribe(res =>  {
 
                     const messaging = getMessaging();
+                    console.log("Firebase messaging initialized:", messaging);
                     this.mesg.messages.subscribe((message) => { 
                       window.alert("CASTELLO: " + message.notification?.body);
                       const channel = new BroadcastChannel('my-channel2');

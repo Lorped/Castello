@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "castello-a99be",
   storageBucket: "castello-a99be.firebasestorage.app",
   messagingSenderId: "639056394320",
-  appId: "1:639056394320:web:684a48ea6aaafa36d0f955",
-  measurementId: "G-S5DE10FNH7",
+  appId: "1:639056394320:web:629a6ba943c1f044d0f955",
+  measurementId: "G-RYRCGP909P",
 };
 
 const app = firebase.initializeApp(firebaseConfig);
@@ -24,5 +24,5 @@ messaging.onBackgroundMessage( (message) => {
   const channel = new BroadcastChannel('my-channel');
   channel.postMessage(message);
   console.log('Message received in background (SW) ', message);
-  // ...
+  
 });
