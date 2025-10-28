@@ -56,6 +56,13 @@ export class OggettochangeComponent implements OnInit {
   newr1 = '';
   newr2 = '';
 
+
+  newflagpassword = false;
+  newrichiesta = '';
+  newpassword = '';
+  newpasswdok = '';
+
+
   constructor( private oggettiService: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
 
   ngOnInit() {
@@ -110,6 +117,10 @@ export class OggettochangeComponent implements OnInit {
       .subscribe( (res:any) => {
         this.oggetto = res[0];
 
+        this.oggetto.ogg.flagdomanda = Number(this.oggetto.ogg.flagdomanda);
+        this.oggetto.ogg.flagpassword = Number(this.oggetto.ogg.flagpassword);
+
+        console.log(this.oggetto.ogg);
 
         this.newflagdomanda = (this.oggetto.ogg.flagdomanda == 1);
         this.newdomanda = this.oggetto.ogg.domanda;
@@ -118,7 +129,15 @@ export class OggettochangeComponent implements OnInit {
         this.newrispsan = this.oggetto.ogg.rispsan;
         this.newrispmiti = this.oggetto.ogg.rispmiti;
         this.newrisppf = this.oggetto.ogg.risppf;
+
+        this.newflagpassword = (this.oggetto.ogg.flagpassword == 1);
+        this.newrichiesta = this.oggetto.ogg.richiesta;
+        this.newpassword = this.oggetto.ogg.password;
+        this.newpasswdok = this.oggetto.ogg.passwdok;
         //console.log(this.oggetto.ogg);
+
+        console.log(this.newflagdomanda);
+        console.log(this.newflagpassword);
       });
   }
 
@@ -197,11 +216,18 @@ if (this.newflagdomanda == false) {
         this.newrisppf = 0;
       }
 
+  if (this.newflagpassword == false) {
+        this.newrichiesta = '';
+        this.newpassword = '';
+        this.newpasswdok = '';
+      }
+
     this.oggettiService.changebase(this.oggetto.ogg.IDoggetto,
       this.oggetto.ogg.nome, this.oggetto.ogg.descrizione,
       this.oggetto.ogg.basesan, this.oggetto.ogg.basemiti, this.oggetto.ogg.basepf ,
       this.newflagdomanda, this.newdomanda, this.newr1, this.newr2,
-      this.newrispsan, this.newrispmiti, this.newrisppf )
+      this.newrispsan, this.newrispmiti, this.newrisppf ,
+      this.newflagpassword, this.newrichiesta, this.newpassword, this.newpasswdok)
     .subscribe( (res) => {
       
       this.oggettoForm.form.markAsPristine();

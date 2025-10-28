@@ -37,10 +37,17 @@ $rispsan = $request->rispsan;
 $rispmiti = $request->rispmiti;
 $risppf = $request->risppf;
 
+
+$flagpassword = $request->flagpassword;
+$richiesta = mysqli_real_escape_string($db,$request->richiesta);
+$password = mysqli_real_escape_string($db,$request->password);
+$passwdok = mysqli_real_escape_string($db,$request->passwdok);
+
 $out = [];
 
 $Mysql="UPDATE oggetti SET nome='$nome', descrizione='$descrizione', basemiti=$basemiti, basesan=$basesan, basepf=$basepf ,
-flagdomanda='$flagdomanda', domanda='$domanda', r1='$r1', r2='$r2', rispsan=$rispsan, rispmiti=$rispmiti, risppf=$risppf
+flagdomanda='$flagdomanda', domanda='$domanda', r1='$r1', r2='$r2', rispsan=$rispsan, rispmiti=$rispmiti, risppf=$risppf,
+flagpassword='$flagpassword', richiesta='$richiesta', password='$password', passwdok='$passwdok'
 	WHERE IDoggetto=$IDoggetto";
 $Result=mysqli_query($db,$Mysql);
 

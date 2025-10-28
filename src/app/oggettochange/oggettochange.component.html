@@ -271,7 +271,7 @@
                 <div class="col-1">&nbsp;</div>
                   <div class="col-2 all ">
                     <mat-form-field class="full">
-                      <mat-slide-toggle [(ngModel)]="newflagdomanda">Domanda</mat-slide-toggle>
+                      <mat-slide-toggle [(ngModel)]="newflagdomanda" name="Domanda" >Domanda</mat-slide-toggle>
                       <textarea matInput hidden></textarea>
                     </mat-form-field>
                   </div>
@@ -327,10 +327,64 @@
 
 
 
+            <!--  Password   -->
+            <div class="col-12">
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 all ">
+                    <mat-form-field class="full">
+                      <mat-slide-toggle [(ngModel)]="newflagpassword"  name="Enigma">Enigma</mat-slide-toggle>
+                      <textarea matInput hidden></textarea>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newrichiesta" type="text" matInput [(ngModel)]="newrichiesta" [required]="newflagpassword" [disabled]="!newflagpassword">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr ">
+                    <strong>Risposta</strong>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newpassword" type="text" matInput [(ngModel)]="newpassword" [required]="newflagpassword" [disabled]="!newflagpassword">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+              <div class="row">
+                <div class="col-1">&nbsp;</div>
+                  <div class="col-2 alr ">
+                    <strong>SE OK</strong>
+                  </div>
+                  <div class="col-6 all">
+                    <mat-form-field class="full">
+                      <input name="newpasswdok" type="text" matInput [(ngModel)]="newpasswdok" [required]="newflagpassword" [disabled]="!newflagpassword">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-2 alc">
+                    &nbsp;
+                  </div>
+                  <div class="col-1">&nbsp;</div>
+              </div>
+            </div>
+
+
+
             <div class="col-12" >
               <div class="row">
                 <div class="col-3">&nbsp;</div>
-                <div class="col-5 all"><button mat-raised-button color="primary" class="full" [disabled]="! (oggettoForm.form.valid && oggettoForm.form.touched)" >Salva</button></div>
+                <div class="col-5 all"><button mat-raised-button color="primary" class="full" [disabled]="! (oggettoForm.form.valid && oggettoForm.form.touched)  || (newflagdomanda && newflagpassword)" >Salva</button></div>
                 <div class="col-4">&nbsp;</div>
               </div>
             </div>

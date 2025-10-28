@@ -47,6 +47,10 @@ export class Oggetto {
     rispsan: number;
     rispmiti: number;
     risppf: number;
+    flagpassword: number;
+    richiesta: string;
+    password: string;
+    passwdok: string;
   } = {
     IDoggetto: 0,
     scan: 0,
@@ -62,7 +66,11 @@ export class Oggetto {
     r2: '',
     rispsan: 0,
     rispmiti: 0,
-    risppf: 0
+    risppf: 0,
+    flagpassword: 0,
+    richiesta: '',
+    password: '',
+    passwdok: ''
   };
  eff: Array <Effetti> = [];
  pair: Array<Paired> = [];
@@ -212,7 +220,8 @@ export class OggettiService {
 
 
   changebase (IDoggetto: number, nome:string, descrizione:string, basesan:number, basemiti:number,  basepf:number,
-    flagdomanda: boolean, domanda: string, r1: string, r2: string, rispsan: number, rispmiti: number, risppf: number
+    flagdomanda: boolean, domanda: string, r1: string, r2: string, rispsan: number, rispmiti: number, risppf: number,
+    flagpassword: boolean, richiesta: string, password: string, passwdok: string
   ) {
     return this.http.post('https://www.roma-by-night.it/Castello/wsPHP/changebase.php' , {
       IDoggetto: IDoggetto,
@@ -227,7 +236,11 @@ export class OggettiService {
       r2: r2,
       rispsan: rispsan,
       rispmiti: rispmiti,
-      risppf: risppf
+      risppf: risppf,
+      flagpassword: flagpassword,
+      richiesta: richiesta,
+      password: password,
+      passwdok: passwdok
     });
   }
 
