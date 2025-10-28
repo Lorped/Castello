@@ -16,6 +16,7 @@ export class ListscanComponent implements OnInit {
   propertyName = '';
   propertyName2 = '';
   propertyName3 = '';
+  propertyName4 = '';
 
   constructor( private oggetti: OggettiService ) { }
 
@@ -76,6 +77,16 @@ export class ListscanComponent implements OnInit {
   sortBy3 ( prop: string) {
     this.propertyName3 = prop;
     this.listrisposte.sort ( (a, b) => {
+      return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
+    });
+    this.order = -1 * this.order;
+
+    // console.log(this.order);
+  }
+
+  sortBy4 ( prop: string) {
+    this.propertyName4 = prop;
+    this.listenigmi.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
     });
     this.order = -1 * this.order;
