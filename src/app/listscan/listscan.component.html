@@ -127,6 +127,55 @@
 
 
 
+    <mat-card>
+    <div class ="alc">
+      <mat-card-title><span class="mytitle white">Enigmi</span></mat-card-title>
+    </div>
+
+    <mat-card-content>
+        
+    <div class="alc" >
+      <!-- tabella -->
+        <div class="row white">
+          <div class="col-3 all">
+          <button mat-raised-button color="accent" class="full" (click)="sortBy3('NomePG')">Personaggio
+            <span class="sortorder" *ngIf="propertyName3 === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
+          </button>
+          </div>
+          <div class="col-5 all">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('Risposta')">Risposte
+              <span class="sortorder" *ngIf="propertyName3 === 'Risposta'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+          <div class="col-2 all">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('nome')">Enigma
+              <span class="sortorder" *ngIf="propertyName3 === 'nome'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+          <div class="col-2">
+            <button mat-raised-button color="accent" class="full" (click)="sortBy3('data')">Data
+              <span class="sortorder" *ngIf="propertyName3 === 'data'" [ngClass]="{reverse: order == 1}"></span>
+            </button>
+          </div>
+        </div>
+        
+        <div class="row white margin-top-4" *ngFor="let item of listenigmi">
+              <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+              <div class="col-5 all smaller">
+                <span *ngIf="item.Risposta == '1'" ><strong>Ha raggiunto il limite di <span class="red">risposte errate</span></strong></span>
+                <span *ngIf="item.Risposta == '0'" ><strong>Ha risposto <span class="green">correttamente</span></strong></span>
+                all'Enigma <strong>{{item.Domanda}}</strong> dell'oggetto</div>
+              <div class="col-2 all smaller">{{item.nome}}</div>
+              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+        </div>
+    </div>
+
+
+
+      </mat-card-content>
+    </mat-card>
+
+
 
 
 

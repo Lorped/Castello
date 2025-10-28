@@ -54,24 +54,24 @@ while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
 }
 
 
-$MySql="SELECT logrisposte.IDutente, logrisposte.IDoggetto, Risposta, Domanda, logrisposte.data,
-			NomePG, CognomePG, nome
-			from logrisposte
-		LEFT JOIN personaggi on personaggi.IDutente = logrisposte.IDutente
-		LEFT JOIN oggetti on oggetti.IDoggetto = logrisposte.IDoggetto";
+$MySql="SELECT logrisposte2.IDutente, logrisposte2.IDoggetto, Risposta, logrisposte2.data, NomePG, CognomePG, nome 
+	from logrisposte2 
+	LEFT JOIN personaggi on personaggi.IDutente = logrisposte2.IDutente 
+	LEFT JOIN oggetti on oggetti.IDoggetto = logrisposte2.IDoggetto ";
 $Result=mysqli_query($db, $MySql);
 $res=mysqli_fetch_array($Result);
 
 
 $Result=mysqli_query($db, $MySql);
 while ( $res=mysqli_fetch_array($Result,MYSQLI_ASSOC) ) {
-	$out3[] = $res;
+	$out4[] = $res;
 }
 
 $out = [
 	'scan' => $out1,
 	'paired' => $out2,
-	'risposte' => $out3
+	'risposte' => $out3,
+	'enigmi' => $out4
 ];
 
 header("HTTP/1.1 200 OK");

@@ -11,6 +11,7 @@ export class ListscanComponent implements OnInit {
   listascan: Array<Listscan> = [];
   listapaired: Array<Listpaired> = [];
   listrisposte: Array<Listrisposte> = [];
+  listenigmi: Array<Listrisposte> = [];
   order = 1;
   propertyName = '';
   propertyName2 = '';
@@ -36,6 +37,7 @@ export class ListscanComponent implements OnInit {
         this.listascan = res.scan;
         this.listapaired = res.paired;
         this.listrisposte = res.risposte;
+        this.listenigmi = res.enigmi;
 
         //console.log(this.listapaired);
 
