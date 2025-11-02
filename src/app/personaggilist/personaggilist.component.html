@@ -13,7 +13,7 @@
   
   
   
-  <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
+  <div class="container-xxl" style=" margin-top: 1em; min-height: 85vh;">
   <p>
   
 
@@ -44,12 +44,16 @@
               <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-            <div class="col-3 all margin-top-8">
+            <div class="col-2 all margin-top-8">
               <button mat-raised-button color="accent" class="full" (click)="sortBy('nomespecial')">Specialità
               <span class="sortorder" *ngIf="propertyName === 'nomespecial'" [ngClass]="{reverse: order == 1}"></span>
               </button>
             </div>
-
+            <div class="col-1 all margin-top-8">
+              <button mat-raised-button color="accent" class="full" (click)="sortBy('gruppo')">Gruppo
+              <span class="sortorder" *ngIf="propertyName === 'gruppo'" [ngClass]="{reverse: order == 1}"></span>
+              </button>
+            </div>
             <div class="col-1 smaller  margin-top-12" >
               SAN
             </div>
@@ -59,12 +63,14 @@
             <div class="col-1 smaller margin-top-12" >
               Salute
             </div>
+
           </div>
           <div class="row white" *ngFor="let item of listapg">
             <div class="col-1 smaller"> <mat-checkbox [checked]="item.selected" (change)="checked(item)" color="primary"></mat-checkbox> </div>
             <div class="col-3 all margin-top-8" ><button mat-stroked-button routerLink="/personaggio/{{item.IDutente}}" >{{item.NomePG}} {{item.CognomePG}} </button> </div>
             <div class="col-2 all margin-top-8">{{item.nomeprofessione}}</div>
-            <div class="col-3 all margin-top-8">{{item.nomespecial}}</div>
+            <div class="col-2 all margin-top-8">{{item.nomespecial}}</div>
+            <div class="col-1 margin-top-8">{{item.gruppo}}</div>
             <div class="col-1 margin-top-8">{{item.Sanita}}</div>
             <div class="col-1 margin-top-8">{{item.Miti}}</div>
             <div class="col-1 margin-top-8">{{item.PF}}</div>
