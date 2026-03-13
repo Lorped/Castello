@@ -21,6 +21,7 @@ export class OggettilistComponent implements OnInit {
   listafissomobile: { id: string, nome: string, def: boolean }[] = [
     {id: 'f', nome: 'Fisso', def: true} ,
     {id: 'm', nome: 'Mobile', def: false} ,
+    {id: 'i', nome: 'Indir.', def: false} ,
     {id: 'e', nome: 'Enigma', def: false} 
   ];
 
