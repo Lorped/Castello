@@ -35,6 +35,14 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
   }
 
+  togglePasswordVisibility(event?: Event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.hide = !this.hide;
+  }
+
   doLogin() {
     this.authenticationService.login(this.loginCredentials.email, this.loginCredentials.password)
       .subscribe(
