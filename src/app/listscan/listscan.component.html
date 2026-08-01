@@ -1,240 +1,290 @@
 <div>
   <p>
-  <mat-toolbar>
-    <!--
-    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
-      <mat-icon>menu</mat-icon>
-    </button>
-    -->
-    <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
-  </mat-toolbar>
-</p>
+    <mat-toolbar>
+      <!--
+      <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      -->
+      <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
+    </mat-toolbar>
+  </p>
 </div>
 
 
 
 <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
-<p>
-
-
-<mat-card>
-  <mat-card-content>
-
-  <mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Oggetti Analizzati</span></mat-card-title>
-    </div>
-
-    <mat-card-content>
-        
-      <div class="alc" >
-      <!-- tabella -->
-        <div class="row red">
-          <div class="col-3 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('nome')">Oggetto
-            <span class="sortorder" *ngIf="propertyName === 'nome'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-3 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('NomePG')">Nome
-            <span class="sortorder" *ngIf="propertyName === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('nomeprofessione')">Professione
-            <span class="sortorder" *ngIf="propertyName === 'nomeprofessione'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-1">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('Sanita')">SAN
-            <span class="sortorder" *ngIf="propertyName === 'Sanita'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-1">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('Miti')">Miti
-            <span class="sortorder" *ngIf="propertyName === 'Miti'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2 ">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy('data')">Data
-            <span class="sortorder" *ngIf="propertyName === 'data'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-
-        </div>
-        <div class="row white margin-top-4" *ngFor="let item of listascan">
-          <div class="col-3 all smaller">{{item.nome}}</div>
-          <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
-          <div class="col-2 all smaller">{{item.nomeprofessione}}</div>
-          <div class="col-1 smaller">{{item.Sanita}}</div>
-          <div class="col-1 smaller">{{item.Miti}}</div>
-          <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-        </div>
-      </div>
-
-    </mat-card-content>
-  </mat-card>
-  
-
-<mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Risposte Scelte</span></mat-card-title>
-    </div>
-
-    <mat-card-content>
-        
-    <div class="alc" >
-      <!-- tabella -->
-        <div class="row white">
-          <div class="col-3 all">
-          <button mat-raised-button color="accent" class="full" (click)="sortBy3('NomePG')">Personaggio
-            <span class="sortorder" *ngIf="propertyName3 === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
-          </button>
-          </div>
-          <div class="col-5 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy3('Risposta')">Risposte
-              <span class="sortorder" *ngIf="propertyName3 === 'Risposta'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy3('nome')">Oggetto
-              <span class="sortorder" *ngIf="propertyName3 === 'nome'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy3('data')">Data
-              <span class="sortorder" *ngIf="propertyName3 === 'data'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-        </div>
-        
-        <div class="row white margin-top-4" *ngFor="let item of listrisposte">
-              <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
-              <div class="col-5 all smaller">ha risposto
-                <span *ngIf="item.Risposta == '1'" class="red"><strong>SI</strong></span>
-                <span *ngIf="item.Risposta == '0'" class="green"><strong>NO</strong></span>
-                alla domanda <strong>{{item.Domanda}}</strong> dell'oggetto</div>
-              <div class="col-2 all smaller">{{item.nome}}</div>
-              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-        </div>
-    </div>
-
-
-
-      </mat-card-content>
-    </mat-card>
-
-
+  <p>
 
 
     <mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Enigmi</span></mat-card-title>
-    </div>
-
-    <mat-card-content>
-        
-    <div class="alc" >
-      <!-- tabella -->
-        <div class="row white">
-          <div class="col-3 all">
-          <button mat-raised-button color="accent" class="full" (click)="sortBy4('NomePG')">Personaggio
-            <span class="sortorder" *ngIf="propertyName4 === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
-          </button>
-          </div>
-          <div class="col-5 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy4('Risposta')">Risposte
-              <span class="sortorder" *ngIf="propertyName4 === 'Risposta'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2 all">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy4('nome')">Enigma
-              <span class="sortorder" *ngIf="propertyName4 === 'nome'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-          <div class="col-2">
-            <button mat-raised-button color="accent" class="full" (click)="sortBy4('data')">Data
-              <span class="sortorder" *ngIf="propertyName4 === 'data'" [ngClass]="{reverse: order == 1}"></span>
-            </button>
-          </div>
-        </div>
-        
-        <div class="row white margin-top-4" *ngFor="let item of listenigmi">
-              <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
-              <div class="col-5 all smaller">
-                <span *ngIf="item.Risposta == '1'" ><strong>Ha raggiunto il limite di <span class="red">risposte errate</span></strong></span>
-                <span *ngIf="item.Risposta == '0'" ><strong>Ha risposto <span class="green">correttamente</span></strong></span>
-                all'Enigma <strong>{{item.Domanda}}</strong> dell'oggetto</div>
-              <div class="col-2 all smaller">{{item.nome}}</div>
-              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-        </div>
-    </div>
-
-
-
-      </mat-card-content>
-    </mat-card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Scansioni Accoppiate</span></mat-card-title>
-    </div>
-
       <mat-card-content>
-        
-          <div class="alc" >
-          <!-- tabella -->
-            <div class="row white">
-              <div class="col-6 all">
-                <button mat-raised-button color="accent" class="full" (click)="sortBy2('nome1')">Oggetti
-                  <span class="sortorder" *ngIf="propertyName2 === 'nome1'" [ngClass]="{reverse: order == 1}"></span>
-                </button>
-              </div>
-              <div class="col-4 all">
-                <button mat-raised-button color="accent" class="full" (click)="sortBy2('NomePG')">Personaggio
-                  <span class="sortorder" *ngIf="propertyName2 === 'NomePG'" [ngClass]="{reverse: order == 1}"></span>
-                </button>
-              </div>
-              <div class="col-2">
-                <button mat-raised-button color="accent" class="full" (click)="sortBy2('data')">Data
-                  <span class="sortorder" *ngIf="propertyName2 === 'data'" [ngClass]="{reverse: order == 1}"></span>
-                </button>
-              </div>
-            </div>
-            <div class="row white margin-top-4" *ngFor="let item of listapaired">
-              <div class="col-6 all smaller">{{item.nome1}} + {{item.nome2}}</div>
-              <div class="col-4 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
-              <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
-            </div>
+
+        <mat-card>
+          <div class ="alc">
+            <mat-card-title><span class="mytitle white">Oggetti Analizzati</span></mat-card-title>
           </div>
 
+          <mat-card-content>
+
+            <div class="alc" >
+              <!-- tabella -->
+              <div class="row red">
+                <div class="col-3 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('nome')">Oggetto
+                    @if (propertyName === 'nome') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-3 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('NomePG')">Nome
+                    @if (propertyName === 'NomePG') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-2 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('nomeprofessione')">Professione
+                    @if (propertyName === 'nomeprofessione') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-1">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('Sanita')">SAN
+                    @if (propertyName === 'Sanita') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-1">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('Miti')">Miti
+                    @if (propertyName === 'Miti') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-2 ">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy('data')">Data
+                    @if (propertyName === 'data') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+
+              </div>
+              @for (item of listascan; track item) {
+                <div class="row white margin-top-4">
+                  <div class="col-3 all smaller">{{item.nome}}</div>
+                  <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+                  <div class="col-2 all smaller">{{item.nomeprofessione}}</div>
+                  <div class="col-1 smaller">{{item.Sanita}}</div>
+                  <div class="col-1 smaller">{{item.Miti}}</div>
+                  <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+                </div>
+              }
+            </div>
+
+          </mat-card-content>
+        </mat-card>
 
 
-      </mat-card-content>
-    </mat-card>
+        <mat-card>
+          <div class ="alc">
+            <mat-card-title><span class="mytitle white">Risposte Scelte</span></mat-card-title>
+          </div>
+
+          <mat-card-content>
+
+            <div class="alc" >
+              <!-- tabella -->
+              <div class="row white">
+                <div class="col-3 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy3('NomePG')">Personaggio
+                    @if (propertyName3 === 'NomePG') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-5 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy3('Risposta')">Risposte
+                    @if (propertyName3 === 'Risposta') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-2 all">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy3('nome')">Oggetto
+                    @if (propertyName3 === 'nome') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+                <div class="col-2">
+                  <button mat-raised-button color="accent" class="full" (click)="sortBy3('data')">Data
+                    @if (propertyName3 === 'data') {
+                      <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                    }
+                  </button>
+                </div>
+              </div>
+
+              @for (item of listrisposte; track item) {
+                <div class="row white margin-top-4">
+                  <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+                  <div class="col-5 all smaller">ha risposto
+                    @if (item.Risposta == '1') {
+                      <span class="red"><strong>SI</strong></span>
+                    }
+                    @if (item.Risposta == '0') {
+                      <span class="green"><strong>NO</strong></span>
+                    }
+                    alla domanda <strong>{{item.Domanda}}</strong> dell'oggetto</div>
+                    <div class="col-2 all smaller">{{item.nome}}</div>
+                    <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+                  </div>
+                }
+              </div>
 
 
-    
 
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
-      </div>
-    </div>
+            </mat-card-content>
+          </mat-card>
 
-  </mat-card-content>
-</mat-card>
+
+
+
+          <mat-card>
+            <div class ="alc">
+              <mat-card-title><span class="mytitle white">Enigmi</span></mat-card-title>
+            </div>
+
+            <mat-card-content>
+
+              <div class="alc" >
+                <!-- tabella -->
+                <div class="row white">
+                  <div class="col-3 all">
+                    <button mat-raised-button color="accent" class="full" (click)="sortBy4('NomePG')">Personaggio
+                      @if (propertyName4 === 'NomePG') {
+                        <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                      }
+                    </button>
+                  </div>
+                  <div class="col-5 all">
+                    <button mat-raised-button color="accent" class="full" (click)="sortBy4('Risposta')">Risposte
+                      @if (propertyName4 === 'Risposta') {
+                        <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                      }
+                    </button>
+                  </div>
+                  <div class="col-2 all">
+                    <button mat-raised-button color="accent" class="full" (click)="sortBy4('nome')">Enigma
+                      @if (propertyName4 === 'nome') {
+                        <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                      }
+                    </button>
+                  </div>
+                  <div class="col-2">
+                    <button mat-raised-button color="accent" class="full" (click)="sortBy4('data')">Data
+                      @if (propertyName4 === 'data') {
+                        <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                      }
+                    </button>
+                  </div>
+                </div>
+
+                @for (item of listenigmi; track item) {
+                  <div class="row white margin-top-4">
+                    <div class="col-3 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+                    <div class="col-5 all smaller">
+                      @if (item.Risposta == '1') {
+                        <span ><strong>Ha raggiunto il limite di <span class="red">risposte errate</span></strong></span>
+                      }
+                      @if (item.Risposta == '0') {
+                        <span ><strong>Ha risposto <span class="green">correttamente</span></strong></span>
+                      }
+                      all'Enigma <strong>{{item.Domanda}}</strong> dell'oggetto</div>
+                      <div class="col-2 all smaller">{{item.nome}}</div>
+                      <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+                    </div>
+                  }
+                </div>
+
+
+
+              </mat-card-content>
+            </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <mat-card>
+              <div class ="alc">
+                <mat-card-title><span class="mytitle white">Scansioni Accoppiate</span></mat-card-title>
+              </div>
+
+              <mat-card-content>
+
+                <div class="alc" >
+                  <!-- tabella -->
+                  <div class="row white">
+                    <div class="col-6 all">
+                      <button mat-raised-button color="accent" class="full" (click)="sortBy2('nome1')">Oggetti
+                        @if (propertyName2 === 'nome1') {
+                          <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                        }
+                      </button>
+                    </div>
+                    <div class="col-4 all">
+                      <button mat-raised-button color="accent" class="full" (click)="sortBy2('NomePG')">Personaggio
+                        @if (propertyName2 === 'NomePG') {
+                          <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                        }
+                      </button>
+                    </div>
+                    <div class="col-2">
+                      <button mat-raised-button color="accent" class="full" (click)="sortBy2('data')">Data
+                        @if (propertyName2 === 'data') {
+                          <span class="sortorder" [ngClass]="{reverse: order == 1}"></span>
+                        }
+                      </button>
+                    </div>
+                  </div>
+                  @for (item of listapaired; track item) {
+                    <div class="row white margin-top-4">
+                      <div class="col-6 all smaller">{{item.nome1}} + {{item.nome2}}</div>
+                      <div class="col-4 all smaller">{{item.NomePG}} {{item.CognomePG}}</div>
+                      <div class="col-2 smaller">{{item.data | date : 'dd/MM HH:mm'}}</div>
+                    </div>
+                  }
+                </div>
+
+
+
+              </mat-card-content>
+            </mat-card>
+
+
+
+
+            <div class="row justify-content-md-center mypad">
+              <div style="text-align:center">
+                <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>

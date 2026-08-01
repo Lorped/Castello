@@ -1,209 +1,249 @@
 <div>
   <p>
-  <mat-toolbar>
-    <!--
-    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
-      <mat-icon>menu</mat-icon>
-    </button>
-    -->
-    <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
-  </mat-toolbar>
-</p>
+    <mat-toolbar>
+      <!--
+      <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      -->
+      <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
+    </mat-toolbar>
+  </p>
 </div>
 
 <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
-<p>
+  <p>
 
-  <mat-card>
-
-
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Personaggio</span></mat-card-title>
-    </div>
+    <mat-card>
 
 
-    <form [formGroup]="personaggioForm" #formDir="ngForm" class="form-signin" >
-    
-      <div >
-      <div class="row " style="margin: 0;">
-        <!-- <div class="col-2" style="background-image: url('assets/cornice2.png');  background-size: contain; background-repeat: no-repeat; padding-top: 43px;"> -->
-        <div class="col-2" >
-          <div class="img-overlay alc">
-            <label for="avatar">
-              <img src="assets/{{URLimg}}" width="180px">
-              <!-- <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar"> -->
-              <div class="overlay">
-                <span class="text-overlay fa fa-upload" ></span>
-              </div>
-            </label>
-          </div>
-          <input id="avatar" name="avatar" type="file" accept="image/*" style="display:none;" (change)="fileChange($event)" >
-        </div>
-
-        <div class="col-10">
-          <!-- inizio col9 -->
-           <!---
-          <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:75px; padding-bottom: 80px;">
-          -->
-            <!--   <div class="form-group row divrotate"> -->
-            <div class=" row "> 
-
-            <div class="col">
-              <mat-form-field class="full">
-              <input  name="nomepg" type="text" matInput formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
-              <mat-error *ngIf="NomePG.hasError('required')" >
-                    Campo richiesto
-                  </mat-error>
-                  <mat-error *ngIf="NomePG.hasError('pattern')">
-                    Carattere non ammesso
-                  </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col">
-              <mat-form-field class="full">
-              <input  name="cognomepg" type="text" matInput formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
-              <mat-error *ngIf="CognomePG.hasError('required')" >
-                    Campo richiesto
-                  </mat-error>
-                  <mat-error *ngIf="CognomePG.hasError('pattern')">
-                    Carattere non ammesso
-                  </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class=" row white"  >
-            <div class="col-6">
-              Data di nascita
-            </div>
-            <div class="col-6">
-              <mat-form-field>
-                <mat-label>Scegli una data</mat-label>
-                <input matInput [matDatepicker]="picker"  formControlName="DataNascita" [min]="minDate" [max]="maxDate" >
-                <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
-                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-                <mat-error *ngIf="DataNascita.hasError('matDatepickerMin')" >
-                    Data troppo remota
-                </mat-error>
-                <mat-error *ngIf="DataNascita.hasError('matDatepickerMax')" >
-                  Data troppo recente
-                </mat-error>
-                <mat-error *ngIf="DataNascita.hasError('required') && !DataNascita.hasError('matDatepickerMin') && !DataNascita.hasError('matDatepickerMax')" >
-                    Campo richiesto
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-          </div>
-
-          <div class=" row white" *ngIf="professioni.length>0">
-            <div class="col-6">
-              Tipologia di Professione
-            </div>
-            <div class="col-6">
-              <mat-form-field class="full">
-                <mat-select  name="profpg"  required formControlName="profPG">
-                  <mat-option *ngFor="let i of professioni" [value]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</mat-option>
-                </mat-select>
-                <mat-hint *ngIf="profPG.value>0">( Es: {{professioni[profPG.value-1].prof.desc}} )</mat-hint>
-                <mat-error *ngIf="profPG.invalid && (profPG.dirty || profPG.touched) && profPG.hasError('required')">
-                  Scegliere la tipologia di professione
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class=" row white" style="margin-top: 8px;margin-bottom: 8px;">
-            <div class="col-6">
-              Competenze (selezionarne una)
-            </div>
-            <div class="col-6">
-
-              <div class="row" *ngIf="professioni.length>0 && profPG.value>0">
-                <div class="col">
-                  <button type="button" mat-flat-button [color]="colors[0]" (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].descbp}}</button>
-                </div>
-                <div class="col">
-                  <button type="button" mat-flat-button [color]="colors[1]" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].descbp}}</button>
-                </div>
-                <div class="col">
-                  <button type="button" mat-flat-button [color]="colors[2]" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].descbp}}</button>
-                </div>
-              </div>
-
-              <div *ngIf="profPG.invalid || profPG.hasError('required')">
-                Scegliere prima la tipologia di professione
-              </div>
-            </div>
-          </div>
-
-
-          <div class=" row  white" >
-            <div class="col-6">
-              Specialità
-            </div>
-
-            <div class="col-6" *ngIf="professioni.length>0 && profPG.value>0">
-              <mat-form-field class="full">
-              <mat-select  name="specpg"  required formControlName="specPG">
-                <mat-option *ngFor="let i of professioni[profPG.value-1].spec" [value]="i.IDspecial">{{i.nomespecial}}</mat-option>
-              </mat-select>
-              <div *ngIf="specPG.value>0">BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
-              <div *ngIf="specPG.value==0">&nbsp;</div>
-              <mat-error *ngIf="specPG.invalid && (specPG.dirty || specPG.touched) && specPG.hasError('required')">
-                  Scegliere la specializzazione
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-
-          <div class=" row white" *ngIf="specPG.value==17">
-            <div class="col-6">
-              Bonus a scelta
-            </div>
-            
-            <div class="col" >
-              <mat-form-field class="full">
-                <mat-select  name="xspecpg"  required formControlName="xspecPG">
-                  <mat-option *ngFor="let i of xspecial" [value]="i.IDspecialx">{{i.xbonus}}</mat-option>
-                </mat-select>
-                <mat-error *ngIf="xspecPG.value==0 && specPG.value==17">
-                  Scegliere il bonus speciale
-                </mat-error>
-              </mat-form-field>
-
-            </div>
-          </div>
-
-
-
-
-
-          <div class=" row " >
-            <div class="col-2">&nbsp;</div>
-            <div class="col-8">
-              <button mat-raised-button color="primary" class="full" [disabled]="!formDir.form.valid || (checked==0)  || (xspecPG.value == '' && specPG.value==17) || (formDir.form.pristine && changecheck==0)" (click)="updatepg()">Aggiorna</button>
-            </div>
-          </div>
-          <p>
-          <div class=" row " >
-            <div class="col-2">&nbsp;</div>
-            <div class="col-8">
-              <button mat-raised-button color="accent" class="full" (click)="logout()">Logout</button>
-            </div>
-          </div>
-
-          <p>
-
-          
-          <!-- fine col9 -->
-        </div>
+      <div class ="alc">
+        <mat-card-title><span class="mytitle white">Personaggio</span></mat-card-title>
       </div>
-    </div>
-    </form>
+
+
+      <form [formGroup]="personaggioForm" #formDir="ngForm" class="form-signin" >
+
+        <div >
+          <div class="row " style="margin: 0;">
+            <!-- <div class="col-2" style="background-image: url('assets/cornice2.png');  background-size: contain; background-repeat: no-repeat; padding-top: 43px;"> -->
+            <div class="col-2" >
+              <div class="img-overlay alc">
+                <label for="avatar">
+                  <img src="assets/{{URLimg}}" width="180px">
+                  <!-- <img src="assets/{{URLimg}}" style="padding-left: 13px;padding-bottom: 0px;margin-top: -5px;" class="avatar"> -->
+                  <div class="overlay">
+                    <span class="text-overlay fa fa-upload" ></span>
+                  </div>
+                </label>
+              </div>
+              <input id="avatar" name="avatar" type="file" accept="image/*" style="display:none;" (change)="fileChange($event)" >
+            </div>
+
+            <div class="col-10">
+              <!-- inizio col9 -->
+              <!---
+              <div style="background-image: url('assets/cornice.png');  background-size: cover; padding:75px; padding-bottom: 80px;">
+                -->
+                <!--   <div class="form-group row divrotate"> -->
+                <div class=" row ">
+
+                  <div class="col">
+                    <mat-form-field class="full">
+                      <input  name="nomepg" type="text" matInput formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
+                      @if (NomePG.hasError('required')) {
+                        <mat-error >
+                          Campo richiesto
+                        </mat-error>
+                      }
+                      @if (NomePG.hasError('pattern')) {
+                        <mat-error>
+                          Carattere non ammesso
+                        </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+                  <div class="col">
+                    <mat-form-field class="full">
+                      <input  name="cognomepg" type="text" matInput formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
+                      @if (CognomePG.hasError('required')) {
+                        <mat-error >
+                          Campo richiesto
+                        </mat-error>
+                      }
+                      @if (CognomePG.hasError('pattern')) {
+                        <mat-error>
+                          Carattere non ammesso
+                        </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class=" row white"  >
+                  <div class="col-6">
+                    Data di nascita
+                  </div>
+                  <div class="col-6">
+                    <mat-form-field>
+                      <mat-label>Scegli una data</mat-label>
+                      <input matInput [matDatepicker]="picker"  formControlName="DataNascita" [min]="minDate" [max]="maxDate" >
+                      <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
+                      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                      @if (DataNascita.hasError('matDatepickerMin')) {
+                        <mat-error >
+                          Data troppo remota
+                        </mat-error>
+                      }
+                      @if (DataNascita.hasError('matDatepickerMax')) {
+                        <mat-error >
+                          Data troppo recente
+                        </mat-error>
+                      }
+                      @if (DataNascita.hasError('required') && !DataNascita.hasError('matDatepickerMin') && !DataNascita.hasError('matDatepickerMax')) {
+                        <mat-error >
+                          Campo richiesto
+                        </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+
+                </div>
+
+                @if (professioni.length>0) {
+                  <div class=" row white">
+                    <div class="col-6">
+                      Tipologia di Professione
+                    </div>
+                    <div class="col-6">
+                      <mat-form-field class="full">
+                        <mat-select  name="profpg"  required formControlName="profPG">
+                          @for (i of professioni; track i) {
+                            <mat-option [value]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</mat-option>
+                          }
+                        </mat-select>
+                        @if (profPG.value>0) {
+                          <mat-hint>( Es: {{professioni[profPG.value-1].prof.desc}} )</mat-hint>
+                        }
+                        @if (profPG.invalid && (profPG.dirty || profPG.touched) && profPG.hasError('required')) {
+                          <mat-error>
+                            Scegliere la tipologia di professione
+                          </mat-error>
+                        }
+                      </mat-form-field>
+                    </div>
+                  </div>
+                }
+
+                <div class=" row white" style="margin-top: 8px;margin-bottom: 8px;">
+                  <div class="col-6">
+                    Competenze (selezionarne una)
+                  </div>
+                  <div class="col-6">
+
+                    @if (professioni.length>0 && profPG.value>0) {
+                      <div class="row">
+                        <div class="col">
+                          <button type="button" mat-flat-button [color]="colors[0]" (click)="docheck(0)"> {{professioni[profPG.value-1].bonus[0].descbp}}</button>
+                        </div>
+                        <div class="col">
+                          <button type="button" mat-flat-button [color]="colors[1]" (click)="docheck(1)"> {{professioni[profPG.value-1].bonus[1].descbp}}</button>
+                        </div>
+                        <div class="col">
+                          <button type="button" mat-flat-button [color]="colors[2]" (click)="docheck(2)"> {{professioni[profPG.value-1].bonus[2].descbp}}</button>
+                        </div>
+                      </div>
+                    }
+
+                    @if (profPG.invalid || profPG.hasError('required')) {
+                      <div>
+                        Scegliere prima la tipologia di professione
+                      </div>
+                    }
+                  </div>
+                </div>
+
+
+                <div class=" row  white" >
+                  <div class="col-6">
+                    Specialità
+                  </div>
+
+                  @if (professioni.length>0 && profPG.value>0) {
+                    <div class="col-6">
+                      <mat-form-field class="full">
+                        <mat-select  name="specpg"  required formControlName="specPG">
+                          @for (i of professioni[profPG.value-1].spec; track i) {
+                            <mat-option [value]="i.IDspecial">{{i.nomespecial}}</mat-option>
+                          }
+                        </mat-select>
+                        @if (specPG.value>0) {
+                          <div>BONUS: {{getbonus(profPG.value-1,specPG.value) }} </div>
+                        }
+                        @if (specPG.value==0) {
+                          <div>&nbsp;</div>
+                        }
+                        @if (specPG.invalid && (specPG.dirty || specPG.touched) && specPG.hasError('required')) {
+                          <mat-error>
+                            Scegliere la specializzazione
+                          </mat-error>
+                        }
+                      </mat-form-field>
+                    </div>
+                  }
+                </div>
+
+                @if (specPG.value==17) {
+                  <div class=" row white">
+                    <div class="col-6">
+                      Bonus a scelta
+                    </div>
+                    <div class="col" >
+                      <mat-form-field class="full">
+                        <mat-select  name="xspecpg"  required formControlName="xspecPG">
+                          @for (i of xspecial; track i) {
+                            <mat-option [value]="i.IDspecialx">{{i.xbonus}}</mat-option>
+                          }
+                        </mat-select>
+                        @if (xspecPG.value==0 && specPG.value==17) {
+                          <mat-error>
+                            Scegliere il bonus speciale
+                          </mat-error>
+                        }
+                      </mat-form-field>
+                    </div>
+                  </div>
+                }
 
 
 
-  </mat-card>
-</div>
+
+
+                <div class=" row " >
+                  <div class="col-2">&nbsp;</div>
+                  <div class="col-8">
+                    <button mat-raised-button color="primary" class="full" [disabled]="!formDir.form.valid || (checked==0)  || (xspecPG.value == '' && specPG.value==17) || (formDir.form.pristine && changecheck==0)" (click)="updatepg()">Aggiorna</button>
+                  </div>
+                </div>
+                <p>
+                  <div class=" row " >
+                    <div class="col-2">&nbsp;</div>
+                    <div class="col-8">
+                      <button mat-raised-button color="accent" class="full" (click)="logout()">Logout</button>
+                    </div>
+                  </div>
+
+                  <p>
+
+
+                    <!-- fine col9 -->
+                  </div>
+                </div>
+              </div>
+            </form>
+
+
+
+          </mat-card>
+        </div>

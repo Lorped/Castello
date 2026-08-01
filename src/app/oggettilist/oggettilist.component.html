@@ -1,179 +1,197 @@
 <div>
   <p>
-  <mat-toolbar>
-    <!--
-    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
-      <mat-icon>menu</mat-icon>
-    </button>
-    -->
-    <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
-  </mat-toolbar>
-</p>
+    <mat-toolbar>
+      <!--
+      <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      -->
+      <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span>
+    </mat-toolbar>
+  </p>
 </div>
 
 <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
-<p>
+  <p>
 
-  <mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Gestione Oggetti</span></mat-card-title>
-    </div>
-
-    <mat-card-content>
-
-      <div class="alc white" >
-
-      <!-- tabella -->
-        <div>
-          <div class="row red">
-            <div class="col-1">ID</div>
-            <div class="col-2 all">Nome</div>
-            <div class="col-6">Descrizione</div>
-            <div class="col-2 alc">
-              <div class="table mystyle">
-                <div class="row red">
-                  <div class="col">Effetti</div>
-                </div>
-                <div class="row red">
-                  <div class="col">SAN</div><div class="col">MITI</div><div class="col">PF</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-1">Canc.</div>
-          </div>
-
-          <mat-divider></mat-divider>
-          <p>
-
-          <!--- -->
-          <div class="row" *ngFor="let item of listaoggetti">
-            <div class="col-1 ">{{item.ogg.IDoggetto}} &nbsp; {{item.ogg.Tipo.toUpperCase()}}</div>
-            <div class="col-2 all"><a mat-flat-button  color="accent" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
-            <div class="col-6 all">{{item.ogg.descrizione}}</div>
-            <div class="col-2 alc">
-              <div class="table ">
-                <div class="row">
-                  <div class="col">{{item.ogg.basesan}}</div><div class="col">{{item.ogg.basemiti}}</div><div class="col">{{item.ogg.basepf}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-1"><button mat-flat-button color="primary" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
-            <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row " *ngIf="!(i.nomeprofessione===null)">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all blue">({{i.nomeprofessione}})</div>
-                  <div class="col-6 all">{{i.descrizione}}</div>
-                  <div class="col-2 alc">
-                    <div class="table">
-                      <div class="row">
-                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-            </div>
-            <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row " *ngIf="(i.nomeprofessione===null && i.descbp===null)">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all gold">({{i.nomespecial}})</div>
-                  <div class="col-6 all">{{i.descrizione}}</div>
-                  <div class="col-2 alc">
-                    <div class="table ">
-                      <div class="row">
-                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-            </div>
-            <div class="col-12" *ngFor="let i of item.eff">
-              <div class="row " *ngIf="(i.nomeprofessione===null && i.nomespecial===null)">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all pink">({{i.descbp}})</div>
-                  <div class="col-6 all">{{i.descrizione}}</div>
-                  <div class="col-2 alc">
-                    <div class="table ">
-                      <div class="row">
-                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-            </div>
-            <div class="col-12" *ngFor="let i of item.pair">
-              <div class="row ">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all green"><strong>({{i.nome}})</strong></div>
-                  <div class="col-6 all">{{i.pdescrizione}}</div>
-                  <div class="col-2 alc">
-                    <div class="table ">
-                      <div class="row">
-                        <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-            </div>
-
-            <div class="col-12" *ngIf="item.ogg.flagdomanda == 1">
-              <div class="row ">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 all ">Domanda</div>
-                  <div class="col-6 all">{{item.ogg.domanda}}</div>
-                  <div class="col-2 alc">
-                    &nbsp;
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-              <div class="row ">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 alr green"><strong>SI</strong></div>
-                  <div class="col-6 all">{{item.ogg.r1}}</div>
-                  <div class="col-2 alc">
-                    <div class="table ">
-                      <div class="row">
-                        <div class="col">{{item.ogg.rispsan}}</div><div class="col">{{item.ogg.rispmiti}}</div><div class="col">{{item.ogg.risppf}}</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-              <div class="row ">
-                  <div class="col-1">&nbsp;</div>
-                  <div class="col-2 alr green"><strong>NO</strong></div>
-                  <div class="col-6 all">{{item.ogg.r2}}</div>
-                  <div class="col-2 alc">
-                    &nbsp;
-                  </div>
-                  <div class="col-1">&nbsp;</div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
+    <mat-card>
+      <div class ="alc">
+        <mat-card-title><span class="mytitle white">Gestione Oggetti</span></mat-card-title>
       </div>
-    </mat-card-content>
-  </mat-card>      
-  
-  <mat-card>
-    <mat-card-content>
+
+      <mat-card-content>
+
+        <div class="alc white" >
+
+          <!-- tabella -->
+          <div>
+            <div class="row red">
+              <div class="col-1">ID</div>
+              <div class="col-2 all">Nome</div>
+              <div class="col-6">Descrizione</div>
+              <div class="col-2 alc">
+                <div class="table mystyle">
+                  <div class="row red">
+                    <div class="col">Effetti</div>
+                  </div>
+                  <div class="row red">
+                    <div class="col">SAN</div><div class="col">MITI</div><div class="col">PF</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-1">Canc.</div>
+            </div>
+
+            <mat-divider></mat-divider>
+            <p>
+
+              <!--- -->
+              @for (item of listaoggetti; track item) {
+                <div class="row">
+                  <div class="col-1 ">{{item.ogg.IDoggetto}} &nbsp; {{item.ogg.Tipo.toUpperCase()}}</div>
+                  <div class="col-2 all"><a mat-flat-button  color="accent" routerLink="/oggetto/{{item.ogg.IDoggetto}}">{{item.ogg.nome}}</a></div>
+                  <div class="col-6 all">{{item.ogg.descrizione}}</div>
+                  <div class="col-2 alc">
+                    <div class="table ">
+                      <div class="row">
+                        <div class="col">{{item.ogg.basesan}}</div><div class="col">{{item.ogg.basemiti}}</div><div class="col">{{item.ogg.basepf}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1"><button mat-flat-button color="primary" (click)="cancbase(item.ogg.IDoggetto)" >X</button></div>
+                  @for (i of item.eff; track i) {
+                    <div class="col-12">
+                      @if (!(i.nomeprofessione===null)) {
+                        <div class="row ">
+                          <div class="col-1">&nbsp;</div>
+                          <div class="col-2 all blue">({{i.nomeprofessione}})</div>
+                          <div class="col-6 all">{{i.descrizione}}</div>
+                          <div class="col-2 alc">
+                            <div class="table">
+                              <div class="row">
+                                <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-1">&nbsp;</div>
+                        </div>
+                      }
+                    </div>
+                  }
+                  @for (i of item.eff; track i) {
+                    <div class="col-12">
+                      @if ((i.nomeprofessione===null && i.descbp===null)) {
+                        <div class="row ">
+                          <div class="col-1">&nbsp;</div>
+                          <div class="col-2 all gold">({{i.nomespecial}})</div>
+                          <div class="col-6 all">{{i.descrizione}}</div>
+                          <div class="col-2 alc">
+                            <div class="table ">
+                              <div class="row">
+                                <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-1">&nbsp;</div>
+                        </div>
+                      }
+                    </div>
+                  }
+                  @for (i of item.eff; track i) {
+                    <div class="col-12">
+                      @if ((i.nomeprofessione===null && i.nomespecial===null)) {
+                        <div class="row ">
+                          <div class="col-1">&nbsp;</div>
+                          <div class="col-2 all pink">({{i.descbp}})</div>
+                          <div class="col-6 all">{{i.descrizione}}</div>
+                          <div class="col-2 alc">
+                            <div class="table ">
+                              <div class="row">
+                                <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-1">&nbsp;</div>
+                        </div>
+                      }
+                    </div>
+                  }
+                  @for (i of item.pair; track i) {
+                    <div class="col-12">
+                      <div class="row ">
+                        <div class="col-1">&nbsp;</div>
+                        <div class="col-2 all green"><strong>({{i.nome}})</strong></div>
+                        <div class="col-6 all">{{i.pdescrizione}}</div>
+                        <div class="col-2 alc">
+                          <div class="table ">
+                            <div class="row">
+                              <div class="col">{{i.effettosan}}</div><div class="col">{{i.effettomiti}}</div><div class="col">{{i.effettopf}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-1">&nbsp;</div>
+                      </div>
+                    </div>
+                  }
+                  @if (item.ogg.flagdomanda == 1) {
+                    <div class="col-12">
+                      <div class="row ">
+                        <div class="col-1">&nbsp;</div>
+                        <div class="col-2 all ">Domanda</div>
+                        <div class="col-6 all">{{item.ogg.domanda}}</div>
+                        <div class="col-2 alc">
+                          &nbsp;
+                        </div>
+                        <div class="col-1">&nbsp;</div>
+                      </div>
+                      <div class="row ">
+                        <div class="col-1">&nbsp;</div>
+                        <div class="col-2 alr green"><strong>SI</strong></div>
+                        <div class="col-6 all">{{item.ogg.r1}}</div>
+                        <div class="col-2 alc">
+                          <div class="table ">
+                            <div class="row">
+                              <div class="col">{{item.ogg.rispsan}}</div><div class="col">{{item.ogg.rispmiti}}</div><div class="col">{{item.ogg.risppf}}</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-1">&nbsp;</div>
+                      </div>
+                      <div class="row ">
+                        <div class="col-1">&nbsp;</div>
+                        <div class="col-2 alr green"><strong>NO</strong></div>
+                        <div class="col-6 all">{{item.ogg.r2}}</div>
+                        <div class="col-2 alc">
+                          &nbsp;
+                        </div>
+                        <div class="col-1">&nbsp;</div>
+                      </div>
+                    </div>
+                  }
+                </div>
+              }
+
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-content>
 
           <form name="addform" (ngSubmit)="doSave()" #addForm="ngForm" >
 
             <div class="row ">
 
               <div class="col-1">
-                
+
                 <mat-radio-group [(ngModel)]="fissomobile"  class="example-radio-group">
-                  <mat-radio-button  class="example-radio-button"  *ngFor="let tipo of listafissomobile" [value]="tipo.id" >{{tipo.nome}} 
-                  </mat-radio-button>
+                  @for (tipo of listafissomobile; track tipo) {
+                    <mat-radio-button  class="example-radio-button"  [value]="tipo.id" >{{tipo.nome}}
+                    </mat-radio-button>
+                  }
                 </mat-radio-group>
-                
+
               </div>
               <div class="col-2 all">
                 <mat-form-field >
@@ -188,20 +206,20 @@
               <div class="col-2 alc">
                 <mat-form-field >
 
-                
-                <div >
-                  <div class="row">
-                    <div class="col-4">                      
-                      <input matInput name="bs" type="number" [(ngModel)]="newbasesan">
-                    </div>
-                    <div class="col-4">
-                      <input matInput name="bm" type="number" [(ngModel)]="newbasemiti">
-                    </div>
-                    <div class="col-4">
-                      <input matInput name="bpf" type="number" [(ngModel)]="newbasepf">
+
+                  <div >
+                    <div class="row">
+                      <div class="col-4">
+                        <input matInput name="bs" type="number" [(ngModel)]="newbasesan">
+                      </div>
+                      <div class="col-4">
+                        <input matInput name="bm" type="number" [(ngModel)]="newbasemiti">
+                      </div>
+                      <div class="col-4">
+                        <input matInput name="bpf" type="number" [(ngModel)]="newbasepf">
+                      </div>
                     </div>
                   </div>
-                </div>
 
                 </mat-form-field>
               </div>
@@ -215,20 +233,20 @@
 
           </form>
           <!-- -->
-        <p>
+          <p>
 
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <button (click)="openstampaoggetti()" mat-raised-button color="warn" >Stampa oggetti</button>
+            <div class="row justify-content-md-center mypad">
+              <div style="text-align:center">
+                <button (click)="openstampaoggetti()" mat-raised-button color="warn" >Stampa oggetti</button>
+              </div>
+            </div>
+            <div class="row justify-content-md-center mypad">
+              <div style="text-align:center">
+                <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+
       </div>
-    </div>
-    <div class="row justify-content-md-center mypad">
-      <div style="text-align:center">
-        <a [routerLink]="['/master']" class="btn btn-link">Ritorna alla pagina Custode</a>
-      </div>
-    </div>
-
-    </mat-card-content>
-  </mat-card>   
-
-</div>

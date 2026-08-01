@@ -1,69 +1,73 @@
 <div>
   <p>
-  <mat-toolbar>
-    <!--
-    <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
-      <mat-icon>menu</mat-icon>
-    </button>
-    -->
-    <!-- <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span> -->
-  </mat-toolbar>
-</p>
+    <mat-toolbar>
+      <!--
+      <button mat-icon-button class="example-icon" aria-label="menu" (click)="sidenav.toggle()" >
+        <mat-icon>menu</mat-icon>
+      </button>
+      -->
+      <!-- <span style="font-family:Kunstler; font-size:2.5em;">Il Castello della Follia</span> -->
+    </mat-toolbar>
+  </p>
 </div>
 
 <div class="container" style="width: 80%; margin-top: 1em; min-height: 85vh;">
-<p>
+  <p>
 
-  <mat-card>
-    <div class ="alc">
-      <mat-card-title><span class="mytitle white">Il Castello della Follia</span></mat-card-title>
-    </div>
-
-    <mat-card-content>
-
-      
-      
-      <div class="alc">
-        <div class="row alc">
-          <div class="col-3" >&nbsp;</div>
-          <div class="col-6" >
-
-
-
-            <form name="loginForm" (ngSubmit)="doLogin()" #loginForm="ngForm"  >
-              
-            <mat-form-field class="full">
-              <input  name="email" type="email" matInput [(ngModel)]="loginCredentials.email" placeholder="Indirizzo Email" [formControl]="loginFormGroup.controls.email" >
-                  <mat-error *ngIf="loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')">
-                    Inserire una Email Valida
-                  </mat-error>
-                  <mat-error *ngIf="loginFormGroup.controls.email.hasError('required')">
-                    Campo <strong>richiesto</strong>
-                  </mat-error>
-            </mat-form-field>
-            
-            <mat-form-field class="full">
-              <input  name="password" [type]="hide ? 'password' : 'text'" matInput [(ngModel)]="loginCredentials.password" placeholder="Password" [formControl]="loginFormGroup.controls.password" >
-                    <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility($event)" [attr.aria-label]="hide ? 'Mostra password' : 'Nascondi password'" [attr.aria-pressed]="hide">
-                    <mat-icon class="white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-            </mat-form-field>
-
-              <button type="submit" mat-flat-button color="primary" class="full" [disabled]="!loginFormGroup.valid" >Login</button>
-
-            </form>
-
-          </div>
-          <div class="col-3" >&nbsp;</div>
-        </div>
-        <div style="text-align:center">
-          <a [routerLink]="['/register']" class="btn btn-link">Registrati</a>
-          <a [routerLink]="['/loginmaster']" class="btn btn-link">Accesso Custode</a>
-          <div class="white">{{errmsg}}</div>
-        </div>
-        
+    <mat-card>
+      <div class ="alc">
+        <mat-card-title><span class="mytitle white">Il Castello della Follia</span></mat-card-title>
       </div>
 
-    </mat-card-content>
-  </mat-card>
-</div>
+      <mat-card-content>
+
+
+
+        <div class="alc">
+          <div class="row alc">
+            <div class="col-3" >&nbsp;</div>
+            <div class="col-6" >
+
+
+
+              <form name="loginForm" (ngSubmit)="doLogin()" #loginForm="ngForm"  >
+
+                <mat-form-field class="full">
+                  <input  name="email" type="email" matInput [(ngModel)]="loginCredentials.email" placeholder="Indirizzo Email" [formControl]="loginFormGroup.controls.email" >
+                  @if (loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')) {
+                    <mat-error>
+                      Inserire una Email Valida
+                    </mat-error>
+                  }
+                  @if (loginFormGroup.controls.email.hasError('required')) {
+                    <mat-error>
+                      Campo <strong>richiesto</strong>
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field class="full">
+                  <input  name="password" [type]="hide ? 'password' : 'text'" matInput [(ngModel)]="loginCredentials.password" placeholder="Password" [formControl]="loginFormGroup.controls.password" >
+                  <button mat-icon-button matSuffix type="button" (click)="togglePasswordVisibility($event)" [attr.aria-label]="hide ? 'Mostra password' : 'Nascondi password'" [attr.aria-pressed]="hide">
+                    <mat-icon class="white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+
+                <button type="submit" mat-flat-button color="primary" class="full" [disabled]="!loginFormGroup.valid" >Login</button>
+
+              </form>
+
+            </div>
+            <div class="col-3" >&nbsp;</div>
+          </div>
+          <div style="text-align:center">
+            <a [routerLink]="['/register']" class="btn btn-link">Registrati</a>
+            <a [routerLink]="['/loginmaster']" class="btn btn-link">Accesso Custode</a>
+            <div class="white">{{errmsg}}</div>
+          </div>
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
