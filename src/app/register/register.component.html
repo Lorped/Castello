@@ -41,14 +41,18 @@
                       <mat-label>Nome e Cognome del GIOCATORE</mat-label>
                       <input  matInput type="text" formControlName="regname" placeholder="Nome e Cognome">
                       @if (regname.hasError('required')) {
-                        <mat-error >
-                          Campo <strong>richiesto</strong>
-                        </mat-error>
+                        <ng-container>
+                          <mat-error >
+                            Campo <strong>richiesto</strong>
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (regname.hasError('pattern')) {
-                        <mat-error>
-                          Carattere non ammesso
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            Carattere non ammesso
+                          </mat-error>
+                        </ng-container>
                       }
                     </mat-form-field>
 
@@ -56,19 +60,25 @@
                       <mat-label>Indirizzo Email (login)</mat-label>
                       <input  matInput type="email" formControlName="regemail" placeholder="Inserire email">
                       @if (regemail.hasError('required')) {
-                        <mat-error >
-                          Campo <strong>richiesto</strong>
-                        </mat-error>
+                        <ng-container>
+                          <mat-error >
+                            Campo <strong>richiesto</strong>
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (regemail.hasError('email')) {
-                        <mat-error>
-                          Inserire una Email Valida
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            Inserire una Email Valida
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (regemail.hasError('emailTaken')) {
-                        <mat-error>
-                          Email già presente
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            Email già presente
+                          </mat-error>
+                        </ng-container>
                       }
                     </mat-form-field>
 
@@ -79,19 +89,25 @@
                         <mat-icon class="white">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                       @if (password.hasError('required')) {
-                        <mat-error >
-                          Campo <strong>richiesto</strong>
-                        </mat-error>
+                        <ng-container>
+                          <mat-error >
+                            Campo <strong>richiesto</strong>
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (password.hasError('pattern')) {
-                        <mat-error>
-                          Solo caratteri alfanumerici, almeno una lettera e un numero
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            Solo caratteri alfanumerici, almeno una lettera e un numero
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (password.hasError('minlength')) {
-                        <mat-error>
-                          La lunghezza minima è 8 caratteri
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            La lunghezza minima è 8 caratteri
+                          </mat-error>
+                        </ng-container>
                       }
                     </mat-form-field>
 
@@ -99,14 +115,18 @@
                       <mat-label>Conferma Password</mat-label>
                       <input  matInput [type]="hide ? 'password' : 'text'" formControlName="password2" placeholder="Conferma Password">
                       @if (password2.hasError('required')) {
-                        <mat-error >
-                          Campo <strong>richiesto</strong>
-                        </mat-error>
+                        <ng-container>
+                          <mat-error >
+                            Campo <strong>richiesto</strong>
+                          </mat-error>
+                        </ng-container>
                       }
                       @if (password2.hasError('mismatch')) {
-                        <mat-error>
-                          Le password non corrispondono
-                        </mat-error>
+                        <ng-container>
+                          <mat-error>
+                            Le password non corrispondono
+                          </mat-error>
+                        </ng-container>
                       }
                     </mat-form-field>
 

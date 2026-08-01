@@ -35,14 +35,18 @@
                 <mat-form-field class="full">
                   <input  name="email" type="email" matInput [(ngModel)]="loginCredentials.email" placeholder="Indirizzo Email" [formControl]="loginFormGroup.controls.email" >
                   @if (loginFormGroup.controls.email.hasError('email') && !loginFormGroup.controls.email.hasError('required')) {
-                    <mat-error>
-                      Inserire una Email Valida
-                    </mat-error>
+                    <ng-container>
+                      <mat-error>
+                        Inserire una Email Valida
+                      </mat-error>
+                    </ng-container>
                   }
                   @if (loginFormGroup.controls.email.hasError('required')) {
-                    <mat-error>
-                      Campo <strong>richiesto</strong>
-                    </mat-error>
+                    <ng-container>
+                      <mat-error>
+                        Campo <strong>richiesto</strong>
+                      </mat-error>
+                    </ng-container>
                   }
                 </mat-form-field>
 

@@ -51,31 +51,15 @@
                   <div class="col">
                     <mat-form-field class="full">
                       <input  name="nomepg" type="text" matInput formControlName="NomePG" placeholder="Nome del PERSONAGGIO" [pattern]="unamePattern" required >
-                      @if (NomePG.hasError('required')) {
-                        <mat-error >
-                          Campo richiesto
-                        </mat-error>
-                      }
-                      @if (NomePG.hasError('pattern')) {
-                        <mat-error>
-                          Carattere non ammesso
-                        </mat-error>
-                      }
+                      @if (NomePG.hasError('required')) {<ng-container><mat-error>Campo richiesto</mat-error></ng-container>}
+                      @if (NomePG.hasError('pattern')) {<ng-container><mat-error>Carattere non ammesso</mat-error></ng-container>}
                     </mat-form-field>
                   </div>
                   <div class="col">
                     <mat-form-field class="full">
                       <input  name="cognomepg" type="text" matInput formControlName="CognomePG" placeholder="Cognome del PERSONAGGIO" [pattern]="unamePattern" required >
-                      @if (CognomePG.hasError('required')) {
-                        <mat-error >
-                          Campo richiesto
-                        </mat-error>
-                      }
-                      @if (CognomePG.hasError('pattern')) {
-                        <mat-error>
-                          Carattere non ammesso
-                        </mat-error>
-                      }
+                      @if (CognomePG.hasError('required')) {<ng-container><mat-error>Campo richiesto</mat-error></ng-container>}
+                      @if (CognomePG.hasError('pattern')) {<ng-container><mat-error>Carattere non ammesso</mat-error></ng-container>}
                     </mat-form-field>
                   </div>
                 </div>
@@ -91,21 +75,9 @@
                       <!-- <mat-hint>DD/MM/YYYY</mat-hint> -->
                       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
-                      @if (DataNascita.hasError('matDatepickerMin')) {
-                        <mat-error >
-                          Data troppo remota
-                        </mat-error>
-                      }
-                      @if (DataNascita.hasError('matDatepickerMax')) {
-                        <mat-error >
-                          Data troppo recente
-                        </mat-error>
-                      }
-                      @if (DataNascita.hasError('required') && !DataNascita.hasError('matDatepickerMin') && !DataNascita.hasError('matDatepickerMax')) {
-                        <mat-error >
-                          Campo richiesto
-                        </mat-error>
-                      }
+                      @if (DataNascita.hasError('matDatepickerMin')) {<ng-container><mat-error>Data troppo remota</mat-error></ng-container>}
+                      @if (DataNascita.hasError('matDatepickerMax')) {<ng-container><mat-error>Data troppo recente</mat-error></ng-container>}
+                      @if (DataNascita.hasError('required') && !DataNascita.hasError('matDatepickerMin') && !DataNascita.hasError('matDatepickerMax')) {<ng-container><mat-error>Campo richiesto</mat-error></ng-container>}
                     </mat-form-field>
                   </div>
 
@@ -123,14 +95,8 @@
                             <mat-option [value]="i.prof.IDprofessione">{{i.prof.nomeprofessione}}</mat-option>
                           }
                         </mat-select>
-                        @if (profPG.value>0) {
-                          <mat-hint>( Es: {{professioni[profPG.value-1].prof.desc}} )</mat-hint>
-                        }
-                        @if (profPG.invalid && (profPG.dirty || profPG.touched) && profPG.hasError('required')) {
-                          <mat-error>
-                            Scegliere la tipologia di professione
-                          </mat-error>
-                        }
+                        @if (profPG.value>0) {<ng-container><mat-hint>( Es: {{professioni[profPG.value-1].prof.desc}} )</mat-hint></ng-container>}
+                        @if (profPG.invalid && (profPG.dirty || profPG.touched) && profPG.hasError('required')) {<ng-container><mat-error>Scegliere la tipologia di professione</mat-error></ng-container>}
                       </mat-form-field>
                     </div>
                   </div>
@@ -184,11 +150,7 @@
                         @if (specPG.value==0) {
                           <div>&nbsp;</div>
                         }
-                        @if (specPG.invalid && (specPG.dirty || specPG.touched) && specPG.hasError('required')) {
-                          <mat-error>
-                            Scegliere la specializzazione
-                          </mat-error>
-                        }
+                        @if (specPG.invalid && (specPG.dirty || specPG.touched) && specPG.hasError('required')) {<ng-container><mat-error>Scegliere la specializzazione</mat-error></ng-container>}
                       </mat-form-field>
                     </div>
                   }
@@ -206,11 +168,7 @@
                             <mat-option [value]="i.IDspecialx">{{i.xbonus}}</mat-option>
                           }
                         </mat-select>
-                        @if (xspecPG.value==0 && specPG.value==17) {
-                          <mat-error>
-                            Scegliere il bonus speciale
-                          </mat-error>
-                        }
+                        @if (xspecPG.value==0 && specPG.value==17) {<ng-container><mat-error>Scegliere il bonus speciale</mat-error></ng-container>}
                       </mat-form-field>
                     </div>
                   </div>
