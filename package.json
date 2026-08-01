@@ -11,15 +11,6 @@
     "e2e": "ng e2e"
   },
   "private": true,
-  "overrides": {
-    "@angular/fire": {
-      "@angular/common": "$@angular/common",
-      "@angular/core": "$@angular/core",
-      "@angular/platform-browser": "$@angular/platform-browser",
-      "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic",
-      "@angular/platform-server": "$@angular/platform-server"
-    }
-  },
   "dependencies": {
     "@angular/animations": "^21.2.19",
     "@angular/cdk": "^21.2.14",
@@ -34,7 +25,6 @@
     "@angular/router": "^21.2.19",
     "@angular/service-worker": "^21.2.19",
     "@popperjs/core": "^2.11.8",
-    "@angular/fire": "^20.0.1",
     "adm-zip": "^0.4.13",
     "bootstrap": "^5.3.2",
     "cached-path-relative": "^1.0.2",
@@ -61,7 +51,6 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
-    "codelyzer": "^6.0.0",
     "eslint": "^8.53.0",
     "jasmine-core": "~3.8.0",
     "jasmine-spec-reporter": "~5.0.0",
