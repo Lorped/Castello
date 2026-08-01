@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {  PersonaggioService } from '../services/index';
 import { Personaggio } from '../globals';
@@ -7,6 +7,7 @@ import { Personaggio } from '../globals';
     selector: 'app-personaggilist',
     templateUrl: './personaggilist.component.html',
     styleUrls: ['./personaggilist.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PersonaggilistComponent implements OnInit {

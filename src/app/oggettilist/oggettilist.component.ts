@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Oggetto, OggettiService } from '../services/index';
 import { FormGroup } from '@angular/forms';
 
@@ -6,6 +6,7 @@ import { FormGroup } from '@angular/forms';
     selector: 'app-oggettilist',
     templateUrl: './oggettilist.component.html',
     styleUrls: ['./oggettilist.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

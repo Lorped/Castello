@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { AuthenticationService } from '../services/index';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,7 @@ import { HttpClient } from '@angular/common/http';
     selector: 'app-login',
     templateUrl: './loginmaster.component.html',
     styleUrls: ['./loginmaster.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LoginmasterComponent implements OnInit {

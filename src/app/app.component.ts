@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
 
 
@@ -21,6 +21,7 @@ import { Status } from './globals';
             transition('out => in', animate('400ms ease-in-out'))
         ]),
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 

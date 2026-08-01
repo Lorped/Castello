@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchedaService } from '../services/scheda.service';
 import { Personaggio } from '../globals';
@@ -8,6 +8,7 @@ import { Listscan, Listpaired, Listmagie, Listmagiex } from '../services/oggetti
     selector: 'app-personaggio',
     templateUrl: './personaggio.component.html',
     styleUrls: ['./personaggio.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PersonaggioComponent implements OnInit {

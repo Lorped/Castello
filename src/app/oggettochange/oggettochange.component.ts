@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Oggetto, OggettiService } from '../services/index';
 import { SchedaService } from '../services/index';
 import { ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
     selector: 'app-oggettochange',
     templateUrl: './oggettochange.component.html',
     styleUrls: ['./oggettochange.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class OggettochangeComponent implements OnInit {

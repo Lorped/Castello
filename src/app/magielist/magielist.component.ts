@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Magia, OggettiService } from '../services/index';
 
 @Component({
     selector: 'app-magielist',
     templateUrl: './magielist.component.html',
     styleUrls: ['./magielist.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MagielistComponent implements OnInit {

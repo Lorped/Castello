@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Listscan, Listpaired , Listrisposte, OggettiService } from '../services/index';
 
 @Component({
     selector: 'app-listscan',
     templateUrl: './listscan.component.html',
     styleUrls: ['./listscan.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ListscanComponent implements OnInit {
