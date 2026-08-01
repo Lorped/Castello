@@ -2,7 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { APP_ROUTES } from './app.routing' ;
@@ -60,65 +60,58 @@ import {
 } from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    IntroComponent,
-    RegisterComponent,
-    LoginComponent,
-    MainComponent,
-    LoginmasterComponent,
-    MasterComponent,
-    StatComponent,
-    OggettilistComponent,
-    OggettochangeComponent,
-    PersonaggilistComponent,
-    ListscanComponent,
-    PersonaggioComponent,
-    MagielistComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    HttpClientModule,
-    MatSelectModule,
-    MatIconModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatRadioModule,
-    MatSlideToggleModule,
-    RouterModule.forRoot(APP_ROUTES, {useHash: true}),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-        enabled: !isDevMode(),
-        // Register the ServiceWorker as soon as the application is stable
-        // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-      }),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireMessagingModule
-    
-  ],
-  providers: [
-    Status,
-    Personaggio,
-    SignupService,
-    AuthenticationService,
-    SchedaService,
-    OggettiService,
-    PersonaggioService,
-    provideAnimationsAsync(),
-    {provide: MAT_DATE_LOCALE, useValue: 'it'},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}},
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        IntroComponent,
+        RegisterComponent,
+        LoginComponent,
+        MainComponent,
+        LoginmasterComponent,
+        MasterComponent,
+        StatComponent,
+        OggettilistComponent,
+        OggettochangeComponent,
+        PersonaggilistComponent,
+        ListscanComponent,
+        PersonaggioComponent,
+        MagielistComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatToolbarModule,
+        MatSelectModule,
+        MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRadioModule,
+        MatSlideToggleModule,
+        RouterModule.forRoot(APP_ROUTES, { useHash: true }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireMessagingModule], providers: [
+        Status,
+        Personaggio,
+        SignupService,
+        AuthenticationService,
+        SchedaService,
+        OggettiService,
+        PersonaggioService,
+        provideAnimationsAsync(),
+        { provide: MAT_DATE_LOCALE, useValue: 'it' },
+        { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { strict: true } },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule { }
