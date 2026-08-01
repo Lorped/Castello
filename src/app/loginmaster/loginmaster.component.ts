@@ -15,9 +15,10 @@ import { HttpClient } from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './loginmaster.component.html',
-  styleUrls: ['./loginmaster.component.css']
+    selector: 'app-login',
+    templateUrl: './loginmaster.component.html',
+    styleUrls: ['./loginmaster.component.css'],
+    standalone: false
 })
 export class LoginmasterComponent implements OnInit {
 

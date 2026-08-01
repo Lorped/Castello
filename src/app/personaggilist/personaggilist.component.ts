@@ -4,9 +4,10 @@ import {  PersonaggioService } from '../services/index';
 import { Personaggio } from '../globals';
 
 @Component({
-  selector: 'app-personaggilist',
-  templateUrl: './personaggilist.component.html',
-  styleUrls: ['./personaggilist.component.css']
+    selector: 'app-personaggilist',
+    templateUrl: './personaggilist.component.html',
+    styleUrls: ['./personaggilist.component.css'],
+    standalone: false
 })
 export class PersonaggilistComponent implements OnInit {
 

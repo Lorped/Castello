@@ -5,9 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-oggettochange',
-  templateUrl: './oggettochange.component.html',
-  styleUrls: ['./oggettochange.component.css']
+    selector: 'app-oggettochange',
+    templateUrl: './oggettochange.component.html',
+    styleUrls: ['./oggettochange.component.css'],
+    standalone: false
 })
 export class OggettochangeComponent implements OnInit {
 @ViewChild('oggettoForm', { static: true }) oggettoForm: NgForm;

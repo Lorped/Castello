@@ -3,9 +3,10 @@ import { Oggetto, OggettiService } from '../services/index';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-oggettilist',
-  templateUrl: './oggettilist.component.html',
-  styleUrls: ['./oggettilist.component.css']
+    selector: 'app-oggettilist',
+    templateUrl: './oggettilist.component.html',
+    styleUrls: ['./oggettilist.component.css'],
+    standalone: false
 })
 
 

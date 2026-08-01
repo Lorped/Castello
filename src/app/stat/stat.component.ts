@@ -5,9 +5,10 @@ import { HttpClient } from '@angular/common/http';
 import { Statistica } from '../globals';
 
 @Component({
-  selector: 'app-stat',
-  templateUrl: './stat.component.html',
-  styleUrls: ['./stat.component.css']
+    selector: 'app-stat',
+    templateUrl: './stat.component.html',
+    styleUrls: ['./stat.component.css'],
+    standalone: false
 })
 
 

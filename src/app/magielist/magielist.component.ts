@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Magia, OggettiService } from '../services/index';
 
 @Component({
-  selector: 'app-magielist',
-  templateUrl: './magielist.component.html',
-  styleUrls: ['./magielist.component.css']
+    selector: 'app-magielist',
+    templateUrl: './magielist.component.html',
+    styleUrls: ['./magielist.component.css'],
+    standalone: false
 })
 export class MagielistComponent implements OnInit {
 

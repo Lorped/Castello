@@ -5,9 +5,10 @@ import { Personaggio } from '../globals';
 import { Listscan, Listpaired, Listmagie, Listmagiex } from '../services/oggetti.service';
 
 @Component({
-  selector: 'app-personaggio',
-  templateUrl: './personaggio.component.html',
-  styleUrls: ['./personaggio.component.css']
+    selector: 'app-personaggio',
+    templateUrl: './personaggio.component.html',
+    styleUrls: ['./personaggio.component.css'],
+    standalone: false
 })
 export class PersonaggioComponent implements OnInit {
 
