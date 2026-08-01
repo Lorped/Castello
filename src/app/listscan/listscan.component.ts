@@ -56,7 +56,7 @@ export class ListscanComponent implements OnInit {
 
   }
 
-  sortBy ( prop: string) {
+  sortBy ( prop: keyof Listscan) {
     this.propertyName = prop;
     this.listascan.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
@@ -66,7 +66,7 @@ export class ListscanComponent implements OnInit {
     // console.log(this.order);
   }
 
-  sortBy2 ( prop: string) {
+  sortBy2 ( prop: keyof Listpaired) {
     this.propertyName2 = prop;
     this.listapaired.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
@@ -76,7 +76,7 @@ export class ListscanComponent implements OnInit {
     // console.log(this.order);
   }
 
-  sortBy3 ( prop: string) {
+  sortBy3 ( prop: keyof Listrisposte) {
     this.propertyName3 = prop;
     this.listrisposte.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;
@@ -86,7 +86,7 @@ export class ListscanComponent implements OnInit {
     // console.log(this.order);
   }
 
-  sortBy4 ( prop: string) {
+  sortBy4 ( prop: keyof Listrisposte) {
     this.propertyName4 = prop;
     this.listenigmi.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;

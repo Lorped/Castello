@@ -4,6 +4,26 @@ import { SchedaService } from '../services/index';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+interface ProfessioneOption {
+  IDprofessione: number;
+  nomeprofessione: string;
+}
+
+interface SpecialOption {
+  IDspecial: number;
+  nomespecial: string;
+}
+
+interface BpOption {
+  IDbp: number;
+  descbp: string;
+}
+
+interface OggettipairOption {
+  IDoggetto: number;
+  nome: string;
+}
+
 @Component({
     selector: 'app-oggettochange',
     templateUrl: './oggettochange.component.html',
@@ -12,12 +32,12 @@ import { NgForm } from '@angular/forms';
     standalone: false
 })
 export class OggettochangeComponent implements OnInit {
-@ViewChild('oggettoForm', { static: true }) oggettoForm: NgForm;
+@ViewChild('oggettoForm', { static: true }) oggettoForm!: NgForm;
 
-  oggetto: Oggetto ;
-  professioni = [];
-  special = [];
-  bp = [];
+  oggetto!: Oggetto;
+  professioni: ProfessioneOption[] = [];
+  special: SpecialOption[] = [];
+  bp: BpOption[] = [];
 
   neweffsan = 0 ;
   neweffmiti = 0 ;
@@ -39,7 +59,7 @@ export class OggettochangeComponent implements OnInit {
   neweffdescrizionebp = '';
 
 
-  oggettipair = [];
+  oggettipair: OggettipairOption[] = [];
 
   newpairsan = 0 ;
   newpairmiti = 0 ;
@@ -67,6 +87,11 @@ export class OggettochangeComponent implements OnInit {
 
   constructor( private oggettiService: OggettiService, private route: ActivatedRoute, private scheda: SchedaService) { }
 
+  private getRouteId(): number {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    return Number(idParam ?? 0);
+  }
+
   ngOnInit() {
 
     this.getOggetto();
@@ -77,7 +102,7 @@ export class OggettochangeComponent implements OnInit {
   }
 
   getProfessioni(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.getRouteId();
 
       this.oggettiService.getprofessionieff( id)
       .subscribe( (data: any) => {
@@ -86,7 +111,7 @@ export class OggettochangeComponent implements OnInit {
   }
 
   getSpecial(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.getRouteId();
 
       this.oggettiService.getspecialeff( id)
       .subscribe( (data: any) => {
@@ -95,7 +120,7 @@ export class OggettochangeComponent implements OnInit {
   }
 
   getBP(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.getRouteId();
 
       this.oggettiService.getbpeff( id)
       .subscribe( (data: any) => {
@@ -104,7 +129,7 @@ export class OggettochangeComponent implements OnInit {
   }
 
   getOggetti(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.getRouteId();
 
       this.oggettiService.getoggettipair( id)
       .subscribe( (data: any) => {
@@ -114,7 +139,7 @@ export class OggettochangeComponent implements OnInit {
 
 
   getOggetto(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+    const id = this.getRouteId();
     this.oggettiService.getoggetto(id)
       .subscribe( (res:any) => {
         this.oggetto = res[0];

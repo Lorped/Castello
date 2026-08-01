@@ -77,7 +77,9 @@ export class OggettilistComponent implements OnInit {
 
   openstampaoggetti() {
     var win = window.open("wsPHP/stampaoggetti.php", '_blank');
-    win.focus();
+    if (win) {
+      win.focus();
+    }
   }
 
 

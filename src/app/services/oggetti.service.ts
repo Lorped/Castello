@@ -89,15 +89,15 @@ export class Magia {
 };
 
 export class Listscan  {
-  IDutente: 0;
-  IDoggetto: 0;
-  data: '';
-  NomePG: '';
-  CognomePG: '';
-  Miti: 0;
-  Sanita: 0;
-  nome: '';  //nome Oggetto
-  nomeprofessione: ''; //classe prof
+  IDutente = 0;
+  IDoggetto = 0;
+  data = '';
+  NomePG = '';
+  CognomePG = '';
+  Miti = 0;
+  Sanita = 0;
+  nome = '';  //nome Oggetto
+  nomeprofessione = ''; //classe prof
 };
 
 export class Listpaired  {

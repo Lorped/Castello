@@ -13,7 +13,7 @@ export class SignupService {
     }
     return this.http
       .get('https://www.roma-by-night.it/Castello/wsPHP/checkemail.php?email=' + email)
-      .pipe( map( (data: Ares) => data.res ));
+      .pipe( map( (data: any) => data.res ));
   }
 
 

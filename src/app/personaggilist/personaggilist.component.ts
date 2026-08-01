@@ -35,7 +35,7 @@ export class PersonaggilistComponent implements OnInit {
         }
       });
   }
-  sortBy ( prop: string) {
+  sortBy ( prop: keyof Personaggio) {
     this.propertyName = prop;
     this.listapg.sort ( (a, b) => {
       return (a[prop] > b[prop]) ? this.order : (-1) * this.order ;

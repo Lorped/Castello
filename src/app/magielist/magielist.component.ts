@@ -58,8 +58,10 @@ export class MagielistComponent implements OnInit {
   }
 
   openstampaoggetti() {
-    var win = window.open("wsPHP/stampamagie.php", '_blank');
-    win.focus();
+    const win = window.open('wsPHP/stampamagie.php', '_blank');
+    if (win) {
+      win.focus();
+    }
   }
 
 }

@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   loginCredentials = { email: '' , password: '' };
   errmsg = '';
-  returnUrl: string;
+  returnUrl: string = '';
 
   loginFormGroup = new FormGroup ({
     email: new FormControl('', [

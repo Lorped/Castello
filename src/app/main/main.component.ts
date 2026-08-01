@@ -19,12 +19,12 @@ export class MainComponent implements OnInit {
   unamePattern = '^[A-Za-zàèìòù \']+$';
   today: number = (new Date()).getFullYear();
 
-  fileToUpload: File = null;
+  fileToUpload: File | null = null;
 
-  personaggioForm: FormGroup;
+  personaggioForm!: FormGroup;
 
-  professioni = [];
-  xspecial = [];
+  professioni: any[] = [];
+  xspecial: any[] = [];
 
   checkbonus = [ 0 , 0 , 0 ];
   checked = 0;
@@ -32,8 +32,8 @@ export class MainComponent implements OnInit {
 
   changecheck=0;
 
-  minDate: Date;
-  maxDate: Date;
+  minDate!: Date;
+  maxDate!: Date;
 
   colors = [ "", "", "" ];
 
@@ -115,7 +115,7 @@ export class MainComponent implements OnInit {
   }
 
   onChanges(): void {
-    this.personaggioForm.get('profPG').valueChanges.subscribe(val => {
+    this.personaggioForm.get('profPG')?.valueChanges.subscribe(val => {
 
       //console.log("here");
 
@@ -134,23 +134,23 @@ export class MainComponent implements OnInit {
     });
   }
 
-  get NomePG() {
-    return this.personaggioForm.get('NomePG');
+  get NomePG(): FormControl {
+    return this.personaggioForm.get('NomePG') as FormControl;
   }
-  get CognomePG() {
-    return this.personaggioForm.get('CognomePG');
+  get CognomePG(): FormControl {
+    return this.personaggioForm.get('CognomePG') as FormControl;
   }
-  get DataNascita() {
-    return this.personaggioForm.get('DataNascita');
+  get DataNascita(): FormControl {
+    return this.personaggioForm.get('DataNascita') as FormControl;
   }
-  get profPG() {
-    return this.personaggioForm.get('profPG');
+  get profPG(): FormControl {
+    return this.personaggioForm.get('profPG') as FormControl;
   }
-  get specPG() {
-    return this.personaggioForm.get('specPG');
+  get specPG(): FormControl {
+    return this.personaggioForm.get('specPG') as FormControl;
   }
-  get xspecPG() {
-    return this.personaggioForm.get('xspecPG');
+  get xspecPG(): FormControl {
+    return this.personaggioForm.get('xspecPG') as FormControl;
   }
 
 
@@ -191,7 +191,7 @@ export class MainComponent implements OnInit {
     });
   }
 
-  getbonus (p,s) {
+  getbonus (p: number, s: number) {
 
     for ( let i = 0; i < this.professioni[p].spec.length ; i++ ) {
       if ( this.professioni[p].spec[i].IDspecial==s) {
@@ -201,7 +201,7 @@ export class MainComponent implements OnInit {
     return this.professioni[p].spec[0].bonus;
   }
 
-  docheck(i) {
+  docheck(i: number) {
     this.checkbonus[0] = 0;
     this.checkbonus[1] = 0;
     this.checkbonus[2] = 0;

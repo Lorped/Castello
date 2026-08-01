@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   accetta = '';
 
-  registrationForm: FormGroup;
+  registrationForm!: FormGroup;
 
   hide = true;
 
@@ -62,20 +62,20 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  get regname() {
-      return this.registrationForm.get('regname');
+  get regname(): AbstractControl {
+      return this.registrationForm.get('regname') as AbstractControl;
   }
-  get regemail() {
-      return this.registrationForm.get('regemail');
+  get regemail(): AbstractControl {
+      return this.registrationForm.get('regemail') as AbstractControl;
   }
-  get password() {
-      return this.registrationForm.get('password');
+  get password(): AbstractControl {
+      return this.registrationForm.get('password') as AbstractControl;
   }
-  get password2() {
-      return this.registrationForm.get('password2');
+  get password2(): AbstractControl {
+      return this.registrationForm.get('password2') as AbstractControl;
   }
-  get check() {
-      return this.registrationForm.get('check');
+  get check(): AbstractControl {
+      return this.registrationForm.get('check') as AbstractControl;
   }
 
   validateEmailNotTaken(control: AbstractControl) {

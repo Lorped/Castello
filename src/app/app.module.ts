@@ -48,8 +48,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatRadioModule} from '@angular/material/radio'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
-import { AngularFireModule} from '@angular/fire/compat';
-import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
+//import { AngularFireModule} from '@angular/fire/compat';
+//import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 import { environment } from '../environments/environment';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -100,8 +100,10 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
         }),
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireMessagingModule], providers: [
+        //AngularFireModule.initializeApp(environment.firebase),
+        //AngularFireMessagingModule
+        ], 
+        providers: [
         Status,
         Personaggio,
         SignupService,

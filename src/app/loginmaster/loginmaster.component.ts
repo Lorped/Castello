@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 import { Status } from '../globals';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
-import { getMessaging, } from '@angular/fire/messaging';
-import { AngularFireMessaging } from '@angular/fire/compat/messaging';
-import { FirebaseApp } from '@angular/fire/compat';
+// import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+// import { getMessaging, } from '@angular/fire/messaging';
+// import { AngularFireMessaging } from '@angular/fire/compat/messaging';
+// import { FirebaseApp } from '@angular/fire/compat';
 import { environment } from "../../environments/environment";
 import { HttpClient } from '@angular/common/http';
 
@@ -25,7 +25,7 @@ export class LoginmasterComponent implements OnInit {
 
   loginCredentials = { email: '' , password: '' };
   errmsg = '';
-  returnUrl: string;
+  returnUrl: string = '';
 
   loginFormGroup = new FormGroup ({
     email: new FormControl('', [
@@ -39,7 +39,8 @@ export class LoginmasterComponent implements OnInit {
 
   hide = true;
 
-  constructor (private authenticationService: AuthenticationService, private router: Router , private status: Status, private mesg: AngularFireMessaging,public http: HttpClient ,) { }
+  //constructor (private authenticationService: AuthenticationService, private router: Router , private status: Status, private mesg: AngularFireMessaging,public http: HttpClient ,) { }
+  constructor (private authenticationService: AuthenticationService, private router: Router , private status: Status, public http: HttpClient ,) { }
 
   ngOnInit() {
     this.authenticationService.logout();
@@ -52,14 +53,16 @@ export class LoginmasterComponent implements OnInit {
           this.status.IDutente = data.IDutente;
           sessionStorage.setItem('CastelloMaster', data.IDutente);
 
+          /***
           provideFirebaseApp(() => initializeApp(environment.firebase));
           console.log("Firebase app initialized:");
+          **/
 
           Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
               console.log('Notification permission granted.');
 
-
+              /***
               this.mesg.requestToken.subscribe( (currentToken) => {
                 if (currentToken) {
                   console.log("Current token:", currentToken);
@@ -77,6 +80,7 @@ export class LoginmasterComponent implements OnInit {
                   });
                 }
               });
+              ***/
             }
 
             this.router.navigate(['master']);
