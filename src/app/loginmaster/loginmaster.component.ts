@@ -10,6 +10,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 // import { getMessaging, } from '@angular/fire/messaging';
 // import { AngularFireMessaging } from '@angular/fire/compat/messaging';
 // import { FirebaseApp } from '@angular/fire/compat';
+import {initializeApp} from 'firebase/app';
+import { getMessaging , getToken , onMessage} from 'firebase/messaging';
+
 import { environment } from "../../environments/environment";
 import { HttpClient } from '@angular/common/http';
 
@@ -57,32 +60,57 @@ export class LoginmasterComponent implements OnInit {
           provideFirebaseApp(() => initializeApp(environment.firebase));
           console.log("Firebase app initialized:");
           **/
+         const app = initializeApp(environment.firebase);
+         console.log("Firebase app initialized:");
+         console.log(app);
 
           Notification.requestPermission().then((permission) => {
             if (permission === 'granted') {
               console.log('Notification permission granted.');
 
-              /***
-              this.mesg.requestToken.subscribe( (currentToken) => {
+              const messaging = getMessaging(app);
+              console.log("Firebase messaging initialized:", messaging);
+
+              getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
                 if (currentToken) {
                   console.log("Current token:", currentToken);
 
                   let updateurl = 'https://www.roma-by-night.it/Castello/wsPHPapp/updateid.php?userid=0'+'&id='+currentToken;
                   this.http.get(updateurl).subscribe(res =>  {
 
-                    const messaging = getMessaging();
-                    console.log("Firebase messaging initialized:", messaging);
+                    console.log("Token updated on server:");
+
+                    onMessage(messaging,(payload) => {
+                      console.log("Received message:", payload);
+                      window.alert("CASTELLO: " + payload.notification?.body);
+                      const channel = new BroadcastChannel('my-channel2');
+                      channel.postMessage(payload);
+                    });
+                    
+                    //const messaging = getMessaging();
+                    //console.log("Firebase messaging initialized:", messaging);
+                    /*
                     this.mesg.messages.subscribe((message) => { 
                       window.alert("CASTELLO: " + message.notification?.body);
                       const channel = new BroadcastChannel('my-channel2');
                       channel.postMessage(message);
                     });
+                    */
+
                   });
                 }
+                
+              });
+
+
+              /***
+              this.mesg.requestToken.subscribe( (currentToken) => {
+
               });
               ***/
-            }
-
+             
+            };   
+          
             this.router.navigate(['master']);
 
           });

@@ -8,7 +8,7 @@ function pushmsg ($data) {
 
 	$url = "https://fcm.googleapis.com/v1/projects/castello-a99be/messages:send";
 
-	$access_token = get_access_token("/web/htdocs/www.roma-by-night.it/home/Castello/wsPHP/castello-a99be-firebase-adminsdk-j3yin-9e308c1362.json");
+	$access_token = get_access_token("/web/htdocs/www.roma-by-night.it/home/Castello/wsPHP/castello-a99be-firebase-adminsdk-j3yin-6e892b0419.json");
     
     $options = array(
         CURLOPT_URL => $url,

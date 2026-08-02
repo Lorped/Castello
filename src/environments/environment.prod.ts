@@ -15,6 +15,7 @@ export const environment = {
   measurementId: "G-S5DE10FNH7",
 
   vapidKey: "BJpR6cW8_O8dUVVpty8poJEr2QlHtfBvElFRs12dMybvP_Zu38krZ7d7CViBx6ZsSg3llLlf09pU9mSWVVEedJg",
+  
 
   },
 };
