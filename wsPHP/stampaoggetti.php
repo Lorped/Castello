@@ -3,7 +3,7 @@
 	include ('db.inc.php');
 
 
-include('../phpqrcode2/lib/full/qrlib.php');
+include('../../phpqrcode2/lib/full/qrlib.php');
 
 
 ?>
