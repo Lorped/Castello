@@ -33,6 +33,14 @@ export class ListscanComponent implements OnInit {
       
   }
 
+  cleanscan() {
+    this.oggetti.cleanscan()
+      .subscribe( (res: any) => {
+        console.log("Cleanscan response:", res);
+        this.loadData();
+      });
+  }
+
   loadData() {
     this.oggetti.listscan()
       .subscribe( (res: any) => {

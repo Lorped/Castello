@@ -274,4 +274,7 @@ export class OggettiService {
     return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/listscan.php' );
   }
 
+  cleanscan () {
+    return this.http.get('https://www.roma-by-night.it/Castello/wsPHP/cleanscan.php' );
+  }
 }
